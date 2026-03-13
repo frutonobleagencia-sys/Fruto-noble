@@ -177,37 +177,73 @@
     .svc-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 18px; position: relative; transition: color 0.3s; }
     .svc-desc { font-size: 0.68rem; line-height: 1.9; color: var(--muted2); position: relative; transition: color 0.3s; }
 
-    /* CLIENTES */
+    /* CASOS — GRAPHIC CARDS */
     #clientes { background: var(--bg2); }
     .clients-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 64px; }
     .clients-count { font-size: 0.62rem; color: var(--muted); letter-spacing: 0.1em; }
-
-    .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--border); }
-    .case-card {
-      position: relative; overflow: hidden; background: var(--bg2);
-      aspect-ratio: 4/3; display: flex; flex-direction: column; justify-content: flex-end;
+    .cases-new-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
     }
-    .case-img {
-      position: absolute; inset: 0;
-      background-size: cover; background-position: center;
-      filter: grayscale(25%) brightness(0.75);
-      transition: filter 0.6s, transform 0.6s;
+    .case-new {
+      background: var(--bg2);
+      padding: 48px 44px;
+      transition: background 0.3s;
     }
-    .case-card:hover .case-img { filter: grayscale(0%) brightness(0.85); transform: scale(1.04); }
-    .case-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
+    .case-new:hover { background: var(--bg3); }
+    .case-new-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 40px;
     }
-    .case-content { position: relative; z-index: 2; padding: 36px; }
-    .case-num { font-size: 0.55rem; letter-spacing: 0.25em; color: var(--lime); margin-bottom: 8px; }
-    .case-rubro { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white2); margin-bottom: 10px; }
-    .case-name { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 16px; }
-    .case-metrics { display: flex; gap: 20px; flex-wrap: wrap; }
-    .case-metric {
-      font-size: 0.6rem; letter-spacing: 0.1em; color: var(--lime);
-      background: rgba(184,212,74,0.12); padding: 5px 12px;
-      border: 1px solid rgba(184,212,74,0.2);
+    .case-new-num { font-size: 0.58rem; letter-spacing: 0.2em; color: var(--muted); margin-bottom: 8px; }
+    .case-new-name { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 6px; }
+    .case-new-rubro { font-size: 0.6rem; letter-spacing: 0.08em; color: var(--muted2); line-height: 1.6; }
+    .case-new-tag {
+      font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--lime); border: 1px solid rgba(184,212,74,0.3);
+      padding: 6px 12px; white-space: nowrap; flex-shrink: 0;
     }
+    .case-new-stats { display: flex; flex-direction: column; gap: 28px; margin-bottom: 36px; }
+    .case-stat-big {}
+    .case-stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8rem; font-weight: 700;
+      line-height: 1; color: var(--white);
+      margin-bottom: 6px;
+    }
+    .case-stat-unit { font-size: 2rem; color: var(--lime); font-weight: 400; }
+    .case-stat-label { font-size: 0.62rem; letter-spacing: 0.1em; color: var(--muted2); margin-bottom: 10px; }
+    .case-stat-bar {
+      height: 2px; background: var(--border2);
+      border-radius: 2px; overflow: hidden;
+    }
+    .case-stat-fill {
+      height: 100%; background: var(--lime);
+      border-radius: 2px;
+      animation: barGrow 1.2s cubic-bezier(.16,1,.3,1) forwards;
+      transform-origin: left;
+    }
+    @keyframes barGrow { from { width: 0 !important; } }
+    .case-new-extras {
+      display: flex; gap: 0;
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+    }
+    .case-extra {
+      flex: 1;
+      display: flex; flex-direction: column; gap: 4px;
+      padding-right: 20px;
+      border-right: 1px solid var(--border);
+      margin-right: 20px;
+    }
+    .case-extra:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+    .case-extra-val { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--white); }
+    .case-extra-label { font-size: 0.58rem; letter-spacing: 0.08em; color: var(--muted); line-height: 1.4; }
 
     /* PROCESO */
     #proceso { background: var(--bg3); }
@@ -521,66 +557,125 @@
   <section id="clientes">
     <div class="clients-header reveal">
       <p class="section-label" style="margin-bottom:0">Casos de éxito</p>
-      <span class="clients-count">04 clientes</span>
+      <span class="clients-count">04 casos</span>
     </div>
     <h2 class="section-title reveal">Resultados que <em>hablan</em></h2>
-    <div class="cases-grid" style="margin-top:64px">
 
-      <div class="case-card reveal">
-        <div class="case-img" style="background-image:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900&q=80')"></div>
-        <div class="case-overlay"></div>
-        <div class="case-content">
-          <p class="case-num">01</p>
-          <p class="case-rubro">Indumentaria deportiva · E-commerce · Córdoba</p>
-          <h3 class="case-name">A lo Belgrano</h3>
-          <div class="case-metrics">
-            <span class="case-metric">9× ROAS</span>
-            <span class="case-metric">51 ventas · Dic 2025</span>
-            <span class="case-metric">313k alcance mensual</span>
+    <div class="cases-new-grid" style="margin-top:64px">
+
+      <!-- 01 A LO BELGRANO -->
+      <div class="case-new reveal">
+        <div class="case-new-header">
+          <div>
+            <p class="case-new-num">01</p>
+            <h3 class="case-new-name">A lo Belgrano</h3>
+            <p class="case-new-rubro">Indumentaria deportiva · E-commerce · Córdoba</p>
           </div>
+          <span class="case-new-tag">Meta Ads</span>
+        </div>
+        <div class="case-new-stats">
+          <div class="case-stat-big">
+            <div class="case-stat-value">9<span class="case-stat-unit">×</span></div>
+            <div class="case-stat-label">ROAS obtenido</div>
+            <div class="case-stat-bar"><div class="case-stat-fill" style="width:90%"></div></div>
+          </div>
+          <div class="case-stat-big">
+            <div class="case-stat-value">313<span class="case-stat-unit">k</span></div>
+            <div class="case-stat-label">Personas alcanzadas / mes</div>
+            <div class="case-stat-bar"><div class="case-stat-fill" style="width:75%"></div></div>
+          </div>
+        </div>
+        <div class="case-new-extras">
+          <div class="case-extra"><span class="case-extra-val">51</span><span class="case-extra-label">ventas en Dic 2025</span></div>
+          <div class="case-extra"><span class="case-extra-val">3</span><span class="case-extra-label">tipos de campaña activa</span></div>
+          <div class="case-extra"><span class="case-extra-val">↑</span><span class="case-extra-label">retargeting optimizado</span></div>
         </div>
       </div>
 
-      <div class="case-card reveal">
-        <div class="case-img" style="background-image:url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=900&q=80')"></div>
-        <div class="case-overlay"></div>
-        <div class="case-content">
-          <p class="case-num">02</p>
-          <p class="case-rubro">Indumentaria mayorista · B2B · Nacional</p>
-          <h3 class="case-name">Airflow CF</h3>
-          <div class="case-metrics">
-            <span class="case-metric">268k alcanzados</span>
-            <span class="case-metric">100+ consultas</span>
-            <span class="case-metric">3 tipos de campaña</span>
+      <!-- 02 AIRFLOW CF -->
+      <div class="case-new reveal">
+        <div class="case-new-header">
+          <div>
+            <p class="case-new-num">02</p>
+            <h3 class="case-new-name">Airflow CF</h3>
+            <p class="case-new-rubro">Indumentaria mayorista · B2B · Nacional</p>
           </div>
+          <span class="case-new-tag">RRSS + Ads</span>
+        </div>
+        <div class="case-new-stats">
+          <div class="case-stat-big">
+            <div class="case-stat-value">268<span class="case-stat-unit">k</span></div>
+            <div class="case-stat-label">Personas alcanzadas</div>
+            <div class="case-stat-bar"><div class="case-stat-fill" style="width:82%"></div></div>
+          </div>
+          <div class="case-stat-big">
+            <div class="case-stat-value">100<span class="case-stat-unit">+</span></div>
+            <div class="case-stat-label">Consultas generadas</div>
+            <div class="case-stat-bar"><div class="case-stat-fill" style="width:60%"></div></div>
+          </div>
+        </div>
+        <div class="case-new-extras">
+          <div class="case-extra"><span class="case-extra-val">3</span><span class="case-extra-label">tipos de campaña</span></div>
+          <div class="case-extra"><span class="case-extra-val">B2B</span><span class="case-extra-label">gimnasios y equipos</span></div>
+          <div class="case-extra"><span class="case-extra-val">↑</span><span class="case-extra-label">alcance mayorista</span></div>
         </div>
       </div>
 
-      <div class="case-card reveal">
-        <div class="case-img" style="background-image:url('https://images.unsplash.com/photo-1503095396549-807759245b35?w=900&q=80')"></div>
-        <div class="case-overlay"></div>
-        <div class="case-content">
-          <p class="case-num">03</p>
-          <p class="case-rubro">Artes escénicas · Social Media + Ads · Buenos Aires</p>
-          <h3 class="case-name">Presencia Teatro</h3>
-          <div class="case-metrics">
-            <span class="case-metric">5+ años de relación</span>
-            <span class="case-metric">100% ocupación</span>
+      <!-- 03 PRESENCIA TEATRO -->
+      <div class="case-new reveal">
+        <div class="case-new-header">
+          <div>
+            <p class="case-new-num">03</p>
+            <h3 class="case-new-name">Presencia Teatro</h3>
+            <p class="case-new-rubro">Artes escénicas · Social Media + Ads · Buenos Aires</p>
           </div>
+          <span class="case-new-tag">Social Media</span>
+        </div>
+        <div class="case-new-stats">
+          <div class="case-stat-big">
+            <div class="case-stat-value">100<span class="case-stat-unit">%</span></div>
+            <div class="case-stat-label">Ocupación constante</div>
+            <div class="case-stat-bar"><div class="case-stat-fill" style="width:100%"></div></div>
+          </div>
+          <div class="case-stat-big">
+            <div class="case-stat-value">5<span class="case-stat-unit">+</span></div>
+            <div class="case-stat-label">Años de relación</div>
+            <div class="case-stat-bar"><div class="case-stat-fill" style="width:100%"></div></div>
+          </div>
+        </div>
+        <div class="case-new-extras">
+          <div class="case-extra"><span class="case-extra-val">↻</span><span class="case-extra-label">rotación constante de alumnos</span></div>
+          <div class="case-extra"><span class="case-extra-val">360°</span><span class="case-extra-label">gestión de redes</span></div>
+          <div class="case-extra"><span class="case-extra-val">↑</span><span class="case-extra-label">publicidad en Meta</span></div>
         </div>
       </div>
 
-      <div class="case-card reveal">
-        <div class="case-img" style="background-image:url('https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=900&q=80')"></div>
-        <div class="case-overlay"></div>
-        <div class="case-content">
-          <p class="case-num">04</p>
-          <p class="case-rubro">Seguridad electrónica · Argentina</p>
-          <h3 class="case-name">Detecta</h3>
-          <div class="case-metrics">
-            <span class="case-metric">360° gestión digital</span>
-            <span class="case-metric">↑ presencia digital</span>
+      <!-- 04 DETECTA -->
+      <div class="case-new reveal">
+        <div class="case-new-header">
+          <div>
+            <p class="case-new-num">04</p>
+            <h3 class="case-new-name">Detecta</h3>
+            <p class="case-new-rubro">Seguridad electrónica · Argentina</p>
           </div>
+          <span class="case-new-tag">Presencia Digital</span>
+        </div>
+        <div class="case-new-stats">
+          <div class="case-stat-big">
+            <div class="case-stat-value">360<span class="case-stat-unit">°</span></div>
+            <div class="case-stat-label">Gestión digital completa</div>
+            <div class="case-stat-bar"><div class="case-stat-fill" style="width:100%"></div></div>
+          </div>
+          <div class="case-stat-big">
+            <div class="case-stat-value">↑<span class="case-stat-unit"></span></div>
+            <div class="case-stat-label">Presencia digital en crecimiento</div>
+            <div class="case-stat-bar"><div class="case-stat-fill" style="width:70%"></div></div>
+          </div>
+        </div>
+        <div class="case-new-extras">
+          <div class="case-extra"><span class="case-extra-val">RRSS</span><span class="case-extra-label">gestión integral</span></div>
+          <div class="case-extra"><span class="case-extra-val">DG</span><span class="case-extra-label">diseño gráfico</span></div>
+          <div class="case-extra"><span class="case-extra-val">SEO</span><span class="case-extra-label">posicionamiento digital</span></div>
         </div>
       </div>
 
