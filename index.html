@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fruto Noble — Agencia de Marketing</title>
+  <title>Fruto Noble — Agencia de Marketing Digital</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --black: #0a0a0a;
-      --white: #f5f5f0;
-      --gray: #888;
-      --border: rgba(245,245,240,0.12);
+      --bg: #1a1a1a;
+      --bg2: #212121;
+      --bg3: #2a2a2a;
+      --white: #f0ece4;
+      --white2: #c8c4bc;
+      --lime: #b8d44a;
+      --lime-dark: #9ab83a;
+      --muted: #666;
+      --muted2: #888;
+      --border: rgba(240,236,228,0.07);
+      --border2: rgba(240,236,228,0.12);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--black);
+      background: var(--bg);
+      background-image: radial-gradient(ellipse at 50% 0%, #2e2e2e 0%, #0d0d0d 100%);
       color: var(--white);
       font-family: 'DM Mono', monospace;
       font-weight: 300;
@@ -26,439 +34,366 @@
       overflow-x: hidden;
     }
 
+    /* VIGNETTE */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0,0,0,0.7) 100%);
+      pointer-events: none;
+      z-index: 50;
+    }
+
     /* CURSOR */
     .cursor {
       position: fixed;
-      width: 10px; height: 10px;
-      background: var(--white);
+      width: 40px; height: 40px;
+      background: #fff;
       border-radius: 50%;
       pointer-events: none;
       z-index: 9999;
-      transition: transform 0.15s ease, opacity 0.15s ease;
-      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
+      transform: translate(-50%, -50%) scale(0.18);
+      transition: transform 0.4s cubic-bezier(.16,1,.3,1), background 0.3s;
+      will-change: transform;
     }
-    .cursor-ring {
-      position: fixed;
-      width: 36px; height: 36px;
-      border: 1px solid rgba(245,245,240,0.4);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      transition: transform 0.4s cubic-bezier(.16,1,.3,1), width 0.3s, height 0.3s, opacity 0.3s;
-      transform: translate(-50%, -50%);
-    }
-    body:hover .cursor { opacity: 1; }
-
-    /* NOISE OVERLAY */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 100;
-      opacity: 0.6;
-    }
+    .cursor.hover { transform: translate(-50%, -50%) scale(1); }
+    .cursor.hover-img { transform: translate(-50%, -50%) scale(1); background: var(--lime); }
+    .cursor.click { transform: translate(-50%, -50%) scale(0.75); }
 
     /* NAV */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 500;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 28px 48px;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.4s, background 0.4s;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 24px 52px;
+      background: rgba(17,17,17,0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: padding 0.3s;
     }
-    nav.scrolled {
-      border-color: var(--border);
-      background: rgba(10,10,10,0.9);
-      backdrop-filter: blur(12px);
-    }
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.08em;
-      text-decoration: none;
-      color: var(--white);
-    }
-    .nav-links {
-      display: flex;
-      gap: 40px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gray);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
+    .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .nav-logo svg { width: 28px; height: auto; }
+    .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 1rem; letter-spacing: 0.08em; color: var(--white); }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted2); text-decoration: none; transition: color 0.3s; }
     .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--bg) !important; background: var(--lime);
+      padding: 10px 22px; transition: background 0.3s !important;
+    }
+    .nav-cta:hover { background: var(--lime-dark) !important; color: var(--bg) !important; }
 
     /* HERO */
     #hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 48px 80px;
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 52px 80px;
       position: relative;
       border-bottom: 1px solid var(--border);
     }
+    .hero-line { position: absolute; top: 0; bottom: 0; right: 38%; width: 1px; background: var(--border); }
 
     .hero-tag {
-      font-size: 0.65rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 32px;
-      opacity: 0;
-      transform: translateY(20px);
+      font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--muted2); margin-bottom: 32px;
+      opacity: 0; transform: translateY(20px);
       animation: fadeUp 0.8s 0.2s forwards;
     }
-
     .hero-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(3.5rem, 9vw, 9rem);
-      line-height: 0.92;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      opacity: 0;
-      transform: translateY(40px);
+      font-size: clamp(3.5rem, 8.5vw, 9rem);
+      line-height: 0.92; font-weight: 700; letter-spacing: -0.02em;
+      opacity: 0; transform: translateY(40px);
       animation: fadeUp 1s 0.4s forwards;
     }
-    .hero-title em {
-      font-style: italic;
-      font-weight: 400;
-    }
-
+    .hero-title em { font-style: italic; font-weight: 400; color: var(--lime); }
     .hero-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
+      display: flex; justify-content: space-between; align-items: flex-end;
       margin-top: 60px;
-      opacity: 0;
-      transform: translateY(20px);
+      opacity: 0; transform: translateY(20px);
       animation: fadeUp 0.8s 0.8s forwards;
     }
-    .hero-desc {
-      max-width: 320px;
-      font-size: 0.75rem;
-      line-height: 1.8;
-      color: var(--gray);
-    }
+    .hero-desc { max-width: 340px; font-size: 0.72rem; line-height: 1.9; color: var(--muted2); }
     .hero-cta {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--white);
-      border: 1px solid var(--border);
-      padding: 18px 32px;
-      transition: background 0.3s, color 0.3s, border-color 0.3s;
+      display: flex; align-items: center; gap: 14px;
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      text-decoration: none; color: var(--bg);
+      background: var(--lime); padding: 18px 36px;
+      transition: background 0.3s, gap 0.3s;
     }
-    .hero-cta:hover {
-      background: var(--white);
-      color: var(--black);
-      border-color: var(--white);
-    }
-    .hero-cta svg { transition: transform 0.3s; }
-    .hero-cta:hover svg { transform: translateX(4px); }
-
-    .hero-line {
-      position: absolute;
-      top: 0; bottom: 0;
-      right: 38%;
-      width: 1px;
-      background: var(--border);
-    }
+    .hero-cta:hover { background: var(--lime-dark); gap: 20px; }
 
     /* MARQUEE */
     .marquee-wrap {
-      padding: 20px 0;
-      border-bottom: 1px solid var(--border);
-      overflow: hidden;
-      white-space: nowrap;
+      padding: 18px 0; border-bottom: 1px solid var(--border);
+      overflow: hidden; white-space: nowrap;
     }
-    .marquee-track {
-      display: inline-flex;
-      animation: marquee 20s linear infinite;
-    }
+    .marquee-track { display: inline-flex; animation: marquee 22s linear infinite; }
     .marquee-track span {
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gray);
-      padding: 0 40px;
+      font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--muted); padding: 0 40px;
     }
-    .marquee-track span::before {
-      content: '✦';
-      margin-right: 40px;
-      color: var(--white);
-      opacity: 0.3;
-    }
+    .marquee-track span::before { content: '✦'; margin-right: 40px; color: var(--lime); opacity: 0.6; }
 
     /* SECTIONS */
-    section {
-      padding: 120px 48px;
-      border-bottom: 1px solid var(--border);
-    }
+    section { padding: 120px 52px; border-bottom: 1px solid var(--border); }
 
     .section-label {
-      font-size: 0.62rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 80px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
+      font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--lime); margin-bottom: 56px;
+      display: flex; align-items: center; gap: 16px;
     }
-    .section-label::after {
-      content: '';
-      flex: 1;
-      max-width: 60px;
-      height: 1px;
-      background: var(--border);
+    .section-label::after { content: ''; width: 48px; height: 1px; background: var(--border2); }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 4vw, 4.2rem);
+      line-height: 1.05; font-weight: 700; letter-spacing: -0.02em;
     }
+    .section-title em { font-style: italic; font-weight: 400; color: var(--lime); }
 
     /* SERVICIOS */
     .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
+      margin-top: 64px;
     }
     .service-item {
-      background: var(--black);
-      padding: 52px 40px;
+      background: var(--bg); padding: 52px 40px;
+      position: relative; overflow: hidden;
       transition: background 0.4s;
-      position: relative;
-      overflow: hidden;
     }
     .service-item::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--white);
-      transform: translateY(100%);
+      content: ''; position: absolute; inset: 0;
+      background: var(--lime); transform: translateY(100%);
       transition: transform 0.5s cubic-bezier(.16,1,.3,1);
     }
     .service-item:hover::before { transform: translateY(0); }
-    .service-item:hover .service-num,
-    .service-item:hover .service-name,
-    .service-item:hover .service-desc { color: var(--black); }
+    .service-item:hover .svc-num,
+    .service-item:hover .svc-name,
+    .service-item:hover .svc-desc { color: var(--bg); }
+    .svc-num { font-size: 0.58rem; letter-spacing: 0.2em; color: var(--muted); margin-bottom: 36px; position: relative; transition: color 0.3s; }
+    .svc-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 18px; position: relative; transition: color 0.3s; }
+    .svc-desc { font-size: 0.68rem; line-height: 1.9; color: var(--muted2); position: relative; transition: color 0.3s; }
 
-    .service-num {
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      color: var(--gray);
-      margin-bottom: 40px;
-      position: relative;
-      transition: color 0.4s;
+    /* CLIENTES */
+    #clientes { background: var(--bg2); }
+    .clients-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 64px; }
+    .clients-count { font-size: 0.62rem; color: var(--muted); letter-spacing: 0.1em; }
+
+    .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--border); }
+    .case-card {
+      position: relative; overflow: hidden; background: var(--bg2);
+      aspect-ratio: 4/3; display: flex; flex-direction: column; justify-content: flex-end;
     }
-    .service-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      position: relative;
-      transition: color 0.4s;
+    .case-img {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      filter: grayscale(25%) brightness(0.75);
+      transition: filter 0.6s, transform 0.6s;
     }
-    .service-desc {
-      font-size: 0.7rem;
-      line-height: 1.9;
-      color: var(--gray);
-      position: relative;
-      transition: color 0.4s;
+    .case-card:hover .case-img { filter: grayscale(0%) brightness(0.85); transform: scale(1.04); }
+    .case-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
+    }
+    .case-content { position: relative; z-index: 2; padding: 36px; }
+    .case-num { font-size: 0.55rem; letter-spacing: 0.25em; color: var(--lime); margin-bottom: 8px; }
+    .case-rubro { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white2); margin-bottom: 10px; }
+    .case-name { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 16px; }
+    .case-metrics { display: flex; gap: 20px; flex-wrap: wrap; }
+    .case-metric {
+      font-size: 0.6rem; letter-spacing: 0.1em; color: var(--lime);
+      background: rgba(184,212,74,0.12); padding: 5px 12px;
+      border: 1px solid rgba(184,212,74,0.2);
     }
 
     /* PROCESO */
-    .process-list {
-      display: flex;
-      flex-direction: column;
-    }
+    #proceso { background: var(--bg3); }
+    .process-list { margin-top: 0; }
     .process-item {
-      display: grid;
-      grid-template-columns: 80px 1fr 1fr;
-      align-items: start;
-      padding: 48px 0;
-      border-bottom: 1px solid var(--border);
-      gap: 40px;
+      display: grid; grid-template-columns: 80px 1fr 1fr;
+      align-items: start; padding: 48px 0;
+      border-bottom: 1px solid var(--border); gap: 40px;
       transition: padding-left 0.4s;
     }
-    .process-item:hover { padding-left: 12px; }
+    .process-item:hover { padding-left: 16px; }
     .process-item:last-child { border-bottom: none; }
-    .process-step {
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
-      color: var(--gray);
-      padding-top: 6px;
+    .process-step { font-size: 0.58rem; letter-spacing: 0.2em; color: var(--muted); padding-top: 8px; }
+    .process-name { font-family: 'Playfair Display', serif; font-size: 1.9rem; }
+    .process-name em { font-style: italic; font-weight: 400; color: var(--lime); }
+    .process-desc { font-size: 0.68rem; line-height: 1.9; color: var(--muted2); }
+
+    /* LOGOS MARQUEE */
+    .logos-section {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+      overflow: hidden;
     }
-    .process-title {
+    .logos-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+      font-weight: 400;
+      text-align: center;
+      color: var(--white2);
+      margin-bottom: 48px;
+      letter-spacing: 0.01em;
     }
-    .process-desc {
-      font-size: 0.72rem;
-      line-height: 1.9;
-      color: var(--gray);
+    .logos-title em { font-style: italic; color: var(--lime); font-weight: 400; }
+    .logos-marquee-wrap { overflow: hidden; white-space: nowrap; position: relative; }
+    .logos-marquee-wrap::before,
+    .logos-marquee-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 120px;
+      z-index: 2;
+    }
+    .logos-marquee-wrap::before { left: 0; background: linear-gradient(to right, var(--bg2), transparent); }
+    .logos-marquee-wrap::after { right: 0; background: linear-gradient(to left, var(--bg2), transparent); }
+    .logos-track {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      animation: marquee 28s linear infinite;
+    }
+    .logo-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 52px;
+      height: 52px;
+      color: var(--white2);
+      opacity: 0.45;
+      transition: opacity 0.3s;
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .logo-item:hover { opacity: 1; }
+    .logo-item svg { height: 28px; width: auto; max-width: 120px; }
+    .logo-item--wide svg { max-width: 160px; }
+    .logo-item--text span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .logo-item--claro span {
+      font-family: 'DM Mono', monospace;
+      font-size: 1.3rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
     }
 
-    /* SOBRE NOSOTROS */
-    .about-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 120px;
-      align-items: center;
+    /* FOOTER SOCIAL */
+    .footer-social-links { display: flex; gap: 20px; align-items: center; }
+    .footer-social-link {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--muted2); text-decoration: none;
+      transition: color 0.3s;
     }
-    .about-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 4vw, 4rem);
-      line-height: 1.1;
-      margin-bottom: 40px;
-    }
-    .about-title em { font-style: italic; font-weight: 400; }
-    .about-text {
-      font-size: 0.73rem;
-      line-height: 2;
-      color: var(--gray);
-      margin-bottom: 20px;
-    }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-    }
-    .stat-item {
-      background: var(--black);
-      padding: 40px 32px;
-    }
-    .stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .stat-label {
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gray);
-    }
+    .footer-social-link:hover { color: var(--lime); }
+    .footer-social-link svg { width: 16px; height: 16px; flex-shrink: 0; }
 
     /* CONTACTO */
     #contacto {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 120px;
-      align-items: start;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 120px; align-items: start;
+      background: var(--bg);
     }
-    .contact-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 5vw, 5.5rem);
-      line-height: 1.05;
-    }
-    .contact-title em { font-style: italic; }
-    .contact-info { padding-top: 20px; }
+    .contact-title { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 5.5rem); line-height: 1.05; }
+    .contact-title em { font-style: italic; font-weight: 400; color: var(--lime); }
+    .contact-rows { margin-top: 24px; }
     .contact-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 24px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 0; border-bottom: 1px solid var(--border);
+      font-size: 0.68rem; letter-spacing: 0.05em;
     }
     .contact-row:first-child { border-top: 1px solid var(--border); }
-    .contact-row span:first-child { color: var(--gray); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.62rem; }
-    .contact-row a { color: var(--white); text-decoration: none; transition: opacity 0.3s; }
-    .contact-row a:hover { opacity: 0.5; }
+    .contact-row span:first-child { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+    .contact-row a { color: var(--white); text-decoration: none; transition: color 0.3s; }
+    .contact-row a:hover { color: var(--lime); }
+    .contact-wsp {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--lime); color: var(--bg);
+      font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+      padding: 16px 32px; text-decoration: none; margin-top: 40px;
+      transition: background 0.3s;
+    }
+    .contact-wsp:hover { background: var(--lime-dark); }
 
     /* FOOTER */
     footer {
-      padding: 40px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.62rem;
-      letter-spacing: 0.15em;
-      color: var(--gray);
+      padding: 36px 52px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid var(--border);
+      font-size: 0.58rem; letter-spacing: 0.15em; color: var(--muted);
+      flex-wrap: wrap; gap: 20px;
     }
+    .footer-logo { display: flex; align-items: center; gap: 10px; }
+    .footer-logo svg { width: 20px; height: auto; }
 
     /* ANIMATIONS */
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
     .reveal {
-      opacity: 0;
-      transform: translateY(30px);
+      opacity: 0; transform: translateY(32px);
       transition: opacity 0.9s cubic-bezier(.16,1,.3,1), transform 0.9s cubic-bezier(.16,1,.3,1);
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 768px) {
-      nav { padding: 24px; }
-      .nav-links { display: none; }
-      #hero { padding: 0 24px 60px; }
-      .hero-line { display: none; }
-      section { padding: 80px 24px; }
+    @media (max-width: 900px) {
+      nav { padding: 20px 24px; } .nav-links { display: none; }
+      #hero { padding: 0 24px 60px; } .hero-line { display: none; }
+      section { padding: 72px 24px; }
       .services-grid { grid-template-columns: 1fr; }
-      .about-layout, #contacto { grid-template-columns: 1fr; gap: 60px; }
-      .process-item { grid-template-columns: 60px 1fr; }
-      .process-desc { display: none; }
-      footer { flex-direction: column; gap: 12px; text-align: center; }
+      .cases-grid { grid-template-columns: 1fr; }
+      .process-item { grid-template-columns: 60px 1fr; } .process-desc { display: none; }
+      #contacto { grid-template-columns: 1fr; gap: 48px; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
   <div class="cursor" id="cursor"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
 
   <!-- NAV -->
   <nav id="navbar">
-    <a href="#" class="nav-logo">Fruto Noble</a>
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 906.06742 1080" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#b8d44a" d="M475.91785,106.20277c6.55089-23.14181,21.65524-88.48892,41.39983-100.14998,32.20314-19.01901,69.89896,9.61554,57.41484,46.50507L251.94487,1013.08183c-16.85469,41.52943-77.15148,34.25968-75.90974-13.54662.41623-16.02447,30.8372-91.27805,28.65705-95.77757C22.39666,776.77902-39.1182,523.7445,70.46866,328.1502c52.34683-93.43038,151.29064-171.38621,254.32742-201.61997,49.53171-14.53394,99.71277-18.82986,151.12178-20.32745Z"/>
+        <path fill="#b8d44a" d="M648.07822,42.22206c14.5883-3.2998,29.31124-.24048,40.06037,10.09303,27.3507,26.29313-13.16574,84.73174-16.52703,116.00048,190.86638,109.80395,264.5999,352.81267,174.02136,553.31068-75.85906,167.91606-260.1539,275.66416-445.3126,253.40562-4.23046,2.98004-21.49636,67.02293-26.84677,78.46724-19.57572,41.87162-72.39625,31.65012-75.44577-13.29239L622.45934,67.84334c3.80028-10.2549,14.64494-23.13903,25.61889-25.62128ZM427.42659,898.4788c150.87443,11.18409,299.16678-89.21398,353.83423-227.60559,59.9366-151.73053,4.02364-336.45508-133.76043-424.38145l-220.07381,651.98704Z"/>
+      </svg>
+      <span class="nav-logo-text">Fruto Noble</span>
+    </a>
     <ul class="nav-links">
       <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#clientes">Clientes</a></li>
       <li><a href="#proceso">Proceso</a></li>
-      <li><a href="#nosotros">Nosotros</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#contacto" class="nav-cta">Contacto</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
   <section id="hero">
     <div class="hero-line"></div>
-    <p class="hero-tag">Agencia de Marketing Digital — Buenos Aires</p>
+    <p class="hero-tag">Agencia de Marketing Digital — Buenos Aires, Argentina</p>
     <h1 class="hero-title">
-      Marketing<br/>
+      Estrategia<br/>
       que da <em>frutos</em><br/>
       reales.
     </h1>
     <div class="hero-bottom">
       <p class="hero-desc">
-        Diseñamos estrategias digitales que conectan marcas con personas. Webs, contenido, automatización e inteligencia artificial al servicio de tu negocio.
+        Diseñamos campañas, gestionamos redes y construimos presencia digital que convierte. Meta Ads, Social Media y branding para marcas que quieren crecer de verdad.
       </p>
-      <a href="#contacto" class="hero-cta">
+      <a href="https://wa.me/541133149081" class="hero-cta" target="_blank">
         Empezar proyecto
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -470,113 +405,212 @@
   <!-- MARQUEE -->
   <div class="marquee-wrap">
     <div class="marquee-track">
-      <span>Desarrollo Web</span>
-      <span>E-Commerce</span>
-      <span>Chatbots con IA</span>
-      <span>Landing Pages</span>
-      <span>Branding Digital</span>
-      <span>Automatización</span>
-      <span>SEO & Performance</span>
-      <span>Desarrollo Web</span>
-      <span>E-Commerce</span>
-      <span>Chatbots con IA</span>
-      <span>Landing Pages</span>
-      <span>Branding Digital</span>
-      <span>Automatización</span>
-      <span>SEO & Performance</span>
+      <span>Meta Ads</span><span>Social Media</span><span>E-Commerce</span><span>Branding Digital</span>
+      <span>Retargeting</span><span>Contenido</span><span>Estrategia</span><span>Resultados</span>
+      <span>Meta Ads</span><span>Social Media</span><span>E-Commerce</span><span>Branding Digital</span>
+      <span>Retargeting</span><span>Contenido</span><span>Estrategia</span><span>Resultados</span>
+    </div>
+  </div>
+
+  <!-- MARQUEE LOGOS CLIENTES -->
+  <div class="logos-section">
+    <p class="logos-title reveal">Marcas que <em>confían</em> en nosotros</p>
+    <div class="logos-marquee-wrap">
+      <div class="logos-track">
+
+        <!-- SONY -->
+        <div class="logo-item">
+          <svg viewBox="0 0 1065.20225 201.4382" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M393.8698,186.87639c-35.0007,0-67.43382-10.42492-89.05588-29.86547-15.64185-14.05472-24.47039-34.16696-24.22829-55.19417-.04872-20.93155,8.75134-40.90872,24.22829-55.00112,20.07763-18.24361,55.59959-29.82686,89.05588-29.82686,37.00848,0,66.64228,9.32451,89.28754,29.86547,15.41836,14.08983,24.10963,34.07701,23.90011,54.96251-.10425,20.88797-8.73804,40.82654-23.90011,55.19418-21.1008,19.55639-54.22891,29.86547-89.28754,29.86547v-22.35566c18.5525,0,35.77293-6.4094,47.8002-18.37876,12.02727-11.96935,17.49071-26.48703,17.49071-44.40245,0-17.1046-6.00399-33.08948-17.49071-44.40245-11.87282-11.67978-29.49867-18.26292-47.8002-18.26292s-36.00459,6.52523-47.87743,18.26292c-11.4481,11.33228-17.37488,27.37508-17.37488,44.40245-.34696,16.52306,5.90604,32.50296,17.37488,44.40245,11.87282,11.83422,29.46005,18.37876,47.87741,18.37876l.00002,22.35565ZM138.30474,16.98876c-18.70694,0-39.9622,3.51359-57.91624,11.58325-16.7571,7.4905-30.40602,19.51777-30.40602,39.46027-.02518,10.44335,3.94658,20.50053,11.10061,28.10868,4.84566,4.47886,12.66435,12.08519,33.08948,16.56404,9.13146,1.93053,28.64923,5.03871,48.08978,7.08508,19.44056,2.04637,38.28264,3.86108,46.0048,5.92677,6.13913,1.56373,16.46751,3.68734,16.46751,15.27059s-10.86895,15.05823-12.76087,15.81114c-1.89193.75291-14.9424,6.73759-38.37917,6.73759-15.52828-.43107-30.91549-3.07687-45.69591-7.85731-8.74535-3.12748-17.91542-7.23954-26.46772-17.68376-3.45142-4.91837-5.36621-10.75008-5.50204-16.7571h-21.23595v59.46067h23.59122v-8.05035c-.01158-1.85517,1.48295-3.36846,3.33811-3.38004.61961-.00387,1.22822.16372,1.75852.48423,11.11458,4.83635,22.67567,8.57366,34.51807,11.15852,12.39408,2.58693,20.40582,4.45955,35.81154,4.45955,16.25638.30908,32.45791-1.97843,47.99326-6.7762,10.31608-2.82762,19.99514-7.60489,28.51409-14.07364,9.71373-7.46134,15.36661-19.04586,15.27057-31.29408.08053-11.47806-4.34946-22.52874-12.33616-30.77282-4.44096-4.31-9.58592-7.82921-15.21267-10.40562-6.0488-2.73291-12.32844-4.92302-18.76486-6.54453-12.23964-2.99234-39.73054-6.73759-52.87753-8.05036-13.78406-1.4286-37.70347-3.41706-47.25964-6.37079-2.89581-.90736-8.80327-3.70664-8.80327-10.56006,0-4.88427,2.70276-9.01563,8.03105-12.35546,8.4751-5.30901,25.57969-8.61023,43.41789-8.61023,17.26631-.20844,34.39102,3.13633,50.30992,9.82646,4.27685,1.8632,8.29899,4.26352,11.96935,7.143,5.98321,5.11023,10.12656,12.04069,11.79561,19.73013h19.05444V24.49857h-21.23596v6.00398c0,1.93054-1.93054,4.47886-5.79162,2.37457-9.57549-4.9808-36.48724-15.75322-69.48019-15.88836ZM604.51116,26.48703l103.78592,93.65055-1.06181-63.05148c-.11585-8.28202-1.62165-11.73769-10.57937-11.73769h-19.49848v-18.86139h88.80492v18.86139h-19.05445c-9.11215,0-9.6527,2.93442-9.80717,11.73769l1.60236,120.4851h-30.40603l-119.55841-106.68173v75.69653c.09652,8.24341.48265,12.1238,8.95773,12.1238h21.23594v18.86139h-87.04809v-18.86139h20.38654c7.60631,0,7.29746-7.25883,7.29746-12.54852V57.80041c0-5.79162-.81082-12.43268-12.74157-12.43268h-16.52542v-18.88069h74.20995ZM867.27711,158.6712c1.7555.00013,3.50934-.10948,5.25112-.32819,1.83126-.54963,3.32808-1.87699,4.09278-3.62942.26668-1.34148.40247-2.7057.40541-4.07344v-29.82687c0-1.00389,0-1.02318-1.27414-2.60623s-54.36405-61.77732-56.77723-64.48007c-3.01164-3.28192-8.30133-8.35924-16.35166-8.35924h-18.43667v-18.88071h104.05619v18.84208h-12.54853c-2.89579,0-4.82637,2.76067-2.35524,5.79162,0,0,35.01999,41.89275,35.34826,42.33678.32818.44402.61778.54055,1.06177.13514s35.88881-42.0858,36.15908-42.47191c1.20841-1.58586.90251-3.85109-.68342-5.05953-.68811-.52439-1.54174-.78419-2.40541-.7321h-12.87671v-18.84209h85.3104v18.88069h-19.05445c-6.91133,0-9.65274,1.27416-14.9231,7.143l-57.43364,65.52257c-.56237.81116-.80944,1.79961-.69502,2.77998v29.80756c.01003,1.36832.15226,2.73248.42474,4.07344.75163,1.75455,2.24413,3.08434,4.07345,3.62942,1.72797.22829,3.46948.33794,5.21245.32819h19.4792v18.8807h-103.51564v-18.8807l18.456.01931Z"/>
+          </svg>
+        </div>
+
+        <!-- AUDIO-TECHNICA -->
+        <div class="logo-item logo-item--wide">
+          <svg viewBox="0 100 1416.92416 85" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M441.62337,178.08962c-5.16117,8.07962-12.84518,12.89839-22.38685,14.05075-15.001,1.81169-28.70957-4.98538-36.02949-18.43993-8.96316-16.47495-9.59591-36.74442-1.74037-53.76088,7.29048-15.06645,21.85004-23.90351,38.60932-22.63064,8.82522.67028,16.02533,5.47529,21.8465,12.44635l.11447-49.16227,26.85314-.02964-.02423,100.28683c-.00242,10.00131.22945,19.10426.97237,28.87911l-26.74916-.06305-1.4657-11.57661ZM438.1387,163.55667c5.37275-12.04473,5.22663-26.02978-.07715-37.7282-3.39552-7.48941-9.82327-11.28755-17.68427-10.51553-7.09686.69697-12.94189,5.72981-14.80909,13.52786-2.47673,10.34366-2.43737,21.53587.01203,31.89962,1.84266,7.79655,7.65826,12.73069,14.81665,13.50208,7.74048.83411,14.29357-2.95545,17.74183-10.68583Z"/><path fill="currentColor" d="M1021.39888,189.6737l-28.93515.03065-.24979-57.13061c-.02126-4.86233-1.73843-9.83638-5.19222-13.11542-5.79018-5.49722-15.48716-5.74976-21.6224-.71589-4.66386,3.82663-7.22337,9.61714-7.24909,15.76252l-.23088,55.17131-28.94018.05325-.02075-129.14987,28.75455-.07766.1628,49.9876c11.64428-14.78157,31.8918-16.71778,47.6436-8.62607,10.82023,5.2156,15.72887,13.66996,15.75356,25.82081l.12594,61.98937Z"/><path fill="currentColor" d="M615.69711,158.18678c-7.54924,31.74624-42.98072,39.98602-69.94077,30.78758-24.79525-8.45984-33.59639-34.47779-27.68706-58.24094,7.7099-31.00375,42.44462-39.05865,68.99358-30.44156,25.10185,8.14739,34.34401,33.88405,28.63424,57.89492ZM585.34642,160.57403c2.76872-10.47641,2.65548-21.67579-.05095-31.79583-2.37969-8.89829-9.57836-13.54923-18.40346-13.6128-8.99499-.0648-16.33553,4.83663-18.68364,13.9739-2.58326,10.0523-2.57649,21.23412.01532,31.29494,2.34214,9.09169,9.67258,14.0355,18.67519,13.96227,8.78855-.07149,16.02244-4.64629,18.44754-13.82249Z"/><path fill="currentColor" d="M169.19089,136.81051c0,41.95717-34.09699,75.97018-76.15776,75.97018S16.87537,178.76768,16.87537,136.81051,50.97236,60.84033,93.03313,60.84033s76.15776,34.01301,76.15776,75.97018ZM162.94986,136.83975c0-38.51811-31.30219-69.7432-69.9154-69.7432S23.11905,98.32165,23.11905,136.83975s31.30219,69.7432,69.9154,69.7432,69.9154-31.22509,69.9154-69.7432Z"/>
+          </svg>
+        </div>
+
+        <!-- A LO BELGRANO — texto estilizado -->
+        <div class="logo-item logo-item--text">
+          <span>A lo Belgrano</span>
+        </div>
+
+        <!-- AIRFLOW CF — texto estilizado -->
+        <div class="logo-item logo-item--text">
+          <span>Airflow CF</span>
+        </div>
+
+        <!-- CLARO — texto estilizado -->
+        <div class="logo-item logo-item--text logo-item--claro">
+          <span>claro</span>
+        </div>
+
+        <!-- CORSAIR — texto estilizado -->
+        <div class="logo-item logo-item--text">
+          <span>CORSAIR</span>
+        </div>
+
+        <!-- DELLO — texto estilizado -->
+        <div class="logo-item logo-item--text">
+          <span>Dello</span>
+        </div>
+
+        <!-- LEF — texto estilizado -->
+        <div class="logo-item logo-item--text">
+          <span>LEF</span>
+        </div>
+
+        <!-- DUPLICADO para loop infinito -->
+        <div class="logo-item">
+          <svg viewBox="0 0 1065.20225 201.4382" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M393.8698,186.87639c-35.0007,0-67.43382-10.42492-89.05588-29.86547-15.64185-14.05472-24.47039-34.16696-24.22829-55.19417-.04872-20.93155,8.75134-40.90872,24.22829-55.00112,20.07763-18.24361,55.59959-29.82686,89.05588-29.82686,37.00848,0,66.64228,9.32451,89.28754,29.86547,15.41836,14.08983,24.10963,34.07701,23.90011,54.96251-.10425,20.88797-8.73804,40.82654-23.90011,55.19418-21.1008,19.55639-54.22891,29.86547-89.28754,29.86547v-22.35566c18.5525,0,35.77293-6.4094,47.8002-18.37876,12.02727-11.96935,17.49071-26.48703,17.49071-44.40245,0-17.1046-6.00399-33.08948-17.49071-44.40245-11.87282-11.67978-29.49867-18.26292-47.8002-18.26292s-36.00459,6.52523-47.87743,18.26292c-11.4481,11.33228-17.37488,27.37508-17.37488,44.40245-.34696,16.52306,5.90604,32.50296,17.37488,44.40245,11.87282,11.83422,29.46005,18.37876,47.87741,18.37876l.00002,22.35565ZM138.30474,16.98876c-18.70694,0-39.9622,3.51359-57.91624,11.58325-16.7571,7.4905-30.40602,19.51777-30.40602,39.46027-.02518,10.44335,3.94658,20.50053,11.10061,28.10868,4.84566,4.47886,12.66435,12.08519,33.08948,16.56404,9.13146,1.93053,28.64923,5.03871,48.08978,7.08508,19.44056,2.04637,38.28264,3.86108,46.0048,5.92677,6.13913,1.56373,16.46751,3.68734,16.46751,15.27059s-10.86895,15.05823-12.76087,15.81114c-1.89193.75291-14.9424,6.73759-38.37917,6.73759-15.52828-.43107-30.91549-3.07687-45.69591-7.85731-8.74535-3.12748-17.91542-7.23954-26.46772-17.68376-3.45142-4.91837-5.36621-10.75008-5.50204-16.7571h-21.23595v59.46067h23.59122v-8.05035c-.01158-1.85517,1.48295-3.36846,3.33811-3.38004.61961-.00387,1.22822.16372,1.75852.48423,11.11458,4.83635,22.67567,8.57366,34.51807,11.15852,12.39408,2.58693,20.40582,4.45955,35.81154,4.45955,16.25638.30908,32.45791-1.97843,47.99326-6.7762,10.31608-2.82762,19.99514-7.60489,28.51409-14.07364,9.71373-7.46134,15.36661-19.04586,15.27057-31.29408.08053-11.47806-4.34946-22.52874-12.33616-30.77282-4.44096-4.31-9.58592-7.82921-15.21267-10.40562-6.0488-2.73291-12.32844-4.92302-18.76486-6.54453-12.23964-2.99234-39.73054-6.73759-52.87753-8.05036-13.78406-1.4286-37.70347-3.41706-47.25964-6.37079-2.89581-.90736-8.80327-3.70664-8.80327-10.56006,0-4.88427,2.70276-9.01563,8.03105-12.35546,8.4751-5.30901,25.57969-8.61023,43.41789-8.61023,17.26631-.20844,34.39102,3.13633,50.30992,9.82646,4.27685,1.8632,8.29899,4.26352,11.96935,7.143,5.98321,5.11023,10.12656,12.04069,11.79561,19.73013h19.05444V24.49857h-21.23596v6.00398c0,1.93054-1.93054,4.47886-5.79162,2.37457-9.57549-4.9808-36.48724-15.75322-69.48019-15.88836ZM604.51116,26.48703l103.78592,93.65055-1.06181-63.05148c-.11585-8.28202-1.62165-11.73769-10.57937-11.73769h-19.49848v-18.86139h88.80492v18.86139h-19.05445c-9.11215,0-9.6527,2.93442-9.80717,11.73769l1.60236,120.4851h-30.40603l-119.55841-106.68173v75.69653c.09652,8.24341.48265,12.1238,8.95773,12.1238h21.23594v18.86139h-87.04809v-18.86139h20.38654c7.60631,0,7.29746-7.25883,7.29746-12.54852V57.80041c0-5.79162-.81082-12.43268-12.74157-12.43268h-16.52542v-18.88069h74.20995ZM867.27711,158.6712c1.7555.00013,3.50934-.10948,5.25112-.32819,1.83126-.54963,3.32808-1.87699,4.09278-3.62942.26668-1.34148.40247-2.7057.40541-4.07344v-29.82687c0-1.00389,0-1.02318-1.27414-2.60623s-54.36405-61.77732-56.77723-64.48007c-3.01164-3.28192-8.30133-8.35924-16.35166-8.35924h-18.43667v-18.88071h104.05619v18.84208h-12.54853c-2.89579,0-4.82637,2.76067-2.35524,5.79162,0,0,35.01999,41.89275,35.34826,42.33678.32818.44402.61778.54055,1.06177.13514s35.88881-42.0858,36.15908-42.47191c1.20841-1.58586.90251-3.85109-.68342-5.05953-.68811-.52439-1.54174-.78419-2.40541-.7321h-12.87671v-18.84209h85.3104v18.88069h-19.05445c-6.91133,0-9.65274,1.27416-14.9231,7.143l-57.43364,65.52257c-.56237.81116-.80944,1.79961-.69502,2.77998v29.80756c.01003,1.36832.15226,2.73248.42474,4.07344.75163,1.75455,2.24413,3.08434,4.07345,3.62942,1.72797.22829,3.46948.33794,5.21245.32819h19.4792v18.8807h-103.51564v-18.8807l18.456.01931Z"/>
+          </svg>
+        </div>
+        <div class="logo-item logo-item--text"><span>A lo Belgrano</span></div>
+        <div class="logo-item logo-item--text"><span>Airflow CF</span></div>
+        <div class="logo-item logo-item--text logo-item--claro"><span>claro</span></div>
+        <div class="logo-item logo-item--text"><span>CORSAIR</span></div>
+        <div class="logo-item logo-item--text"><span>Dello</span></div>
+        <div class="logo-item logo-item--text"><span>LEF</span></div>
+
+      </div>
     </div>
   </div>
 
   <!-- SERVICIOS -->
   <section id="servicios">
     <p class="section-label reveal">Servicios</p>
+    <h2 class="section-title reveal">Lo que <em>hacemos</em></h2>
     <div class="services-grid reveal">
       <div class="service-item">
-        <p class="service-num">01</p>
-        <h3 class="service-name">Desarrollo Web</h3>
-        <p class="service-desc">Sitios modernos, rápidos y a medida. Desde portfolios hasta plataformas complejas. Código limpio, diseño que convierte.</p>
+        <p class="svc-num">01</p>
+        <h3 class="svc-name">Meta Ads</h3>
+        <p class="svc-desc">Campañas de Facebook e Instagram optimizadas para conversión. Catálogo, experiencia instantánea, retargeting y escala de presupuesto.</p>
       </div>
       <div class="service-item">
-        <p class="service-num">02</p>
-        <h3 class="service-name">Tiendas Online</h3>
-        <p class="service-desc">E-commerce con integración a MercadoPago. Catálogo, gestión de stock, experiencia de compra que enamora.</p>
+        <p class="svc-num">02</p>
+        <h3 class="svc-name">Social Media</h3>
+        <p class="svc-desc">Gestión integral de redes sociales. Contenido estratégico, calendario editorial, comunidad activa y métricas que importan.</p>
       </div>
       <div class="service-item">
-        <p class="service-num">03</p>
-        <h3 class="service-name">Chatbots IA</h3>
-        <p class="service-desc">Atención al cliente 24/7 vía WhatsApp o tu web, potenciada por inteligencia artificial. Tu negocio siempre disponible.</p>
+        <p class="svc-num">03</p>
+        <h3 class="svc-name">E-Commerce</h3>
+        <p class="svc-desc">Estrategia digital completa para tiendas online. Más tráfico, mejor conversión, mayor ticket promedio.</p>
       </div>
       <div class="service-item">
-        <p class="service-num">04</p>
-        <h3 class="service-name">Landing Pages</h3>
-        <p class="service-desc">Páginas de conversión optimizadas para campañas. Diseño enfocado en resultados y métricas que importan.</p>
+        <p class="svc-num">04</p>
+        <h3 class="svc-name">Branding Digital</h3>
+        <p class="svc-desc">Identidad visual coherente en todos tus canales. Que tu marca se vea tan bien como lo que ofrece.</p>
       </div>
       <div class="service-item">
-        <p class="service-num">05</p>
-        <h3 class="service-name">Branding Digital</h3>
-        <p class="service-desc">Identidad visual coherente en todos tus canales digitales. Logo, paleta, tipografía, voz de marca.</p>
+        <p class="svc-num">05</p>
+        <h3 class="svc-name">Diseño Gráfico</h3>
+        <p class="svc-desc">Piezas que comunican y convierten. Artes para ads, feed, stories, banners y todo lo que tu marca necesita.</p>
       </div>
       <div class="service-item">
-        <p class="service-num">06</p>
-        <h3 class="service-name">Automatización</h3>
-        <p class="service-desc">Flujos automáticos que ahorran tiempo y dinero. Integramos tus herramientas para que trabajen solas mientras vos dormís.</p>
+        <p class="svc-num">06</p>
+        <h3 class="svc-name">Estrategia 360°</h3>
+        <p class="svc-desc">Planificación completa de presencia digital. Desde el posicionamiento hasta la ejecución táctica semana a semana.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- CLIENTES -->
+  <section id="clientes">
+    <div class="clients-header reveal">
+      <p class="section-label" style="margin-bottom:0">Casos de éxito</p>
+      <span class="clients-count">04 clientes</span>
+    </div>
+    <h2 class="section-title reveal">Resultados que <em>hablan</em></h2>
+    <div class="cases-grid" style="margin-top:64px">
+
+      <div class="case-card reveal">
+        <div class="case-img" style="background-image:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900&q=80')"></div>
+        <div class="case-overlay"></div>
+        <div class="case-content">
+          <p class="case-num">01</p>
+          <p class="case-rubro">Indumentaria deportiva · E-commerce · Córdoba</p>
+          <h3 class="case-name">A lo Belgrano</h3>
+          <div class="case-metrics">
+            <span class="case-metric">9× ROAS</span>
+            <span class="case-metric">51 ventas · Dic 2025</span>
+            <span class="case-metric">313k alcance mensual</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-img" style="background-image:url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=900&q=80')"></div>
+        <div class="case-overlay"></div>
+        <div class="case-content">
+          <p class="case-num">02</p>
+          <p class="case-rubro">Indumentaria mayorista · B2B · Nacional</p>
+          <h3 class="case-name">Airflow CF</h3>
+          <div class="case-metrics">
+            <span class="case-metric">268k alcanzados</span>
+            <span class="case-metric">100+ consultas</span>
+            <span class="case-metric">3 tipos de campaña</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-img" style="background-image:url('https://images.unsplash.com/photo-1503095396549-807759245b35?w=900&q=80')"></div>
+        <div class="case-overlay"></div>
+        <div class="case-content">
+          <p class="case-num">03</p>
+          <p class="case-rubro">Artes escénicas · Social Media + Ads · Buenos Aires</p>
+          <h3 class="case-name">Presencia Teatro</h3>
+          <div class="case-metrics">
+            <span class="case-metric">5+ años de relación</span>
+            <span class="case-metric">100% ocupación</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-img" style="background-image:url('https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=900&q=80')"></div>
+        <div class="case-overlay"></div>
+        <div class="case-content">
+          <p class="case-num">04</p>
+          <p class="case-rubro">Seguridad electrónica · Argentina</p>
+          <h3 class="case-name">Detecta</h3>
+          <div class="case-metrics">
+            <span class="case-metric">360° gestión digital</span>
+            <span class="case-metric">↑ presencia digital</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- PROCESO -->
   <section id="proceso">
     <p class="section-label reveal">Cómo trabajamos</p>
-    <div class="process-list">
+    <h2 class="section-title reveal">El <em>proceso</em></h2>
+    <div class="process-list" style="margin-top:64px">
       <div class="process-item reveal">
         <span class="process-step">01</span>
-        <h3 class="process-title">Escuchamos</h3>
-        <p class="process-desc">Entendemos tu negocio, tus objetivos y tu audiencia antes de escribir una sola línea de código o diseñar un pixel.</p>
+        <h3 class="process-name">Escuchamos</h3>
+        <p class="process-desc">Antes de proponer nada, entendemos tu negocio, tu mercado y tus objetivos reales. Sin plantillas genéricas.</p>
       </div>
       <div class="process-item reveal">
         <span class="process-step">02</span>
-        <h3 class="process-title">Estrategia</h3>
-        <p class="process-desc">Definimos la hoja de ruta: tecnología, diseño, canales y métricas. Sin sorpresas ni cambios de alcance.</p>
+        <h3 class="process-name"><em>Estrategia</em></h3>
+        <p class="process-desc">Diseñamos un plan a medida: qué canales, qué mensajes, qué presupuesto, qué métricas. Todo tiene un por qué.</p>
       </div>
       <div class="process-item reveal">
         <span class="process-step">03</span>
-        <h3 class="process-title">Ejecutamos</h3>
-        <p class="process-desc">Construimos con precisión y velocidad. Iteramos rápido, mostramos avances y ajustamos en tiempo real.</p>
+        <h3 class="process-name">Ejecutamos</h3>
+        <p class="process-desc">Llevamos la estrategia a la realidad con velocidad y precisión. Creamos, publicamos, medimos y ajustamos en tiempo real.</p>
       </div>
       <div class="process-item reveal">
         <span class="process-step">04</span>
-        <h3 class="process-title">Lanzamos</h3>
-        <p class="process-desc">Publicamos, medimos y optimizamos. El lanzamiento es el comienzo, no el final de nuestra relación.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- NOSOTROS -->
-  <section id="nosotros">
-    <p class="section-label reveal">Sobre nosotros</p>
-    <div class="about-layout">
-      <div class="reveal">
-        <h2 class="about-title">Ideas que <em>florecen</em> en resultados.</h2>
-        <p class="about-text">Somos una agencia boutique con foco en resultados reales. Sin estructuras gigantes ni presupuestos inflados — solo estrategia inteligente y ejecución impecable.</p>
-        <p class="about-text">Usamos tecnología de punta, incluyendo inteligencia artificial, para darle a nuestros clientes ventajas que antes solo tenían las grandes marcas.</p>
-      </div>
-      <div class="stats-grid reveal">
-        <div class="stat-item">
-          <p class="stat-num">100%</p>
-          <p class="stat-label">Proyectos a medida</p>
-        </div>
-        <div class="stat-item">
-          <p class="stat-num">24/7</p>
-          <p class="stat-label">Soporte activo</p>
-        </div>
-        <div class="stat-item">
-          <p class="stat-num">IA</p>
-          <p class="stat-label">Potenciado por IA</p>
-        </div>
-        <div class="stat-item">
-          <p class="stat-num">AR</p>
-          <p class="stat-label">Buenos Aires</p>
-        </div>
+        <h3 class="process-name"><em>Escalamos</em></h3>
+        <p class="process-desc">Lo que funciona, lo potenciamos. Lo que no, lo corregimos. El objetivo es siempre crecer de forma sostenida.</p>
       </div>
     </div>
   </section>
@@ -584,66 +618,89 @@
   <!-- CONTACTO -->
   <section id="contacto">
     <div class="reveal">
+      <p class="section-label">Contacto</p>
       <h2 class="contact-title">Hablemos<br/>de tu <em>proyecto.</em></h2>
+      <a href="https://wa.me/541133149081" target="_blank" class="contact-wsp">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Escribinos por WhatsApp
+      </a>
     </div>
-    <div class="contact-info reveal">
-      <div class="contact-row">
-        <span>Email</span>
-        <a href="mailto:hola@frutonoble.com.ar">hola@frutonoble.com.ar</a>
-      </div>
-      <div class="contact-row">
-        <span>WhatsApp</span>
-        <a href="https://wa.me/5491100000000">+54 9 11 0000-0000</a>
-      </div>
-      <div class="contact-row">
-        <span>Instagram</span>
-        <a href="#">@frutonoble</a>
-      </div>
-      <div class="contact-row">
-        <span>Ubicación</span>
-        <span>Buenos Aires, Argentina</span>
+    <div class="reveal">
+      <div class="contact-rows">
+        <div class="contact-row">
+          <span>Email</span>
+          <a href="mailto:hola@frutonoble.com.ar">hola@frutonoble.com.ar</a>
+        </div>
+        <div class="contact-row">
+          <span>WhatsApp</span>
+          <a href="https://wa.me/541133149081" target="_blank">+54 11 3314-9081</a>
+        </div>
+        <div class="contact-row">
+          <span>Instagram</span>
+          <a href="https://instagram.com/fruto_noble" target="_blank">@fruto_noble</a>
+        </div>
+        <div class="contact-row">
+          <span>Web</span>
+          <a href="https://fruto-noble.vercel.app" target="_blank">fruto-noble.vercel.app</a>
+        </div>
+        <div class="contact-row">
+          <span>Ubicación</span>
+          <span style="color:var(--white2)">Buenos Aires, Argentina</span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <span>© 2025 Fruto Noble — Todos los derechos reservados</span>
-    <span>Diseño & Desarrollo propio</span>
+    <div class="footer-logo">
+      <svg viewBox="0 0 906.06742 1080" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#b8d44a" d="M475.91785,106.20277c6.55089-23.14181,21.65524-88.48892,41.39983-100.14998,32.20314-19.01901,69.89896,9.61554,57.41484,46.50507L251.94487,1013.08183c-16.85469,41.52943-77.15148,34.25968-75.90974-13.54662.41623-16.02447,30.8372-91.27805,28.65705-95.77757C22.39666,776.77902-39.1182,523.7445,70.46866,328.1502c52.34683-93.43038,151.29064-171.38621,254.32742-201.61997,49.53171-14.53394,99.71277-18.82986,151.12178-20.32745Z"/>
+        <path fill="#b8d44a" d="M648.07822,42.22206c14.5883-3.2998,29.31124-.24048,40.06037,10.09303,27.3507,26.29313-13.16574,84.73174-16.52703,116.00048,190.86638,109.80395,264.5999,352.81267,174.02136,553.31068-75.85906,167.91606-260.1539,275.66416-445.3126,253.40562-4.23046,2.98004-21.49636,67.02293-26.84677,78.46724-19.57572,41.87162-72.39625,31.65012-75.44577-13.29239L622.45934,67.84334c3.80028-10.2549,14.64494-23.13903,25.61889-25.62128ZM427.42659,898.4788c150.87443,11.18409,299.16678-89.21398,353.83423-227.60559,59.9366-151.73053,4.02364-336.45508-133.76043-424.38145l-220.07381,651.98704Z"/>
+      </svg>
+      <span>Fruto Noble — Agencia de Marketing Digital</span>
+    </div>
+    <div class="footer-social-links">
+      <a href="https://www.instagram.com/fruto_noble/" target="_blank" class="footer-social-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        @fruto_noble
+      </a>
+      <a href="https://www.linkedin.com/company/fruto-noble/?viewAsMember=true" target="_blank" class="footer-social-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+    <span>© 2025 · Buenos Aires, Argentina</span>
   </footer>
 
   <script>
     // CURSOR
     const cursor = document.getElementById('cursor');
-    const ring = document.getElementById('cursorRing');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
-    function animRing() {
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-      ring.style.left = rx + 'px';
-      ring.style.top = ry + 'px';
-      requestAnimationFrame(animRing);
-    }
-    animRing();
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => { ring.style.width = '60px'; ring.style.height = '60px'; ring.style.borderColor = 'rgba(245,245,240,0.8)'; });
-      el.addEventListener('mouseleave', () => { ring.style.width = '36px'; ring.style.height = '36px'; ring.style.borderColor = 'rgba(245,245,240,0.4)'; });
+    let cx = 0, cy = 0;
+    document.addEventListener('mousemove', e => {
+      cx = e.clientX; cy = e.clientY;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+    });
+    document.addEventListener('mousedown', () => cursor.classList.add('click'));
+    document.addEventListener('mouseup', () => cursor.classList.remove('click'));
+
+    document.querySelectorAll('a, button, .service-item, .case-card, .cat-card').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+    document.querySelectorAll('.case-card').forEach(el => {
+      el.addEventListener('mouseenter', () => { cursor.classList.remove('hover'); cursor.classList.add('hover-img'); });
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover-img'));
     });
 
-    // NAVBAR SCROLL
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); });
-
-    // REVEAL ON SCROLL
+    // REVEAL
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver(entries => {
       entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 80);
-        }
+        if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 90);
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05 });
     reveals.forEach(el => observer.observe(el));
   </script>
 </body>
