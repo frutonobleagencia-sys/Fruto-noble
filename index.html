@@ -108,6 +108,15 @@
       transition: opacity .8s var(--ease), transform .8s var(--ease);
     }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .reveal-split > * {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .8s var(--ease), transform .8s var(--ease);
+    }
+    .reveal.is-visible.reveal-split > * { opacity: 1; transform: translateY(0); }
+    .reveal.is-visible.reveal-split > *:nth-child(2) { transition-delay: .08s; }
+    .reveal.is-visible.reveal-split > *:nth-child(3) { transition-delay: .16s; }
+    .reveal.is-visible.reveal-split > *:nth-child(4) { transition-delay: .24s; }
 
     .site-nav {
       position: sticky;
@@ -271,6 +280,23 @@
       padding: clamp(92px, 9vw, 150px) clamp(34px, 6vw, 96px) clamp(62px, 6vw, 92px);
     }
     .hero-main { min-width: 0; }
+    .hero-main::before {
+      content: "AGENCIA PORTEÑA / ESTRATEGIA / CULTURA VISUAL / PERFORMANCE";
+      display: block;
+      width: max-content;
+      max-width: 100%;
+      margin-bottom: clamp(26px, 4vw, 54px);
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,.22);
+      color: rgba(255,255,255,.48);
+      font-size: .68rem;
+      font-weight: 900;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     .hero-kicker {
       display: flex;
       flex-wrap: wrap;
@@ -307,6 +333,7 @@
       padding: .01em .065em .06em;
       margin-left: -.045em;
       border-radius: .045em;
+      transform: rotate(-1deg) translateX(-.02em);
     }
     .hero-copy {
       max-width: 610px;
@@ -466,6 +493,116 @@
     }
     .ticker-item::before { content: ""; width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
 
+    .campaign-break {
+      width: var(--container);
+      margin: clamp(90px, 10vw, 150px) auto 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr);
+      min-height: clamp(520px, 62vw, 760px);
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      overflow: hidden;
+      background: var(--paper);
+    }
+    .campaign-type {
+      position: relative;
+      display: grid;
+      align-content: center;
+      padding: clamp(34px, 6vw, 88px);
+      background: var(--paper);
+      overflow: hidden;
+    }
+    .campaign-type::before {
+      content: "BA";
+      position: absolute;
+      right: -.12em;
+      bottom: -.18em;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(16rem, 34vw, 38rem);
+      line-height: .75;
+      letter-spacing: -.1em;
+      color: rgba(0,0,0,.045);
+    }
+    .campaign-title {
+      position: relative;
+      z-index: 1;
+      max-width: 9ch;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(4.2rem, 10vw, 12rem);
+      line-height: .78;
+      letter-spacing: -.085em;
+    }
+    .campaign-title span {
+      display: inline-block;
+      color: var(--paper);
+      background: var(--black);
+      padding: .02em .07em .06em;
+      transform: rotate(1deg);
+    }
+    .campaign-copy {
+      display: grid;
+      align-content: space-between;
+      gap: 42px;
+      padding: clamp(34px, 5vw, 76px);
+      background: var(--black);
+      color: var(--paper);
+      position: relative;
+      overflow: hidden;
+    }
+    .campaign-copy::after {
+      content: "NO POSTALES / NO PLANTILLAS / NO RUIDO";
+      position: absolute;
+      left: -8%;
+      top: 50%;
+      width: 116%;
+      padding: 14px 0;
+      border-top: 1px solid rgba(255,255,255,.2);
+      border-bottom: 1px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.48);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .2em;
+      text-align: center;
+      transform: rotate(8deg);
+    }
+    .campaign-copy p {
+      position: relative;
+      z-index: 1;
+      max-width: 44ch;
+      font-size: clamp(1.1rem, 1.7vw, 1.55rem);
+      line-height: 1.55;
+      color: rgba(255,255,255,.78);
+    }
+    .campaign-points {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 1px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.16);
+    }
+    .campaign-point {
+      min-height: 92px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 20px 22px;
+      background: #0b0b0b;
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.72);
+    }
+    .campaign-point strong {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(1.8rem, 3vw, 3.2rem);
+      line-height: .85;
+      letter-spacing: -.06em;
+      color: var(--paper);
+    }
+
     .section { padding: clamp(112px, 11vw, 184px) 0; }
     .section-head {
       display: grid;
@@ -565,10 +702,30 @@
       text-stroke: 1px rgba(0,0,0,.08);
       pointer-events: none;
     }
+    .service-card:nth-child(1),
+    .service-card:nth-child(5) {
+      background: var(--black);
+      color: var(--paper);
+    }
+    .service-card:nth-child(1)::after,
+    .service-card:nth-child(5)::after {
+      -webkit-text-stroke-color: rgba(255,255,255,.16);
+      text-stroke-color: rgba(255,255,255,.16);
+    }
     .service-card:hover {
       background: var(--black);
       color: var(--paper);
       transform: translateY(-5px);
+    }
+    .service-card:nth-child(1):hover,
+    .service-card:nth-child(5):hover {
+      background: var(--paper);
+      color: var(--black);
+    }
+    .service-card:nth-child(1):hover::after,
+    .service-card:nth-child(5):hover::after {
+      -webkit-text-stroke-color: rgba(0,0,0,.1);
+      text-stroke-color: rgba(0,0,0,.1);
     }
     .service-card:hover::after { -webkit-text-stroke-color: rgba(255,255,255,.16); text-stroke-color: rgba(255,255,255,.16); }
     .service-top {
@@ -627,7 +784,25 @@
       grid-template-columns: minmax(0, 1fr) auto;
       gap: 30px;
       align-items: end;
+      position: relative;
+      overflow: hidden;
     }
+    .cases-headline::after {
+      content: "PROOF";
+      position: absolute;
+      right: clamp(18px, 4vw, 56px);
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(6rem, 16vw, 18rem);
+      line-height: .75;
+      letter-spacing: -.08em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,.14);
+      text-stroke: 1px rgba(255,255,255,.14);
+      pointer-events: none;
+    }
+    .cases-headline > * { position: relative; z-index: 1; }
     .cases-headline .section-title { max-width: 12ch; }
     .cases-meta {
       display: inline-flex;
@@ -932,6 +1107,7 @@
       .nav-links::-webkit-scrollbar { display: none; }
       .hero-grid,
       .section-head,
+      .campaign-break,
       .intro-grid,
       .process-wrap,
       .contact-grid { grid-template-columns: 1fr; }
@@ -966,13 +1142,16 @@
       .hero { padding-top: 8px; }
       .hero-frame { min-height: auto; border-radius: 26px; }
       .hero-frame::before { display: none; }
+      .hero-frame::after { display: none; }
       .hero-grid { padding: 52px 22px 28px; gap: 36px; }
+      .hero-main::before { white-space: normal; line-height: 1.45; }
       .hero-kicker span { min-height: 30px; padding: 0 10px; font-size: .6rem; letter-spacing: .14em; }
       .hero-title { max-width: 100%; font-size: clamp(3.1rem, 14.4vw, 4.45rem); line-height: .86; }
-      .hero-copy { font-size: 1rem; line-height: 1.72; }
+      .hero-copy { max-width: 34ch; margin-top: 24px; font-size: 1rem; line-height: 1.72; }
       .hero-actions { flex-direction: column; }
       .hero-actions .button { width: 100%; }
-      .hero-studio-card { min-height: 280px; border-radius: 22px; }
+      .hero-side { gap: 14px; margin-top: 8px; }
+      .hero-studio-card { min-height: 260px; border-radius: 22px; }
       .studio-label { font-size: .62rem; letter-spacing: .14em; }
       .hero-metrics { grid-template-columns: 1fr; }
       .metric { min-height: 88px; grid-template-columns: 78px 1fr; align-items: center; align-content: center; border-right: 0; border-bottom: 1px solid var(--line); }
@@ -982,6 +1161,11 @@
       .logo-item img { max-height: 34px; }
       .ticker { margin-top: 10px; }
       .ticker-item { padding: 14px 22px; font-size: .66rem; }
+      .campaign-break { min-height: auto; margin-top: 74px; border-radius: 26px; }
+      .campaign-type, .campaign-copy { padding: 42px 24px; }
+      .campaign-title { font-size: clamp(3.2rem, 14vw, 5rem); }
+      .campaign-copy::after { display: none; }
+      .campaign-point { min-height: 84px; align-items: flex-start; flex-direction: column-reverse; }
       .intro-grid { padding-top: 30px; }
       .principle { min-height: 190px; }
       .section { padding: 96px 0; }
@@ -1050,7 +1234,7 @@
     <section class="hero page-shell" id="hero">
       <div class="hero-frame">
         <div class="hero-grid">
-          <div class="hero-main reveal">
+          <div class="hero-main reveal reveal-split">
             <div class="hero-kicker">
               <span>Buenos Aires en movimiento</span>
               <span>Marketing creativo</span>
@@ -1128,6 +1312,23 @@
         <span class="ticker-item">Contenido</span>
         <span class="ticker-item">Estrategia</span>
         <span class="ticker-item">Resultados</span>
+      </div>
+    </section>
+
+    <section class="campaign-break reveal" aria-label="Dirección creativa Buenos Aires">
+      <div class="campaign-type">
+        <h2 class="campaign-title">Ciudad, marca, <span>acción.</span></h2>
+      </div>
+      <div class="campaign-copy">
+        <p>
+          Buenos Aires como ritmo, no como postal. Tomamos el pulso de la calle, lo convertimos en dirección
+          visual y lo bajamos a campañas que venden.
+        </p>
+        <div class="campaign-points">
+          <div class="campaign-point"><span>Contenido que corta scroll</span><strong>01</strong></div>
+          <div class="campaign-point"><span>Pauta con lectura creativa</span><strong>02</strong></div>
+          <div class="campaign-point"><span>Marcas con presencia real</span><strong>03</strong></div>
+        </div>
       </div>
     </section>
 
