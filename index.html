@@ -8,7 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 906.06742 1080' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23050505' d='M475.91785,106.20277c6.55089-23.14181,21.65524-88.48892,41.39983-100.14998,32.20314-19.01901,69.89896,9.61554,57.41484,46.50507L251.94487,1013.08183c-16.85469,41.52943-77.15148,34.25968-75.90974-13.54662.41623-16.02447,30.8372-91.27805,28.65705-95.77757C22.39666,776.77902-39.1182,523.7445,70.46866,328.1502c52.34683-93.43038,151.29064-171.38621,254.32742-201.61997,49.53171-14.53394,99.71277-18.82986,151.12178-20.32745Z'/%3E%3Cpath fill='%23050505' d='M648.07822,42.22206c14.5883-3.2998,29.31124-.24048,40.06037,10.09303,27.3507,26.29313-13.16574,84.73174-16.52703,116.00048,190.86638,109.80395,264.5999,352.81267,174.02136,553.31068-75.85906,167.91606-260.1539,275.66416-445.3126,253.40562-4.23046,2.98004-21.49636,67.02293-26.84677,78.46724-19.57572,41.87162-72.39625,31.65012-75.44577-13.29239L622.45934,67.84334c3.80028-10.2549,14.64494-23.13903,25.61889-25.62128ZM427.42659,898.4788c150.87443,11.18409,299.16678-89.21398,353.83423-227.60559,59.9366-151.73053,4.02364-336.45508-133.76043-424.38145l-220.07381,651.98704Z'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --white: #f5f5f0;
@@ -30,7 +30,7 @@
       min-width: 320px;
       background: var(--white);
       color: var(--ink);
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Inter", system-ui, sans-serif;
       overflow-x: hidden;
       text-rendering: geometricPrecision;
     }
@@ -91,7 +91,7 @@
     .eyebrow::before { content: ""; width: 38px; height: 1px; background: currentColor; opacity: .5; }
     .section-title {
       max-width: 11ch;
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Space Grotesk", "Inter", sans-serif;
       font-size: clamp(2.7rem, 5.2vw, 6.5rem);
       line-height: .9;
       letter-spacing: -.055em;
@@ -157,7 +157,7 @@
     .footer-logo path { fill: currentColor; }
     .brand-text { display: grid; gap: 2px; line-height: 1; }
     .brand-name {
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Space Grotesk", sans-serif;
       font-size: 1.03rem;
       font-weight: 700;
       letter-spacing: -.04em;
@@ -194,7 +194,6 @@
       background: rgba(0,0,0,.055);
       transform: translateY(-1px);
     }
-    .nav-inner > .button { justify-self: end; }
 
     .button {
       min-height: 50px;
@@ -233,9 +232,8 @@
       border-radius: 34px;
       border: 1px solid var(--line);
       background:
-        linear-gradient(135deg, rgba(255,255,255,.05) 0 1px, transparent 1px 24px),
-        radial-gradient(circle at 82% 26%, rgba(255,255,255,.16), transparent 18%),
-        #050505;
+        linear-gradient(135deg, rgba(255,255,255,.055) 0 1px, transparent 1px 22px),
+        linear-gradient(90deg, #050505, #101010 56%, #050505);
       color: var(--paper);
       display: grid;
       grid-template-rows: 1fr auto;
@@ -255,10 +253,10 @@
       pointer-events: none;
     }
     .hero-frame::after {
-      content: "ESTRATEGIA / CONTENIDO / PERFORMANCE / DIRECCION CREATIVA / BUENOS AIRES";
+      content: "PALERMO / CHACARITA / SAN TELMO / RECOLETA / MICROCENTRO";
       position: absolute;
       left: -4vw;
-      bottom: clamp(94px, 10vw, 160px);
+      bottom: clamp(140px, 16vw, 240px);
       width: 110%;
       padding: 14px 0;
       border-top: 1px solid rgba(255,255,255,.16);
@@ -268,7 +266,7 @@
       font-weight: 900;
       letter-spacing: .22em;
       text-align: center;
-      transform: rotate(-7deg);
+      transform: rotate(-5deg);
       pointer-events: none;
     }
     .hero-grid {
@@ -276,26 +274,18 @@
       z-index: 1;
       min-height: 100%;
       display: grid;
-      grid-template-columns: minmax(280px, .36fr) minmax(0, .94fr);
-      grid-template-areas:
-        "side main"
-        "side action";
-      gap: clamp(34px, 5vw, 78px);
-      align-items: stretch;
-      padding: clamp(64px, 7vw, 110px) clamp(28px, 5vw, 82px) clamp(44px, 5vw, 74px);
+      grid-template-columns: minmax(0, 1.08fr) minmax(340px, .66fr);
+      gap: clamp(44px, 7vw, 120px);
+      align-items: center;
+      padding: clamp(92px, 9vw, 150px) clamp(34px, 6vw, 96px) clamp(62px, 6vw, 92px);
     }
-    .hero-main {
-      grid-area: main;
-      min-width: 0;
-      display: grid;
-      align-content: center;
-    }
+    .hero-main { min-width: 0; }
     .hero-main::before {
-      content: "AGENCIA CREATIVA EN BUENOS AIRES / MARKETING / DISEÑO / PERFORMANCE";
+      content: "AGENCIA PORTEÑA / ESTRATEGIA / CULTURA VISUAL / PERFORMANCE";
       display: block;
       width: max-content;
       max-width: 100%;
-      margin-bottom: clamp(20px, 3vw, 38px);
+      margin-bottom: clamp(26px, 4vw, 54px);
       padding-bottom: 12px;
       border-bottom: 1px solid rgba(255,255,255,.22);
       color: rgba(255,255,255,.48);
@@ -327,27 +317,21 @@
       text-transform: uppercase;
       background: rgba(255,255,255,.07);
       transform: skewX(-8deg);
-      animation: chipIn .9s var(--ease) both;
     }
-    .hero-kicker span:nth-child(2) { animation-delay: .08s; }
-    .hero-kicker span:nth-child(3) { animation-delay: .16s; }
     .hero-title {
-      max-width: 9.4ch;
-      font-family: "Poppins", system-ui, sans-serif;
-      font-size: clamp(3.8rem, 8.25vw, 9.7rem);
-      line-height: .82;
+      max-width: 9.2ch;
+      font-family: "Space Grotesk", "Inter", sans-serif;
+      font-size: clamp(4.6rem, 11.2vw, 13rem);
+      line-height: .78;
       letter-spacing: -.085em;
-      text-align: right;
       text-transform: none;
-      animation: titleIn 1s var(--ease) .08s both;
     }
     .hero-title span {
-      display: block;
-      width: fit-content;
+      display: inline-block;
       color: var(--black);
       background: var(--paper);
       padding: .01em .065em .06em;
-      margin-left: auto;
+      margin-left: -.045em;
       border-radius: .045em;
       transform: rotate(-1deg) translateX(-.02em);
     }
@@ -357,45 +341,17 @@
       font-size: clamp(1.05rem, 1.28vw, 1.22rem);
       line-height: 1.78;
       color: rgba(255,255,255,.72);
-      justify-self: end;
-      text-align: right;
-      animation: fadeRise 1s var(--ease) .2s both;
     }
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      max-width: 760px;
-      justify-self: end;
-      gap: 14px;
-      margin-top: 28px;
-      animation: fadeRise 1s var(--ease) .32s both;
-    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
     .hero-side {
-      grid-area: side;
       align-self: stretch;
       display: grid;
-      grid-template-rows: auto 1fr auto;
-      gap: 18px;
+      grid-template-rows: 1fr auto;
+      gap: 16px;
       min-width: 0;
-      animation: fadeRise 1.05s var(--ease) .18s both;
-    }
-    .hero-side::before {
-      content: "01 / CREATIVE MARKETING STUDIO";
-      display: block;
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      justify-self: start;
-      align-self: start;
-      min-height: 220px;
-      color: rgba(255,255,255,.5);
-      font-size: .7rem;
-      font-weight: 900;
-      letter-spacing: .2em;
-      text-transform: uppercase;
     }
     .hero-studio-card {
-      min-height: 360px;
+      min-height: 480px;
       display: grid;
       align-content: space-between;
       padding: clamp(28px, 3.4vw, 44px);
@@ -405,7 +361,6 @@
       overflow: hidden;
       position: relative;
       isolation: isolate;
-      animation: panelFloat 7s ease-in-out infinite alternate;
     }
     .hero-studio-card::before,
     .hero-studio-card::after {
@@ -429,25 +384,20 @@
       color: rgba(0,0,0,.54);
     }
     .studio-word {
-      font-family: "Poppins", system-ui, sans-serif;
-      font-size: clamp(2.25rem, 3.35vw, 4.05rem);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2.4rem, 4.2vw, 4.8rem);
       line-height: .9;
       letter-spacing: -.055em;
     }
-    .studio-word span,
-    .studio-word em {
-      display: block;
-      font-style: normal;
-    }
     .studio-word span {
+      display: block;
       color: transparent;
       -webkit-text-stroke: 1px rgba(0,0,0,.72);
       text-stroke: 1px rgba(0,0,0,.72);
     }
-    .studio-word em { color: var(--black); }
     .hero-metrics {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       border: 1px solid rgba(255,255,255,.18);
       border-radius: 22px;
       background: #111;
@@ -455,20 +405,18 @@
       overflow: hidden;
     }
     .metric {
-      min-height: 92px;
+      min-height: 132px;
       padding: 22px;
       display: grid;
-      grid-template-columns: 90px minmax(0, 1fr);
-      align-items: center;
-      gap: 18px;
-      border-right: 0;
-      border-bottom: 1px solid rgba(255,255,255,.16);
+      align-content: space-between;
+      gap: 20px;
+      border-right: 1px solid rgba(255,255,255,.16);
       transition: background .25s ease, color .25s ease;
     }
-    .metric:last-child { border-bottom: 0; }
+    .metric:last-child { border-right: 0; }
     .metric:hover { background: var(--paper); color: var(--black); }
     .metric strong {
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Space Grotesk", sans-serif;
       font-size: clamp(1.55rem, 2.25vw, 2.35rem);
       line-height: .94;
       letter-spacing: -.06em;
@@ -493,10 +441,8 @@
     .logos-track {
       display: flex;
       width: max-content;
-      animation: logos-scroll 28s linear infinite;
-      will-change: transform;
+      animation: logos-scroll 34s linear infinite;
     }
-    .logos-strip:hover .logos-track { animation-play-state: paused; }
     .logo-item {
       width: clamp(150px, 14vw, 220px);
       min-height: 112px;
@@ -571,7 +517,7 @@
       position: absolute;
       right: -.12em;
       bottom: -.18em;
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Space Grotesk", sans-serif;
       font-size: clamp(16rem, 34vw, 38rem);
       line-height: .75;
       letter-spacing: -.1em;
@@ -581,7 +527,7 @@
       position: relative;
       z-index: 1;
       max-width: 9ch;
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Space Grotesk", sans-serif;
       font-size: clamp(4.2rem, 10vw, 12rem);
       line-height: .78;
       letter-spacing: -.085em;
@@ -604,7 +550,7 @@
       overflow: hidden;
     }
     .campaign-copy::after {
-      content: "CLARIDAD / CRITERIO / CONVERSION";
+      content: "NO POSTALES / NO PLANTILLAS / NO RUIDO";
       position: absolute;
       left: -8%;
       top: 50%;
@@ -650,7 +596,7 @@
       color: rgba(255,255,255,.72);
     }
     .campaign-point strong {
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Space Grotesk", sans-serif;
       font-size: clamp(1.8rem, 3vw, 3.2rem);
       line-height: .85;
       letter-spacing: -.06em;
@@ -680,7 +626,7 @@
       padding-top: clamp(48px, 6vw, 86px);
     }
     .intro-statement {
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Space Grotesk", sans-serif;
       font-size: clamp(2.6rem, 5.5vw, 6.8rem);
       line-height: .92;
       letter-spacing: -.055em;
@@ -711,7 +657,7 @@
       opacity: .58;
     }
     .principle h3 {
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Space Grotesk", sans-serif;
       font-size: clamp(1.55rem, 2.1vw, 2.35rem);
       line-height: 1;
       letter-spacing: -.045em;
@@ -746,7 +692,7 @@
       position: absolute;
       right: 18px;
       bottom: -8px;
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Space Grotesk", sans-serif;
       font-size: clamp(4rem, 8vw, 9rem);
       font-weight: 700;
       line-height: .8;
@@ -813,7 +759,7 @@
       position: relative;
       z-index: 1;
       max-width: 8ch;
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Space Grotesk", sans-serif;
       font-size: clamp(1.65rem, 2.35vw, 2.85rem);
       line-height: .98;
       letter-spacing: -.05em;
@@ -847,7 +793,7 @@
       right: clamp(18px, 4vw, 56px);
       top: 50%;
       transform: translateY(-50%);
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Space Grotesk", sans-serif;
       font-size: clamp(6rem, 16vw, 18rem);
       line-height: .75;
       letter-spacing: -.08em;
@@ -900,7 +846,7 @@
       position: absolute;
       right: -8px;
       bottom: -18px;
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Space Grotesk", sans-serif;
       font-size: clamp(7rem, 11vw, 14rem);
       font-weight: 700;
       line-height: .8;
@@ -929,7 +875,7 @@
       opacity: .54;
     }
     .case-name {
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Space Grotesk", sans-serif;
       font-size: clamp(1.95rem, 3vw, 3.6rem);
       line-height: .92;
       letter-spacing: -.055em;
@@ -968,7 +914,7 @@
       display: inline-flex;
       align-items: flex-start;
       gap: 4px;
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Space Grotesk", sans-serif;
       font-size: clamp(2.8rem, 5vw, 6rem);
       line-height: .9;
       letter-spacing: -.06em;
@@ -1002,7 +948,7 @@
       color: var(--ink);
     }
     .case-card:hover .case-extra { background: #101010; color: var(--paper); }
-    .case-extra strong { font-family: "Poppins", system-ui, sans-serif; font-size: 1.15rem; letter-spacing: -.04em; }
+    .case-extra strong { font-family: "Space Grotesk", sans-serif; font-size: 1.15rem; letter-spacing: -.04em; }
     .case-extra span { font-size: .78rem; line-height: 1.45; opacity: .7; }
 
     .process-wrap {
@@ -1035,14 +981,14 @@
     }
     .process-item:hover { padding-left: 18px; background: rgba(0,0,0,.025); }
     .process-step {
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Space Grotesk", sans-serif;
       font-size: clamp(2rem, 2.7vw, 3rem);
       line-height: .9;
       letter-spacing: -.06em;
     }
     .process-name {
       margin-bottom: 12px;
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Space Grotesk", sans-serif;
       font-size: clamp(1.65rem, 2.35vw, 2.8rem);
       line-height: 1;
       letter-spacing: -.05em;
@@ -1072,7 +1018,7 @@
       position: absolute;
       top: 26px;
       right: 36px;
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Space Grotesk", sans-serif;
       font-size: clamp(4rem, 12vw, 14rem);
       line-height: .8;
       letter-spacing: -.08em;
@@ -1085,7 +1031,7 @@
       max-width: 8ch;
       margin-top: 18px;
       margin-bottom: 34px;
-      font-family: "Poppins", system-ui, sans-serif;
+      font-family: "Space Grotesk", sans-serif;
       font-size: clamp(3.2rem, 7vw, 8rem);
       line-height: .86;
       letter-spacing: -.07em;
@@ -1147,22 +1093,6 @@
       50% { transform: rotate(180deg) scale(1.08); }
       to { transform: rotate(360deg) scale(1); }
     }
-    @keyframes chipIn {
-      from { opacity: 0; transform: translateY(16px) skewX(-8deg); }
-      to { opacity: 1; transform: translateY(0) skewX(-8deg); }
-    }
-    @keyframes titleIn {
-      from { opacity: 1; transform: translateY(28px) scale(.99); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    @keyframes fadeRise {
-      from { opacity: 0; transform: translateY(28px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes panelFloat {
-      from { transform: translateY(0); }
-      to { transform: translateY(-12px); }
-    }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -1181,16 +1111,6 @@
       .intro-grid,
       .process-wrap,
       .contact-grid { grid-template-columns: 1fr; }
-      .hero-grid {
-        grid-template-areas:
-          "main"
-          "side";
-      }
-      .hero-title,
-      .hero-copy { text-align: left; justify-self: start; }
-      .hero-title span { margin-left: 0; }
-      .hero-actions { justify-content: flex-start; }
-      .hero-side::before { display: none; }
       .hero-side { grid-template-rows: auto auto; }
       .hero-studio-card { min-height: 360px; }
       .principles { grid-template-columns: 1fr; }
@@ -1224,12 +1144,11 @@
       .hero-frame::before { display: none; }
       .hero-frame::after { display: none; }
       .hero-grid { padding: 52px 22px 28px; gap: 36px; }
-      .hero-main::before { width: 100%; white-space: normal; line-height: 1.45; font-size: .58rem; letter-spacing: .13em; }
-      .hero-kicker { gap: 7px; margin-bottom: 22px; }
-      .hero-kicker span { min-height: 30px; padding: 0 9px; font-size: .54rem; letter-spacing: .1em; transform: none; animation: none; }
-      .hero-title { max-width: 8.2ch; font-size: clamp(2.95rem, 12.5vw, 3.9rem); line-height: .86; }
+      .hero-main::before { white-space: normal; line-height: 1.45; }
+      .hero-kicker span { min-height: 30px; padding: 0 10px; font-size: .6rem; letter-spacing: .14em; }
+      .hero-title { max-width: 100%; font-size: clamp(3.1rem, 14.4vw, 4.45rem); line-height: .86; }
       .hero-copy { max-width: 34ch; margin-top: 24px; font-size: 1rem; line-height: 1.72; }
-      .hero-actions { width: 100%; max-width: none; justify-self: stretch; justify-content: flex-start; flex-direction: column; }
+      .hero-actions { flex-direction: column; }
       .hero-actions .button { width: 100%; }
       .hero-side { gap: 14px; margin-top: 8px; }
       .hero-studio-card { min-height: 260px; border-radius: 22px; }
@@ -1317,13 +1236,13 @@
         <div class="hero-grid">
           <div class="hero-main reveal reveal-split">
             <div class="hero-kicker">
-              <span>Buenos Aires</span>
+              <span>Buenos Aires en movimiento</span>
               <span>Marketing creativo</span>
-              <span>Performance medible</span>
+              <span>Performance con pulso</span>
             </div>
             <h1 class="hero-title">Marketing que da <span>frutos</span></h1>
             <p class="hero-copy">
-              Estrategia, contenido y pauta para marcas que quieren comunicar mejor, crecer con criterio y convertir
+              Estrategia, contenido y pauta con energía de ciudad: ideas que se ven, se mueven y convierten
               sin perder identidad.
             </p>
             <div class="hero-actions">
@@ -1338,7 +1257,7 @@
                 <span>Creative Growth Studio</span>
                 <span>2026</span>
               </div>
-              <p class="studio-word">Marca <span>Contenido</span><em>Performance</em></p>
+              <p class="studio-word">Marca <span>Calle</span> Venta</p>
               <div class="studio-label">
                 <span>Social / Meta / E-commerce</span>
                 <span>BA</span>
@@ -1398,17 +1317,17 @@
 
     <section class="campaign-break reveal" aria-label="Dirección creativa Buenos Aires">
       <div class="campaign-type">
-        <h2 class="campaign-title">Estrategia, contenido, <span>resultados.</span></h2>
+        <h2 class="campaign-title">Ciudad, marca, <span>acción.</span></h2>
       </div>
       <div class="campaign-copy">
         <p>
-          Trabajamos desde Buenos Aires con una mirada estratégica: entendemos el negocio, ordenamos el mensaje
-          y convertimos la creatividad en crecimiento medible.
+          Buenos Aires como ritmo, no como postal. Tomamos el pulso de la calle, lo convertimos en dirección
+          visual y lo bajamos a campañas que venden.
         </p>
         <div class="campaign-points">
-          <div class="campaign-point"><span>Diagnóstico y posicionamiento</span><strong>01</strong></div>
-          <div class="campaign-point"><span>Contenido y pauta integrados</span><strong>02</strong></div>
-          <div class="campaign-point"><span>Medición y mejora continua</span><strong>03</strong></div>
+          <div class="campaign-point"><span>Contenido que corta scroll</span><strong>01</strong></div>
+          <div class="campaign-point"><span>Pauta con lectura creativa</span><strong>02</strong></div>
+          <div class="campaign-point"><span>Marcas con presencia real</span><strong>03</strong></div>
         </div>
       </div>
     </section>
@@ -1417,22 +1336,22 @@
       <div class="intro-grid">
         <div class="reveal">
           <p class="eyebrow">Diferencial</p>
-          <h2 class="intro-statement">Creatividad con método. Marketing con dirección.</h2>
+          <h2 class="intro-statement">Buenos Aires no espera. Tu marca tampoco.</h2>
         </div>
         <div class="principles reveal">
           <article class="principle">
             <span>01 / Criterio</span>
-            <h3>Ideas alineadas al negocio, no a tendencias sueltas.</h3>
+            <h3>Ideas con hambre de calle y cabeza de negocio.</h3>
             <p>Estrategia antes que estética. Cada campaña, pieza y canal tiene una función medible.</p>
           </article>
           <article class="principle">
             <span>02 / Dirección</span>
-            <h3>Una presencia consistente en redes, pauta, diseño y tienda.</h3>
-            <p>Mensajes claros, visuales sólidos y una misma voz en cada punto de contacto.</p>
+            <h3>Una marca que aparece fuerte donde la gente decide.</h3>
+            <p>Redes, pauta, diseño y tienda con una misma voz: clara, reconocible y difícil de ignorar.</p>
           </article>
           <article class="principle">
             <span>03 / Escala</span>
-            <h3>Performance con identidad de marca.</h3>
+            <h3>Performance sin volverse una marca automática.</h3>
             <p>Optimizamos Meta Ads, retargeting y contenido con lectura creativa y foco comercial.</p>
           </article>
         </div>
