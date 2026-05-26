@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fruto Noble — Agencia de Marketing Digital</title>
-  <meta name="description" content="Fruto Noble. Agencia creativa y de marketing digital en Buenos Aires. Meta Ads, social media, e-commerce, branding digital, diseño gráfico y estrategia 360°.">
+  <meta name="description" content="Fruto Noble. Agencia creativa y de marketing digital en Buenos Aires. Planes mensuales, Meta Ads, Google Ads, creatividades, social media, e-commerce y performance.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 906.06742 1080' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23050505' d='M475.91785,106.20277c6.55089-23.14181,21.65524-88.48892,41.39983-100.14998,32.20314-19.01901,69.89896,9.61554,57.41484,46.50507L251.94487,1013.08183c-16.85469,41.52943-77.15148,34.25968-75.90974-13.54662.41623-16.02447,30.8372-91.27805,28.65705-95.77757C22.39666,776.77902-39.1182,523.7445,70.46866,328.1502c52.34683-93.43038,151.29064-171.38621,254.32742-201.61997,49.53171-14.53394,99.71277-18.82986,151.12178-20.32745Z'/%3E%3Cpath fill='%23050505' d='M648.07822,42.22206c14.5883-3.2998,29.31124-.24048,40.06037,10.09303,27.3507,26.29313-13.16574,84.73174-16.52703,116.00048,190.86638,109.80395,264.5999,352.81267,174.02136,553.31068-75.85906,167.91606-260.1539,275.66416-445.3126,253.40562-4.23046,2.98004-21.49636,67.02293-26.84677,78.46724-19.57572,41.87162-72.39625,31.65012-75.44577-13.29239L622.45934,67.84334c3.80028-10.2549,14.64494-23.13903,25.61889-25.62128ZM427.42659,898.4788c150.87443,11.18409,299.16678-89.21398,353.83423-227.60559,59.9366-151.73053,4.02364-336.45508-133.76043-424.38145l-220.07381,651.98704Z'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -117,6 +117,11 @@
     .reveal.is-visible.reveal-split > *:nth-child(2) { transition-delay: .08s; }
     .reveal.is-visible.reveal-split > *:nth-child(3) { transition-delay: .16s; }
     .reveal.is-visible.reveal-split > *:nth-child(4) { transition-delay: .24s; }
+    .hero .reveal,
+    .hero .reveal-split > * {
+      opacity: 1;
+      transform: none;
+    }
 
     .site-nav {
       position: sticky;
@@ -253,15 +258,15 @@
       pointer-events: none;
     }
     .hero-frame::after {
-      content: "PALERMO / CHACARITA / SAN TELMO / RECOLETA / MICROCENTRO";
+      content: "META ADS / GOOGLE ADS / CREATIVIDADES / PLANNING MENSUAL / REPORTES";
       position: absolute;
       left: -4vw;
-      bottom: clamp(140px, 16vw, 240px);
+      bottom: clamp(48px, 6vw, 86px);
       width: 110%;
       padding: 14px 0;
       border-top: 1px solid rgba(255,255,255,.16);
       border-bottom: 1px solid rgba(255,255,255,.16);
-      color: rgba(255,255,255,.5);
+      color: rgba(255,255,255,.32);
       font-size: clamp(.64rem, 1.05vw, .92rem);
       font-weight: 900;
       letter-spacing: .22em;
@@ -281,7 +286,7 @@
     }
     .hero-main { min-width: 0; }
     .hero-main::before {
-      content: "AGENCIA PORTEÑA / ESTRATEGIA / CULTURA VISUAL / PERFORMANCE";
+      content: "AGENCIA DE MARKETING EN BUENOS AIRES / META ADS / GOOGLE ADS / CREATIVIDAD";
       display: block;
       width: max-content;
       max-width: 100%;
@@ -1226,7 +1231,7 @@
         <li><a href="#contacto">Contacto</a></li>
       </ul>
 
-      <a href="https://wa.me/541133149081" target="_blank" rel="noreferrer" class="button">Empezar proyecto</a>
+      <a href="https://wa.me/541133149081" target="_blank" rel="noreferrer" class="button">Agendar llamada</a>
     </div>
   </nav>
 
@@ -1236,17 +1241,17 @@
         <div class="hero-grid">
           <div class="hero-main reveal reveal-split">
             <div class="hero-kicker">
-              <span>Buenos Aires en movimiento</span>
-              <span>Marketing creativo</span>
-              <span>Performance con pulso</span>
+              <span>Meta Ads</span>
+              <span>Google Ads</span>
+              <span>Planning mensual</span>
             </div>
             <h1 class="hero-title">Marketing que da <span>frutos</span></h1>
             <p class="hero-copy">
-              Estrategia, contenido y pauta con energía de ciudad: ideas que se ven, se mueven y convierten
-              sin perder identidad.
+              Nos sumamos a tu proyecto como equipo de marketing: planificamos el mes, creamos piezas, activamos
+              Meta y Google Ads, medimos resultados y optimizamos para vender más.
             </p>
             <div class="hero-actions">
-              <a href="https://wa.me/541133149081" target="_blank" rel="noreferrer" class="button">Empezar proyecto</a>
+              <a href="https://wa.me/541133149081" target="_blank" rel="noreferrer" class="button">Quiero un plan mensual</a>
               <a href="#servicios" class="button ghost">Ver servicios</a>
             </div>
           </div>
@@ -1254,19 +1259,19 @@
           <aside class="hero-side reveal" aria-label="Especialidades y métricas de Fruto Noble">
             <div class="hero-studio-card">
               <div class="studio-label">
-                <span>Creative Growth Studio</span>
+                <span>Marketing Growth Team</span>
                 <span>2026</span>
               </div>
-              <p class="studio-word">Marca <span>Calle</span> Venta</p>
+              <p class="studio-word">Meta <span>Google</span> Creatividades</p>
               <div class="studio-label">
-                <span>Social / Meta / E-commerce</span>
+                <span>Ads / Planning / Reportes</span>
                 <span>BA</span>
               </div>
             </div>
             <div class="hero-metrics">
               <div class="metric"><strong>9×</strong><span>ROAS alcanzado en campañas Meta</span></div>
-              <div class="metric"><strong>360°</strong><span>Estrategia, diseño y performance</span></div>
-              <div class="metric"><strong>5+</strong><span>Años construyendo marcas activas</span></div>
+              <div class="metric"><strong>30d</strong><span>Planning, piezas y optimización mensual</span></div>
+              <div class="metric"><strong>1</strong><span>Equipo acoplado a tu proyecto</span></div>
             </div>
           </aside>
         </div>
@@ -1297,37 +1302,37 @@
     <section class="ticker" aria-label="Especialidades">
       <div class="ticker-track">
         <span class="ticker-item">Meta Ads</span>
-        <span class="ticker-item">Social Media</span>
+        <span class="ticker-item">Google Ads</span>
         <span class="ticker-item">E-Commerce</span>
-        <span class="ticker-item">Branding Digital</span>
+        <span class="ticker-item">Planning mensual</span>
         <span class="ticker-item">Retargeting</span>
-        <span class="ticker-item">Contenido</span>
-        <span class="ticker-item">Estrategia</span>
-        <span class="ticker-item">Resultados</span>
+        <span class="ticker-item">Creatividades</span>
+        <span class="ticker-item">Reportes</span>
+        <span class="ticker-item">Optimización</span>
         <span class="ticker-item">Meta Ads</span>
-        <span class="ticker-item">Social Media</span>
+        <span class="ticker-item">Google Ads</span>
         <span class="ticker-item">E-Commerce</span>
-        <span class="ticker-item">Branding Digital</span>
+        <span class="ticker-item">Planning mensual</span>
         <span class="ticker-item">Retargeting</span>
-        <span class="ticker-item">Contenido</span>
-        <span class="ticker-item">Estrategia</span>
-        <span class="ticker-item">Resultados</span>
+        <span class="ticker-item">Creatividades</span>
+        <span class="ticker-item">Reportes</span>
+        <span class="ticker-item">Optimización</span>
       </div>
     </section>
 
-    <section class="campaign-break reveal" aria-label="Dirección creativa Buenos Aires">
+    <section class="campaign-break reveal" aria-label="Sistema de marketing mensual">
       <div class="campaign-type">
-        <h2 class="campaign-title">Ciudad, marca, <span>acción.</span></h2>
+        <h2 class="campaign-title">Publicidad, creatividad, <span>planning.</span></h2>
       </div>
       <div class="campaign-copy">
         <p>
-          Buenos Aires como ritmo, no como postal. Tomamos el pulso de la calle, lo convertimos en dirección
-          visual y lo bajamos a campañas que venden.
+          Armamos un sistema mensual para que tu marca tenga pauta activa, piezas listas, mensajes claros y
+          decisiones tomadas con datos. Menos improvisación, más equipo.
         </p>
         <div class="campaign-points">
-          <div class="campaign-point"><span>Contenido que corta scroll</span><strong>01</strong></div>
-          <div class="campaign-point"><span>Pauta con lectura creativa</span><strong>02</strong></div>
-          <div class="campaign-point"><span>Marcas con presencia real</span><strong>03</strong></div>
+          <div class="campaign-point"><span>Plan mensual de acciones</span><strong>01</strong></div>
+          <div class="campaign-point"><span>Creatividades para ads y redes</span><strong>02</strong></div>
+          <div class="campaign-point"><span>Meta, Google y seguimiento</span><strong>03</strong></div>
         </div>
       </div>
     </section>
@@ -1336,23 +1341,23 @@
       <div class="intro-grid">
         <div class="reveal">
           <p class="eyebrow">Diferencial</p>
-          <h2 class="intro-statement">Buenos Aires no espera. Tu marca tampoco.</h2>
+          <h2 class="intro-statement">Nos acoplamos a tu proyecto como si fuéramos equipo.</h2>
         </div>
         <div class="principles reveal">
           <article class="principle">
-            <span>01 / Criterio</span>
-            <h3>Ideas con hambre de calle y cabeza de negocio.</h3>
-            <p>Estrategia antes que estética. Cada campaña, pieza y canal tiene una función medible.</p>
+            <span>01 / Planning</span>
+            <h3>Ordenamos el mes antes de producir.</h3>
+            <p>Definimos objetivos, campañas, piezas, fechas y prioridades para que cada acción tenga sentido.</p>
           </article>
           <article class="principle">
-            <span>02 / Dirección</span>
-            <h3>Una marca que aparece fuerte donde la gente decide.</h3>
-            <p>Redes, pauta, diseño y tienda con una misma voz: clara, reconocible y difícil de ignorar.</p>
+            <span>02 / Pauta</span>
+            <h3>Activamos Meta Ads y Google Ads con lectura comercial.</h3>
+            <p>Presupuesto, audiencias, búsqueda, remarketing y optimización continua para vender mejor.</p>
           </article>
           <article class="principle">
-            <span>03 / Escala</span>
-            <h3>Performance sin volverse una marca automática.</h3>
-            <p>Optimizamos Meta Ads, retargeting y contenido con lectura creativa y foco comercial.</p>
+            <span>03 / Creatividad</span>
+            <h3>Diseñamos piezas para que la pauta tenga con qué competir.</h3>
+            <p>Creatividades, copies, formatos y variantes pensadas para testear, aprender y escalar.</p>
           </article>
         </div>
       </div>
@@ -1365,8 +1370,8 @@
           <h2 class="section-title">Lo que hacemos</h2>
         </div>
         <p class="section-copy reveal">
-          Unimos estrategia, diseño y performance para que cada pieza tenga una función clara:
-          atraer, explicar, convertir o fidelizar.
+          Trabajamos planes mensuales de marketing para marcas que necesitan equipo, creatividad y pauta funcionando
+          todos los meses, no acciones sueltas.
         </p>
       </div>
 
@@ -1378,7 +1383,7 @@
           </div>
           <div>
             <h3 class="service-title">Meta Ads</h3>
-            <p class="service-copy">Campañas de Facebook e Instagram optimizadas para conversión. Catálogo, experiencia instantánea, retargeting y escala de presupuesto.</p>
+            <p class="service-copy">Campañas de Facebook e Instagram orientadas a consultas, ventas y crecimiento. Estructura, audiencias, retargeting, catálogo y optimización semanal.</p>
           </div>
         </article>
 
@@ -1389,7 +1394,7 @@
           </div>
           <div>
             <h3 class="service-title">Social Media</h3>
-            <p class="service-copy">Gestión integral de redes sociales. Contenido estratégico, calendario editorial, comunidad activa y métricas que importan.</p>
+            <p class="service-copy">Planificación mensual de contenidos para que la marca se mantenga activa, clara y alineada con las campañas comerciales.</p>
           </div>
         </article>
 
@@ -1404,14 +1409,14 @@
           </div>
         </article>
 
-        <article class="service-card reveal" data-short="BRD">
+        <article class="service-card reveal" data-short="GOO">
           <div class="service-top">
             <span class="service-number">04</span>
             <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="7.25" stroke="currentColor" stroke-width="1.6"/><path d="M12 4.75v14.5M4.75 12h14.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
           </div>
           <div>
-            <h3 class="service-title">Branding Digital</h3>
-            <p class="service-copy">Identidad visual coherente en todos tus canales. Que tu marca se vea tan bien como lo que ofrece.</p>
+            <h3 class="service-title">Google Ads</h3>
+            <p class="service-copy">Campañas de búsqueda para captar demanda real. Keywords, anuncios, medición, landing y seguimiento para convertir intención en oportunidades.</p>
           </div>
         </article>
 
@@ -1421,8 +1426,8 @@
             <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M7 7h10v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           </div>
           <div>
-            <h3 class="service-title">Diseño Gráfico</h3>
-            <p class="service-copy">Piezas que comunican y convierten. Artes para ads, feed, stories, banners y todo lo que tu marca necesita.</p>
+            <h3 class="service-title">Creatividades para Ads</h3>
+            <p class="service-copy">Piezas, copies y variantes para Meta, Google, stories, reels, banners y remarketing. Creatividad pensada para testear y vender.</p>
           </div>
         </article>
 
@@ -1432,8 +1437,8 @@
             <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4.5 19 8.25v7.5L12 19.5 5 15.75v-7.5L12 4.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 11.25 19 8.25M12 11.25 5 8.25M12 11.25v8.25" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           </div>
           <div>
-            <h3 class="service-title">Estrategia 360°</h3>
-            <p class="service-copy">Planificación completa de presencia digital. Desde el posicionamiento hasta la ejecución táctica semana a semana.</p>
+            <h3 class="service-title">Planning mensual</h3>
+            <p class="service-copy">Nos organizamos como parte de tu equipo: calendario, prioridades, campañas, entregables, reportes y próximos pasos.</p>
           </div>
         </article>
       </div>
@@ -1559,36 +1564,36 @@
       <div class="process-wrap">
         <div class="process-panel reveal">
           <p class="eyebrow">Cómo trabajamos</p>
-          <h2 class="section-title">Método, no improvisación</h2>
-          <p class="process-note">Un proceso simple, exigente y medible para que cada decisión creativa tenga dirección comercial.</p>
+          <h2 class="section-title">Equipo, método y ritmo mensual</h2>
+          <p class="process-note">Entramos al proyecto con una forma de trabajo clara: plan, producción, pauta, medición y mejora continua.</p>
         </div>
         <div class="process-list">
           <article class="process-item reveal">
             <span class="process-step">01</span>
             <div>
-              <h3 class="process-name">Escuchamos</h3>
-              <p class="process-desc">Entendemos tu negocio, tu mercado y tus objetivos reales antes de proponer. Sin plantillas genéricas.</p>
+              <h3 class="process-name">Diagnóstico</h3>
+              <p class="process-desc">Entendemos tu negocio, tus números, tus canales y qué necesita pasar este mes para crecer.</p>
             </div>
           </article>
           <article class="process-item reveal">
             <span class="process-step">02</span>
             <div>
-              <h3 class="process-name">Estrategia</h3>
-              <p class="process-desc">Definimos canales, mensajes, presupuesto y métricas. Todo tiene un por qué y una prioridad.</p>
+              <h3 class="process-name">Planning mensual</h3>
+              <p class="process-desc">Definimos campañas, presupuesto, piezas, mensajes, calendario y responsables antes de ejecutar.</p>
             </div>
           </article>
           <article class="process-item reveal">
             <span class="process-step">03</span>
             <div>
-              <h3 class="process-name">Ejecutamos</h3>
-              <p class="process-desc">Creamos, publicamos, medimos y ajustamos con velocidad, precisión y coherencia visual.</p>
+              <h3 class="process-name">Producción + pauta</h3>
+              <p class="process-desc">Diseñamos creatividades, redactamos copies, publicamos, activamos Meta/Google Ads y medimos.</p>
             </div>
           </article>
           <article class="process-item reveal">
             <span class="process-step">04</span>
             <div>
-              <h3 class="process-name">Escalamos</h3>
-              <p class="process-desc">Lo que funciona, lo potenciamos. Lo que no, lo corregimos. El objetivo es crecer de forma sostenida.</p>
+              <h3 class="process-name">Optimización</h3>
+              <p class="process-desc">Revisamos resultados, ajustamos presupuesto, iteramos piezas y dejamos próximos pasos claros.</p>
             </div>
           </article>
         </div>
@@ -1600,8 +1605,8 @@
         <div class="contact-grid">
           <div class="reveal">
             <p class="eyebrow" style="color: rgba(255,255,255,.56);">Contacto</p>
-            <h2 class="contact-title">Hablemos de tu proyecto.</h2>
-            <a href="https://wa.me/541133149081" target="_blank" rel="noreferrer" class="button light">Escribinos por WhatsApp</a>
+            <h2 class="contact-title">Sumemos marketing a tu equipo.</h2>
+            <a href="https://wa.me/541133149081" target="_blank" rel="noreferrer" class="button light">Armar plan mensual</a>
           </div>
           <div class="contact-list reveal">
             <div class="contact-row"><span>Email</span><a href="mailto:hola@frutonoble.com.ar">hola@frutonoble.com.ar</a></div>
@@ -1630,12 +1635,15 @@
     <span class="footer-copy">© 2026 · Buenos Aires</span>
   </footer>
 
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script>
     const nav = document.getElementById("site-nav");
     const cursor = document.getElementById("cursor");
     const hoverTargets = document.querySelectorAll("a, button, .service-card, .case-card, .process-item, .logo-item, .metric, .principle");
     const reveals = document.querySelectorAll(".reveal");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let hasGsap = !reduced && window.gsap;
+    let gsapStarted = false;
 
     const updateNav = () => nav.classList.toggle("is-scrolled", window.scrollY > 16);
     updateNav();
@@ -1657,11 +1665,36 @@
       });
     }
 
+    const runGsap = () => {
+      if (gsapStarted || reduced || !window.gsap) return;
+      gsapStarted = true;
+      hasGsap = true;
+      gsap.config({ nullTargetWarn: false });
+      document.querySelectorAll(".hero .reveal").forEach((element) => element.classList.add("is-visible"));
+
+      gsap.fromTo(".site-nav", { y: -18, opacity: 1 }, { y: 0, opacity: 1, duration: .75, ease: "power3.out" });
+      gsap.fromTo(".hero-frame", { scale: .985, opacity: 1 }, { scale: 1, opacity: 1, duration: 1.1, ease: "power4.out", delay: .08 });
+      gsap.fromTo(".hero-main > *", { y: 46, opacity: 1 }, { y: 0, opacity: 1, duration: .95, stagger: .1, ease: "power3.out", delay: .28 });
+      gsap.fromTo(".hero-side", { x: 42, opacity: 1 }, { x: 0, opacity: 1, duration: 1, ease: "power3.out", delay: .45 });
+      gsap.fromTo(".logos-strip", { y: 24, opacity: 1 }, { y: 0, opacity: 1, duration: .8, ease: "power3.out", delay: .62 });
+
+      hoverTargets.forEach((item) => {
+        item.addEventListener("mouseenter", () => gsap.to(item, { y: -4, duration: .28, ease: "power2.out" }));
+        item.addEventListener("mouseleave", () => gsap.to(item, { y: 0, duration: .34, ease: "power2.out" }));
+      });
+    };
+    runGsap();
+    window.addEventListener("load", runGsap, { once: true });
+
     if (!reduced) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
+            if (hasGsap && !entry.target.closest(".hero")) {
+              const pieces = entry.target.classList.contains("reveal-split") ? entry.target.children : [entry.target];
+              gsap.fromTo(pieces, { y: 44, opacity: 1 }, { y: 0, opacity: 1, duration: .85, stagger: .08, ease: "power3.out" });
+            }
             observer.unobserve(entry.target);
           }
         });
