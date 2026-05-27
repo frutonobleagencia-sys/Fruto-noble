@@ -511,7 +511,9 @@
       display: flex;
       width: max-content;
       animation: logos-scroll 34s linear infinite;
+      will-change: transform;
     }
+    .logos-strip:hover .logos-track { animation-play-state: paused; }
     .logo-item {
       width: clamp(150px, 14vw, 220px);
       min-height: 112px;
