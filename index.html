@@ -4,22 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fruto Noble - Agencia de Marketing Digital</title>
-  <meta name="description" content="Fruto Noble. Agencia de marketing digital en Buenos Aires. Estrategia, identidad, contenido, campañas, sitios web, medición y sistemas de crecimiento.">
+  <meta name="description" content="Fruto Noble. Agencia de marketing digital en Buenos Aires. Estrategia, identidad, contenido, campañas, sitios web, medición y optimización.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 906.06742 1080' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23050505' d='M475.91785,106.20277c6.55089-23.14181,21.65524-88.48892,41.39983-100.14998,32.20314-19.01901,69.89896,9.61554,57.41484,46.50507L251.94487,1013.08183c-16.85469,41.52943-77.15148,34.25968-75.90974-13.54662.41623-16.02447,30.8372-91.27805,28.65705-95.77757C22.39666,776.77902-39.1182,523.7445,70.46866,328.1502c52.34683-93.43038,151.29064-171.38621,254.32742-201.61997,49.53171-14.53394,99.71277-18.82986,151.12178-20.32745Z'/%3E%3Cpath fill='%23050505' d='M648.07822,42.22206c14.5883-3.2998,29.31124-.24048,40.06037,10.09303,27.3507,26.29313-13.16574,84.73174-16.52703,116.00048,190.86638,109.80395,264.5999,352.81267,174.02136,553.31068-75.85906,167.91606-260.1539,275.66416-445.3126,253.40562-4.23046,2.98004-21.49636,67.02293-26.84677,78.46724-19.57572,41.87162-72.39625,31.65012-75.44577-13.29239L622.45934,67.84334c3.80028-10.2549,14.64494-23.13903,25.61889-25.62128ZM427.42659,898.4788c150.87443,11.18409,299.16678-89.21398,353.83423-227.60559,59.9366-151.73053,4.02364-336.45508-133.76043-424.38145l-220.07381,651.98704Z'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --paper: #f7f7f2;
-      --white: #ffffff;
-      --black: #050505;
-      --ink: #111111;
-      --muted: #666660;
-      --soft: #ecece6;
-      --line: rgba(5,5,5,.14);
-      --line-dark: rgba(255,255,255,.16);
-      --container: min(1540px, calc(100vw - 40px));
+      --black: #030303;
+      --ink: #0b0b0b;
+      --white: #f6f6f0;
+      --paper: #ffffff;
+      --muted: rgba(255,255,255,.66);
+      --muted-dark: rgba(0,0,0,.58);
+      --line: rgba(255,255,255,.16);
+      --line-dark: rgba(0,0,0,.14);
+      --container: min(1500px, calc(100vw - 36px));
       --ease: cubic-bezier(.16, 1, .3, 1);
     }
 
@@ -27,8 +27,8 @@
     html { scroll-behavior: smooth; }
     body {
       min-width: 320px;
-      background: var(--paper);
-      color: var(--ink);
+      background: var(--black);
+      color: var(--white);
       font-family: "Poppins", system-ui, sans-serif;
       overflow-x: hidden;
       text-rendering: geometricPrecision;
@@ -37,22 +37,18 @@
       content: "";
       position: fixed;
       inset: 0;
-      z-index: -1;
+      z-index: -2;
       pointer-events: none;
       background:
-        linear-gradient(90deg, rgba(0,0,0,.035) 1px, transparent 1px),
-        linear-gradient(rgba(0,0,0,.025) 1px, transparent 1px);
-      background-size: 84px 84px;
-      mask-image: linear-gradient(180deg, black, rgba(0,0,0,.45), transparent 86%);
+        radial-gradient(circle at 18% 12%, rgba(255,255,255,.08), transparent 22%),
+        radial-gradient(circle at 82% 0%, rgba(255,255,255,.05), transparent 18%),
+        var(--black);
     }
-    img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
-    ::selection { background: var(--black); color: var(--white); }
+    img { display: block; max-width: 100%; }
+    ::selection { background: var(--white); color: var(--black); }
 
     .shell { width: var(--container); margin: 0 auto; }
-    .reveal { opacity: 0; transform: translateY(34px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
-    .reveal.is-visible { opacity: 1; transform: translateY(0); }
-    .hero .reveal { opacity: 1; transform: none; }
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -60,7 +56,7 @@
       color: var(--muted);
       font-size: .68rem;
       font-weight: 900;
-      letter-spacing: .2em;
+      letter-spacing: .18em;
       text-transform: uppercase;
     }
     .eyebrow::before { content: ""; width: 44px; height: 1px; background: currentColor; opacity: .55; }
@@ -71,784 +67,588 @@
       justify-content: center;
       gap: 12px;
       padding: 0 24px;
-      border: 1px solid var(--black);
+      border: 1px solid currentColor;
       border-radius: 999px;
-      background: var(--black);
       color: var(--white);
       font-size: .72rem;
       font-weight: 900;
-      letter-spacing: .14em;
+      letter-spacing: .13em;
       text-transform: uppercase;
-      transition: transform .25s var(--ease), background .25s ease, color .25s ease, border-color .25s ease;
+      transition: transform .28s var(--ease), background .28s ease, color .28s ease, filter .28s ease;
     }
-    .button::after { content: "↗"; font-size: 1rem; line-height: 1; }
-    .button:hover { transform: translateY(-3px); background: transparent; color: var(--black); }
+    .button::after { content: "↗"; font-size: 1rem; }
+    .button:hover { transform: translateY(-4px); filter: blur(.15px); background: var(--white); color: var(--black); }
     .button.light { background: var(--white); color: var(--black); border-color: var(--white); }
-    .button.light:hover { background: transparent; color: var(--white); border-color: rgba(255,255,255,.35); }
-    .button.ghost { background: transparent; color: var(--black); }
-    .button.ghost:hover { background: var(--black); color: var(--white); }
+    .button.light:hover { background: transparent; color: var(--white); }
 
     .site-nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(247,247,242,.9);
-      border-bottom: 1px solid rgba(0,0,0,.08);
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(980px, calc(100vw - 28px));
+      z-index: 80;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 999px;
+      background: rgba(0,0,0,.54);
+      color: var(--white);
       backdrop-filter: blur(18px);
     }
     .nav-inner {
-      width: var(--container);
-      min-height: 88px;
-      margin: 0 auto;
+      min-height: 62px;
       display: grid;
       grid-template-columns: auto 1fr auto;
-      gap: 28px;
+      gap: 20px;
       align-items: center;
+      padding: 8px 10px 8px 18px;
     }
-    .brand { display: inline-flex; align-items: center; gap: 12px; min-width: 0; }
-    .brand-logo { width: 36px; height: 44px; flex: 0 0 auto; }
-    .brand-name { display: block; font-size: .96rem; font-weight: 900; line-height: 1; }
-    .brand-sub {
-      display: block;
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: .62rem;
-      font-weight: 800;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-    .nav-links {
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      list-style: none;
-    }
+    .brand { display: inline-flex; align-items: center; gap: 10px; min-width: 0; }
+    .brand-logo { width: 30px; height: 36px; fill: currentColor; flex: 0 0 auto; }
+    .brand-name { display: block; font-size: .9rem; font-weight: 900; line-height: 1; }
+    .brand-sub { display: none; }
+    .nav-links { display: flex; justify-content: center; gap: 6px; list-style: none; }
     .nav-links a {
       display: inline-flex;
-      padding: 11px 13px;
+      padding: 10px 11px;
       border-radius: 999px;
-      color: #3c3c38;
-      font-size: .68rem;
+      color: rgba(255,255,255,.72);
+      font-size: .62rem;
       font-weight: 900;
-      letter-spacing: .16em;
+      letter-spacing: .14em;
       text-transform: uppercase;
       transition: background .2s ease, color .2s ease;
     }
-    .nav-links a:hover { background: var(--black); color: var(--white); }
+    .nav-links a:hover { background: rgba(255,255,255,.12); color: var(--white); }
+    .site-nav .button { min-height: 44px; padding: 0 16px; font-size: .62rem; }
 
     .hero {
-      min-height: calc(100svh - 88px);
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(340px, .72fr);
-      gap: clamp(30px, 4vw, 70px);
-      align-items: stretch;
-      padding: clamp(26px, 3vw, 52px) 0 clamp(60px, 8vw, 120px);
-    }
-    .hero-copyblock {
-      min-height: 780px;
-      min-width: 0;
-      display: grid;
-      align-content: space-between;
-      gap: 44px;
-      padding: clamp(34px, 5vw, 78px);
-      border: 1px solid var(--line);
-      border-radius: 38px;
-      background: var(--black);
-      color: var(--white);
-      overflow: hidden;
+      min-height: 100svh;
       position: relative;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      isolation: isolate;
+      background: var(--black);
     }
-    .hero-copyblock::after {
-      content: "FRUTO NOBLE";
+    .hero-bg {
       position: absolute;
-      right: -.08em;
-      bottom: -.08em;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(255,255,255,.1);
-      text-stroke: 1px rgba(255,255,255,.1);
-      font-size: clamp(6rem, 17vw, 21rem);
-      font-weight: 900;
-      line-height: .72;
-      letter-spacing: -.1em;
+      inset: 0;
+      z-index: -2;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1) contrast(1.2) brightness(.66);
+      transform: scale(1.06);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.88), rgba(0,0,0,.5) 42%, rgba(0,0,0,.2)),
+        linear-gradient(0deg, rgba(0,0,0,.88), transparent 46%);
       pointer-events: none;
     }
-    .hero-main { position: relative; z-index: 1; }
-    .hero-slogan {
-      margin: 28px 0 18px;
-      color: rgba(255,255,255,.62);
-      font-size: clamp(.82rem, 1vw, 1rem);
+    .hero-content {
+      width: var(--container);
+      margin: 0 auto;
+      padding: 140px 0 56px;
+      display: grid;
+      gap: clamp(32px, 6vw, 86px);
+    }
+    .hero-topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      color: rgba(255,255,255,.64);
+      font-size: .7rem;
       font-weight: 900;
       letter-spacing: .18em;
       text-transform: uppercase;
     }
     .hero-title {
-      max-width: 11ch;
-      font-size: clamp(3.7rem, 6.35vw, 7.7rem);
-      font-weight: 900;
-      line-height: .87;
-      letter-spacing: -.095em;
+      max-width: 980px;
+      font-size: clamp(3.4rem, 9vw, 9.8rem);
+      font-weight: 800;
+      line-height: .96;
+      letter-spacing: -.075em;
     }
-    .hero-title span {
-      display: block;
-      width: fit-content;
-      margin-top: .04em;
-      padding: .015em .065em .08em;
-      background: var(--white);
+    .hero-title span { display: block; }
+    .hero-title mark {
+      display: inline-block;
+      padding: .02em .07em .07em;
+      border-radius: .08em;
+      background: rgba(255,255,255,.94);
       color: var(--black);
-      border-radius: .045em;
       transform: rotate(-1deg);
     }
-    .hero-text {
-      max-width: 670px;
-      margin-top: clamp(42px, 4.5vw, 70px);
-      color: rgba(255,255,255,.73);
-      font-size: clamp(1.05rem, 1.35vw, 1.26rem);
+    .hero-lower {
+      display: grid;
+      grid-template-columns: minmax(0, 520px) 1fr;
+      gap: clamp(28px, 6vw, 120px);
+      align-items: end;
+    }
+    .hero-copy {
+      color: rgba(255,255,255,.78);
+      font-size: clamp(1rem, 1.28vw, 1.22rem);
       line-height: 1.72;
     }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
-    .hero-meta {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--line-dark);
-      color: rgba(255,255,255,.68);
-    }
-    .hero-meta span {
-      min-height: 96px;
-      display: grid;
-      align-content: end;
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .hero-pills {
+      display: flex;
+      justify-content: flex-end;
       gap: 10px;
-      padding: 18px;
-      border-right: 1px solid var(--line-dark);
-      font-size: .67rem;
+      flex-wrap: wrap;
+    }
+    .hero-pills span {
+      padding: 11px 14px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px;
+      background: rgba(0,0,0,.24);
+      color: rgba(255,255,255,.78);
+      font-size: .66rem;
       font-weight: 900;
-      letter-spacing: .16em;
+      letter-spacing: .13em;
       text-transform: uppercase;
+      backdrop-filter: blur(12px);
     }
-    .hero-meta span:last-child { border-right: 0; }
-    .hero-media {
-      min-height: 780px;
-      min-width: 0;
-      border-radius: 38px;
+
+    .kinetic-strip {
       overflow: hidden;
-      position: relative;
-      background: var(--black);
-      color: var(--white);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+      color: var(--black);
     }
-    .hero-media img {
+    .kinetic-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 20s linear infinite;
+      will-change: transform;
+    }
+    .kinetic-track span {
+      padding: 18px 26px;
+      font-size: clamp(1.8rem, 4vw, 5rem);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -.06em;
+      white-space: nowrap;
+    }
+
+    .section { padding: clamp(80px, 10vw, 170px) 0; }
+    .split {
+      width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+      gap: clamp(28px, 7vw, 120px);
+      align-items: center;
+    }
+    .section-title {
+      margin-top: 18px;
+      max-width: 11ch;
+      font-size: clamp(3rem, 7vw, 8.6rem);
+      font-weight: 800;
+      line-height: .96;
+      letter-spacing: -.07em;
+    }
+    .lead {
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.35vw, 1.24rem);
+      line-height: 1.75;
+    }
+    .object-frame {
+      position: relative;
+      min-height: 620px;
+      overflow: hidden;
+      border-radius: 44px;
+      background: #111;
+    }
+    .object-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: contrast(1.08) grayscale(1);
-      transform: scale(1.02);
+      filter: grayscale(1) contrast(1.08);
     }
-    .image-caption {
-      position: absolute;
-      left: 18px;
-      right: 18px;
-      bottom: 18px;
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 16px 18px;
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 18px;
-      background: rgba(0,0,0,.44);
-      backdrop-filter: blur(14px);
-      color: rgba(255,255,255,.82);
-      font-size: .62rem;
+    .object-frame.tall { min-height: 720px; }
+
+    .service-board {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+      margin-top: 44px;
+    }
+    .service-row {
+      display: grid;
+      grid-template-columns: 90px minmax(0, .8fr) minmax(240px, 1fr);
+      gap: 28px;
+      padding: clamp(24px, 3.8vw, 52px) 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .service-row span {
+      color: rgba(255,255,255,.42);
+      font-size: .7rem;
       font-weight: 900;
       letter-spacing: .16em;
-      text-transform: uppercase;
     }
+    .service-row h3 {
+      font-size: clamp(1.5rem, 2.8vw, 3.35rem);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -.05em;
+    }
+    .service-row p { color: var(--muted); line-height: 1.65; }
 
-    .statement {
-      padding: clamp(80px, 9vw, 150px) 0;
-      display: grid;
-      grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
-      gap: clamp(30px, 6vw, 110px);
-      align-items: start;
-      border-top: 1px solid var(--line);
-    }
-    .statement h2 {
-      max-width: 13ch;
-      font-size: clamp(3rem, 6.2vw, 8rem);
-      font-weight: 900;
-      line-height: .86;
-      letter-spacing: -.075em;
-    }
-    .statement p {
-      max-width: 720px;
-      font-size: clamp(1.16rem, 1.8vw, 2rem);
-      line-height: 1.5;
-      font-weight: 600;
-      color: #252521;
-    }
-
-    .image-band {
-      width: var(--container);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
-      gap: 22px;
-      padding-bottom: clamp(80px, 9vw, 150px);
-    }
-    .feature-image {
-      height: 560px;
-      border-radius: 34px;
-      overflow: hidden;
-      background: var(--black);
-      position: relative;
-    }
-    .feature-image img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); }
-    .band-card {
-      min-height: 560px;
-      display: grid;
-      align-content: end;
-      gap: 26px;
-      padding: clamp(34px, 5vw, 70px);
-      border-radius: 34px;
+    .white-panel {
       background: var(--white);
-      border: 1px solid var(--line);
+      color: var(--black);
+      padding: clamp(80px, 10vw, 170px) 0;
     }
-    .band-card h2 {
-      max-width: 8ch;
-      font-size: clamp(3rem, 5.5vw, 7rem);
-      line-height: .86;
-      letter-spacing: -.07em;
-    }
-    .band-card p { color: var(--muted); line-height: 1.75; max-width: 48ch; }
-
-    .section { padding: clamp(80px, 9vw, 150px) 0; }
-    .section-head {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(280px, 560px);
-      gap: 30px;
-      align-items: end;
-      margin-bottom: clamp(34px, 5vw, 76px);
-    }
-    .section-title {
-      max-width: 10ch;
-      font-size: clamp(3.3rem, 6.4vw, 8rem);
-      font-weight: 900;
-      line-height: .84;
-      letter-spacing: -.075em;
-    }
-    .section-copy { color: var(--muted); line-height: 1.75; font-size: 1.05rem; }
-
-    .services {
-      display: grid;
-      grid-template-columns: minmax(280px, .8fr) minmax(0, 1.2fr);
-      gap: clamp(26px, 5vw, 90px);
-      align-items: start;
-    }
-    .services-media {
-      position: sticky;
-      top: 112px;
-      height: 620px;
-      border-radius: 34px;
-      overflow: hidden;
-      background: var(--black);
-    }
-    .services-media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.08); }
-    .service-list {
-      display: grid;
-      border-top: 1px solid var(--line);
-    }
-    .service-item {
-      display: grid;
-      grid-template-columns: 86px minmax(0, .8fr) minmax(240px, 1fr);
-      gap: 26px;
-      padding: clamp(30px, 4vw, 62px) 0;
-      border-bottom: 1px solid var(--line);
-      transition: padding-left .25s var(--ease), color .25s ease;
-    }
-    .service-item:hover { padding-left: 18px; }
-    .service-number {
-      color: var(--muted);
-      font-size: .72rem;
-      font-weight: 900;
-      letter-spacing: .18em;
-    }
-    .service-item h3 {
-      max-width: 10ch;
-      font-size: clamp(1.8rem, 3vw, 4rem);
-      font-weight: 900;
-      line-height: .9;
-      letter-spacing: -.06em;
-    }
-    .service-item p { color: #33332f; line-height: 1.72; }
-
-    .method {
-      background: var(--black);
-      color: var(--white);
-      padding: clamp(80px, 9vw, 150px) 0;
-      overflow: hidden;
-    }
-    .method-grid {
-      width: var(--container);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
-      gap: clamp(30px, 6vw, 100px);
-      align-items: center;
-    }
-    .method-copy h2 {
-      margin: 22px 0 28px;
-      max-width: 9ch;
-      font-size: clamp(3.4rem, 6.8vw, 8.4rem);
-      line-height: .82;
-      letter-spacing: -.078em;
-    }
-    .method-copy p { max-width: 58ch; color: rgba(255,255,255,.72); line-height: 1.75; }
-    .method-steps {
-      margin-top: 34px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .method-steps span {
-      padding: 10px 13px;
-      border: 1px solid rgba(255,255,255,.22);
-      border-radius: 999px;
-      color: rgba(255,255,255,.78);
-      font-size: .64rem;
-      font-weight: 900;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-    .method-image {
-      height: 650px;
-      border-radius: 34px;
-      overflow: hidden;
-      background: #111;
-    }
-    .method-image img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.04); }
-
-    .funnel {
+    .white-panel .eyebrow,
+    .white-panel .lead { color: var(--muted-dark); }
+    .process-list {
+      margin-top: 48px;
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
-      border-top: 1px solid var(--line);
-      border-left: 1px solid var(--line);
+      border-left: 1px solid var(--line-dark);
+      border-top: 1px solid var(--line-dark);
     }
-    .funnel-step {
-      min-height: 280px;
+    .process-item {
+      min-height: 250px;
       display: grid;
       align-content: space-between;
-      gap: 30px;
-      padding: clamp(24px, 3vw, 44px);
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background: rgba(255,255,255,.42);
-      transition: background .25s ease, color .25s ease;
+      padding: 24px;
+      border-right: 1px solid var(--line-dark);
+      border-bottom: 1px solid var(--line-dark);
+      transition: background .25s ease, color .25s ease, filter .25s ease;
     }
-    .funnel-step:hover { background: var(--black); color: var(--white); }
-    .funnel-step strong {
-      font-size: clamp(2.2rem, 4vw, 4.8rem);
-      font-weight: 900;
-      line-height: .85;
+    .process-item:hover { background: var(--black); color: var(--white); filter: blur(.1px); }
+    .process-item strong {
+      font-size: clamp(2rem, 4vw, 4.8rem);
+      line-height: .9;
       letter-spacing: -.07em;
     }
-    .funnel-step h3 { font-size: 1.25rem; margin-bottom: 10px; }
-    .funnel-step p { color: currentColor; opacity: .66; line-height: 1.65; font-size: .95rem; }
+    .process-item p { margin-top: 12px; color: currentColor; opacity: .68; line-height: 1.6; }
 
-    .logos-wrap {
-      width: var(--container);
-      margin: clamp(40px, 5vw, 80px) auto 0;
-      padding: 22px 0;
+    .trust {
+      position: relative;
       overflow: hidden;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      padding: clamp(90px, 11vw, 190px) 0;
+      background: #080808;
+      isolation: isolate;
+    }
+    .trust-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+    .trust-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1) contrast(1.08) brightness(.45);
+    }
+    .trust::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(0,0,0,.74), rgba(0,0,0,.86));
+    }
+    .trust-head {
+      width: var(--container);
+      margin: 0 auto 50px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 520px);
+      gap: 36px;
+      align-items: end;
+    }
+    .trust-title {
+      max-width: 10ch;
+      font-size: clamp(3.2rem, 7.5vw, 9rem);
+      font-weight: 800;
+      line-height: .92;
+      letter-spacing: -.07em;
+    }
+    .logos-stage {
+      width: var(--container);
+      margin: 0 auto;
+      overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,.22);
+      border-bottom: 1px solid rgba(255,255,255,.22);
+      background: rgba(0,0,0,.24);
+      backdrop-filter: blur(12px);
     }
     .logos-track {
       display: flex;
       width: max-content;
-      animation: logos-scroll 34s linear infinite;
+      animation: logos-scroll 32s linear infinite;
       will-change: transform;
     }
-    .logos-wrap:hover .logos-track { animation-play-state: paused; }
+    .logos-stage:hover .logos-track { animation-play-state: paused; }
     .logo-item {
-      width: clamp(150px, 14vw, 220px);
-      min-height: 106px;
+      width: clamp(180px, 17vw, 280px);
+      min-height: 126px;
       display: grid;
       place-items: center;
-      padding: 24px 34px;
+      padding: 28px 42px;
+      border-right: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
       filter: grayscale(1);
-      opacity: .66;
     }
-    .logo-item img { max-height: 46px; width: auto; object-fit: contain; }
+    .logo-item img {
+      max-height: 54px;
+      width: auto;
+      object-fit: contain;
+      opacity: .9;
+      filter: brightness(0) invert(1) contrast(1.15);
+    }
 
-    .difference {
+    .final-cta {
+      min-height: 100svh;
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr);
-      gap: 22px;
+      grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr);
+      gap: 0;
       align-items: stretch;
+      background: var(--white);
+      color: var(--black);
     }
-    .difference-copy {
-      min-height: 520px;
+    .final-copy {
       display: grid;
       align-content: center;
-      gap: 28px;
-      padding: clamp(34px, 6vw, 86px);
-      border-radius: 34px;
-      background: var(--white);
-      border: 1px solid var(--line);
+      gap: 30px;
+      padding: clamp(34px, 7vw, 110px);
     }
-    .difference-copy h2 {
-      max-width: 12ch;
-      font-size: clamp(3.2rem, 6vw, 7.4rem);
-      line-height: .84;
+    .final-copy .eyebrow,
+    .final-copy .lead { color: var(--muted-dark); }
+    .final-copy h2 {
+      max-width: 8ch;
+      font-size: clamp(3.4rem, 8vw, 9.5rem);
+      font-weight: 800;
+      line-height: .94;
       letter-spacing: -.075em;
     }
-    .difference-copy p { max-width: 66ch; color: var(--muted); line-height: 1.75; }
-    .difference-points { display: grid; gap: 12px; }
-    .difference-points span {
-      padding-top: 12px;
-      border-top: 1px solid var(--line);
-      font-weight: 800;
-    }
-    .difference-image {
-      height: 520px;
-      border-radius: 34px;
-      overflow: hidden;
-      background: var(--black);
-    }
-    .difference-image img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.08); }
-
-    .contact {
-      padding: clamp(80px, 9vw, 150px) 0 34px;
-    }
-    .contact-card {
-      min-height: 620px;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(340px, .72fr);
-      gap: 0;
-      border-radius: 38px;
-      overflow: hidden;
-      background: var(--black);
-      color: var(--white);
-    }
-    .contact-card.reveal { opacity: 1; transform: none; }
-    .contact-copy {
-      display: grid;
-      align-content: space-between;
-      gap: 38px;
-      padding: clamp(36px, 6vw, 86px);
-    }
-    .contact-copy h2 {
-      max-width: 8ch;
-      margin: 22px 0 46px;
-      font-size: clamp(3.4rem, 6.4vw, 7.8rem);
-      line-height: .86;
-      letter-spacing: -.078em;
-    }
-    .contact-copy p { max-width: 58ch; margin-top: 24px; color: rgba(255,255,255,.72); line-height: 1.75; }
-    .contact-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .final-copy .button { color: var(--black); }
+    .final-copy .button:hover { background: var(--black); color: var(--white); }
     .contact-list {
+      margin-top: 26px;
       display: grid;
       border-top: 1px solid var(--line-dark);
     }
     .contact-row {
       display: grid;
-      grid-template-columns: 120px minmax(0, 1fr);
-      gap: 20px;
-      padding: 18px 0;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 18px;
+      padding: 16px 0;
       border-bottom: 1px solid var(--line-dark);
     }
     .contact-row span:first-child {
-      color: rgba(255,255,255,.52);
+      color: var(--muted-dark);
       font-size: .68rem;
       font-weight: 900;
-      letter-spacing: .16em;
+      letter-spacing: .14em;
       text-transform: uppercase;
     }
     .contact-row a,
-    .contact-row span:last-child { color: var(--white); line-height: 1.55; word-break: break-word; }
-    .contact-image {
-      min-height: 620px;
-      height: 100%;
-      background: #111;
-    }
-    .contact-image img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.08); }
+    .contact-row span:last-child { word-break: break-word; }
+    .final-image { min-height: 100%; overflow: hidden; }
+    .final-image img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.12); }
 
     .site-footer {
       width: var(--container);
       margin: 0 auto;
-      padding: 24px 0 44px;
+      padding: 28px 0 42px;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
-      gap: 22px;
+      gap: 20px;
       align-items: center;
-      color: var(--muted);
+      color: rgba(255,255,255,.58);
+      background: var(--black);
     }
-    .footer-brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 800; }
-    .footer-logo { width: 28px; height: 34px; }
-    .footer-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
-    .footer-copy {
-      justify-self: end;
-      font-size: .72rem;
-      font-weight: 800;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
+    .footer-brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; }
+    .footer-logo { width: 28px; height: 34px; fill: currentColor; }
+    .footer-links { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .footer-copy { justify-self: end; font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 
+    .blur-in { opacity: 1; transform: none; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @keyframes logos-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
-      .reveal { opacity: 1; transform: none; }
     }
 
     @media (max-width: 1100px) {
-      .nav-inner { grid-template-columns: auto auto; }
-      .nav-links { order: 3; grid-column: 1 / -1; justify-content: flex-start; overflow-x: auto; padding-bottom: 6px; scrollbar-width: none; }
+      .site-nav { top: 10px; border-radius: 24px; }
+      .nav-inner { grid-template-columns: 1fr auto; }
+      .nav-links { order: 3; grid-column: 1 / -1; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; }
       .nav-links::-webkit-scrollbar { display: none; }
-      .hero,
-      .statement,
-      .image-band,
-      .services,
-      .method-grid,
-      .difference,
-      .contact-card { grid-template-columns: 1fr; }
-      .hero-copyblock,
-      .hero-media,
-      .services-media,
-      .method-image,
-      .difference-copy,
-      .difference-image,
-      .contact-image { min-height: 520px; }
-      .services-media { position: relative; top: auto; }
-      .funnel { grid-template-columns: repeat(2, 1fr); }
+      .site-nav .button { display: none; }
+      .hero-lower,
+      .split,
+      .trust-head,
+      .final-cta { grid-template-columns: 1fr; }
+      .hero-pills { justify-content: flex-start; }
+      .object-frame,
+      .object-frame.tall { min-height: 520px; }
+      .process-list { grid-template-columns: repeat(2, 1fr); }
+      .final-image { min-height: 520px; }
+      .site-footer { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+      .footer-copy { justify-self: center; }
     }
 
     @media (max-width: 700px) {
       :root { --container: min(calc(100vw - 22px), 440px); }
-      body::before { background-size: 54px 54px; }
-      .nav-inner { min-height: 92px; grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 10px 0 8px; }
-      .brand-logo { width: 32px; height: 38px; }
-      .brand-sub { display: none; }
-      .nav-links { gap: 2px; }
-      .nav-links a { padding: 8px 8px; font-size: .62rem; letter-spacing: .1em; }
-      .nav-inner > .button { display: none; }
-      .hero { padding-top: 12px; gap: 14px; }
-      .hero-copyblock,
-      .hero-media { min-height: auto; border-radius: 26px; }
-      .hero-copyblock { padding: 38px 22px 24px; }
-      .hero-title { font-size: clamp(2.7rem, 11vw, 3.35rem); line-height: .95; letter-spacing: -.08em; }
-      .hero-title span { margin-top: .1em; transform: none; }
-      .hero-text { margin-top: 58px; font-size: 1rem; line-height: 1.65; }
+      .site-nav { width: calc(100vw - 18px); }
+      .nav-inner { padding: 10px 12px; }
+      .brand-logo { width: 28px; height: 34px; }
+      .nav-links a { padding: 8px 7px; font-size: .58rem; letter-spacing: .1em; }
+      .hero-content { padding: 128px 0 34px; }
+      .hero-title { font-size: clamp(3rem, 15vw, 4.6rem); line-height: 1; letter-spacing: -.07em; }
+      .hero-topline { align-items: start; flex-direction: column; }
       .hero-actions { flex-direction: column; }
       .hero-actions .button { width: 100%; }
-      .hero-meta { grid-template-columns: 1fr; }
-      .hero-meta span { min-height: 72px; border-right: 0; border-bottom: 1px solid var(--line-dark); }
-      .hero-meta span:last-child { border-bottom: 0; }
-      .hero-media img { aspect-ratio: 4 / 5; height: auto; }
-      .image-caption { position: static; margin: 0; border-radius: 0; background: #090909; }
-      .statement { padding: 82px 0; }
-      .statement h2,
-      .section-title,
-      .band-card h2,
-      .method-copy h2,
-      .difference-copy h2,
-      .contact-copy h2 { font-size: clamp(3rem, 13vw, 4.7rem); }
-      .image-band,
+      .hero-pills span { font-size: .58rem; }
+      .kinetic-track span { padding: 14px 18px; font-size: clamp(1.8rem, 13vw, 3.8rem); }
       .section,
-      .method,
-      .contact { padding-bottom: 86px; }
-      .feature-image,
-      .band-card,
-      .services-media,
-      .method-image,
-      .difference-copy,
-      .difference-image,
-      .contact-image { min-height: auto; height: auto; border-radius: 24px; }
-      .feature-image img,
-      .services-media img,
-      .method-image img,
-      .difference-image img,
-      .contact-image img { aspect-ratio: 4 / 5; height: auto; }
-      .band-card,
-      .difference-copy,
-      .contact-copy { padding: 34px 24px; }
-      .section-head { grid-template-columns: 1fr; }
-      .service-item { grid-template-columns: 1fr; gap: 12px; }
-      .service-item:hover { padding-left: 0; }
-      .funnel { grid-template-columns: 1fr; border-left: 0; }
-      .funnel-step { min-height: 220px; border-left: 1px solid var(--line); }
-      .contact-card { border-radius: 26px; }
-      .contact-row { grid-template-columns: 1fr; gap: 8px; }
-      .logos-wrap { margin-top: 28px; }
-      .logos-track { animation-duration: 26s; }
-      .logo-item { width: 150px; min-height: 86px; padding: 18px 24px; }
-      .logo-item img { max-height: 34px; }
-      .site-footer { grid-template-columns: 1fr; justify-items: center; text-align: center; }
-      .footer-copy { justify-self: center; }
+      .white-panel,
+      .trust { padding: 82px 0; }
+      .section-title,
+      .trust-title,
+      .final-copy h2 { font-size: clamp(3rem, 13vw, 4.7rem); line-height: 1; }
+      .object-frame,
+      .object-frame.tall { min-height: auto; border-radius: 28px; }
+      .object-frame img,
+      .final-image img { aspect-ratio: 4 / 5; height: auto; }
+      .service-row { grid-template-columns: 1fr; gap: 12px; }
+      .process-list { grid-template-columns: 1fr; }
+      .process-item { min-height: 210px; }
+      .logo-item { width: 170px; min-height: 104px; padding: 22px 28px; }
+      .logo-item img { max-height: 42px; }
+      .final-copy { padding: 84px 22px 42px; }
+      .contact-row { grid-template-columns: 1fr; gap: 6px; }
     }
   </style>
 </head>
 <body>
-  <nav class="site-nav" id="site-nav">
+  <nav class="site-nav" aria-label="Navegación principal">
     <div class="nav-inner">
-      <a href="#hero" class="brand" aria-label="Fruto Noble">
+      <a href="#inicio" class="brand" aria-label="Fruto Noble">
         <svg class="brand-logo" viewBox="0 0 906.06742 1080" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M475.91785,106.20277c6.55089-23.14181,21.65524-88.48892,41.39983-100.14998,32.20314-19.01901,69.89896,9.61554,57.41484,46.50507L251.94487,1013.08183c-16.85469,41.52943-77.15148,34.25968-75.90974-13.54662.41623-16.02447,30.8372-91.27805,28.65705-95.77757C22.39666,776.77902-39.1182,523.7445,70.46866,328.1502c52.34683-93.43038,151.29064-171.38621,254.32742-201.61997,49.53171-14.53394,99.71277-18.82986,151.12178-20.32745Z"/>
           <path d="M648.07822,42.22206c14.5883-3.2998,29.31124-.24048,40.06037,10.09303,27.3507,26.29313-13.16574,84.73174-16.52703,116.00048,190.86638,109.80395,264.5999,352.81267,174.02136,553.31068-75.85906,167.91606-260.1539,275.66416-445.3126,253.40562-4.23046,2.98004-21.49636,67.02293-26.84677,78.46724-19.57572,41.87162-72.39625,31.65012-75.44577-13.29239L622.45934,67.84334c3.80028-10.2549,14.64494-23.13903,25.61889-25.62128ZM427.42659,898.4788c150.87443,11.18409,299.16678-89.21398,353.83423-227.60559,59.9366-151.73053,4.02364-336.45508-133.76043-424.38145l-220.07381,651.98704Z"/>
         </svg>
-        <span>
-          <span class="brand-name">Fruto Noble</span>
-          <span class="brand-sub">Agencia de marketing digital</span>
-        </span>
+        <span><span class="brand-name">Fruto Noble</span><span class="brand-sub">Agencia digital</span></span>
       </a>
-      <ul class="nav-links" aria-label="Secciones principales">
+      <ul class="nav-links">
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#metodo">Método</a></li>
-        <li><a href="#clientes">Clientes</a></li>
+        <li><a href="#confianza">Confianza</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
-      <a href="https://wa.me/541133149081" target="_blank" rel="noreferrer" class="button">Agendar llamada</a>
+      <a href="https://wa.me/541133149081" target="_blank" rel="noreferrer" class="button light">Hablemos</a>
     </div>
   </nav>
 
   <main>
-    <section class="hero shell" id="hero">
-      <div class="hero-copyblock reveal">
-        <div class="hero-main">
-          <p class="eyebrow" style="color: rgba(255,255,255,.58);">Agencia creativa y digital</p>
-          <p class="hero-slogan">Marketing que da frutos</p>
-          <h1 class="hero-title">El color se lo ponemos <span>a tu proyecto</span></h1>
-          <p class="hero-text">Estrategia, contenido, campañas y diseño para marcas, negocios y proyectos que necesitan crecer con más claridad, identidad e intención.</p>
-          <div class="hero-actions">
-            <a href="#contacto" class="button light">Trabajemos juntos</a>
-            <a href="#servicios" class="button light">Ver servicios</a>
+    <section class="hero" id="inicio">
+      <figure class="hero-bg motion-photo">
+        <img src="Img/generated/fruto-hero-editorial.png" alt="Buenos Aires nocturna en blanco y negro con objetos de planificación creativa" width="1792" height="1024" fetchpriority="high">
+      </figure>
+      <div class="hero-content">
+        <div class="hero-topline blur-in">
+          <span>Fruto Noble / Buenos Aires</span>
+          <span>Marketing que da frutos</span>
+        </div>
+        <h1 class="hero-title blur-in">
+          <span>El color se lo ponemos</span>
+          <mark>a tu proyecto</mark>
+        </h1>
+        <div class="hero-lower">
+          <div class="blur-in">
+            <p class="hero-copy">Marketing digital simple, estratégico y bien ejecutado para marcas, negocios y proyectos que necesitan ordenar su comunicación y generar más consultas.</p>
+            <div class="hero-actions">
+              <a href="#contacto" class="button light">Trabajemos juntos</a>
+              <a href="#servicios" class="button">Ver servicios</a>
+            </div>
+          </div>
+          <div class="hero-pills blur-in" aria-label="Servicios principales">
+            <span>Estrategia</span>
+            <span>Identidad</span>
+            <span>Contenido</span>
+            <span>Campañas</span>
+            <span>Web</span>
+            <span>Medición</span>
           </div>
         </div>
-        <div class="hero-meta" aria-label="Especialidades principales">
-          <span>Estrategia digital</span>
-          <span>Contenido + campañas</span>
-          <span>Medición + optimización</span>
-        </div>
-      </div>
-      <figure class="hero-media reveal">
-        <img src="Img/generated/fruto-hero-editorial.png" alt="Composición editorial monocroma de estrategia, creatividad y performance para Fruto Noble" width="1717" height="916" fetchpriority="high">
-        <figcaption class="image-caption"><span>Identidad en blanco y negro</span><span>El color lo trae cada proyecto</span></figcaption>
-      </figure>
-    </section>
-
-    <section class="statement shell">
-      <div class="reveal">
-        <p class="eyebrow">Qué hacemos</p>
-      </div>
-      <div class="reveal">
-        <h2>Ordenamos cómo tu marca se ve, habla y crece.</h2>
-        <p>No trabajamos piezas aisladas. Diseñamos sistemas de comunicación para que tu proyecto tenga una identidad clara, una estrategia concreta y un camino medible hacia mejores oportunidades.</p>
       </div>
     </section>
 
-    <section class="image-band">
-      <figure class="feature-image reveal">
-        <img src="Img/generated/fruto-servicios-sistema.png" alt="Sistema visual de servicios de marketing digital con piezas editoriales, campañas y medición" width="1536" height="1024" loading="lazy" decoding="async">
-      </figure>
-      <div class="band-card reveal">
-        <p class="eyebrow">Sistema</p>
-        <h2>Menos ruido. Más dirección.</h2>
-        <p>La marca no necesita hacer más por hacer. Necesita comunicar mejor, medir mejor y crecer con intención.</p>
+    <div class="kinetic-strip" aria-hidden="true">
+      <div class="kinetic-track">
+        <span>MARKETING QUE DA FRUTOS</span><span>EL COLOR SE LO PONEMOS A TU PROYECTO</span><span>BUENOS AIRES</span>
+        <span>MARKETING QUE DA FRUTOS</span><span>EL COLOR SE LO PONEMOS A TU PROYECTO</span><span>BUENOS AIRES</span>
       </div>
-    </section>
+    </div>
 
-    <section class="section shell" id="servicios">
-      <div class="section-head">
-        <div class="reveal">
-          <p class="eyebrow">Servicios</p>
-          <h2 class="section-title">Marketing integral sin humo.</h2>
-        </div>
-        <p class="section-copy reveal">Unimos estrategia, identidad, contenido, pauta, web y medición para que cada acción tenga un rol dentro del sistema.</p>
-      </div>
-      <div class="services">
-        <figure class="services-media reveal">
-          <img src="Img/generated/fruto-servicios-sistema.png" alt="Recursos editoriales en blanco y negro para servicios de estrategia, identidad y campañas" width="1536" height="1024" loading="lazy" decoding="async">
-        </figure>
-        <div class="service-list">
-          <article class="service-item reveal">
-            <span class="service-number">01</span>
-            <h3>Estrategia digital</h3>
-            <p>Entendemos el proyecto, el público, la oferta y el objetivo antes de proponer acciones.</p>
-          </article>
-          <article class="service-item reveal">
-            <span class="service-number">02</span>
-            <h3>Branding e identidad</h3>
-            <p>Ordenamos la forma de verse, hablar y conectar para que la marca se reconozca con claridad.</p>
-          </article>
-          <article class="service-item reveal">
-            <span class="service-number">03</span>
-            <h3>Contenido para redes</h3>
-            <p>Creamos piezas que explican, generan confianza y activan consultas sin publicar por publicar.</p>
-          </article>
-          <article class="service-item reveal">
-            <span class="service-number">04</span>
-            <h3>Paid Media</h3>
-            <p>Activamos Meta Ads y Google Ads para aprender, medir y optimizar con criterio comercial.</p>
-          </article>
-          <article class="service-item reveal">
-            <span class="service-number">05</span>
-            <h3>Web y landing pages</h3>
-            <p>Diseñamos páginas que ordenan la propuesta, transmiten confianza y facilitan la consulta.</p>
-          </article>
-          <article class="service-item reveal">
-            <span class="service-number">06</span>
-            <h3>Reportes y optimización</h3>
-            <p>Leemos datos, detectamos oportunidades y ajustamos contenido, campañas y embudos.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="method" id="metodo">
-      <div class="method-grid">
-        <div class="method-copy reveal">
-          <p class="eyebrow" style="color: rgba(255,255,255,.58);">Método</p>
-          <h2>Un sistema antes que piezas sueltas.</h2>
-          <p>Fruto Noble se acopla a tu proyecto como equipo: entendemos, ordenamos, diseñamos, activamos y optimizamos. La creatividad funciona mejor cuando tiene proceso.</p>
-          <div class="method-steps">
-            <span>Entender</span>
-            <span>Ordenar</span>
-            <span>Diseñar</span>
-            <span>Activar</span>
-            <span>Medir</span>
+    <section class="section" id="servicios">
+      <div class="split">
+        <div>
+          <p class="eyebrow blur-in">Qué hacemos</p>
+          <h2 class="section-title blur-in">Ordenamos tu marketing.</h2>
+          <p class="lead blur-in">No hacemos ruido por hacer. Definimos qué decir, cómo mostrarlo, dónde activarlo y cómo medirlo.</p>
+          <div class="service-board">
+            <article class="service-row blur-in"><span>01</span><h3>Estrategia digital</h3><p>Objetivos, público, mensaje y canales claros antes de ejecutar.</p></article>
+            <article class="service-row blur-in"><span>02</span><h3>Branding e identidad</h3><p>Una forma propia de verse, hablar y conectar.</p></article>
+            <article class="service-row blur-in"><span>03</span><h3>Contenido</h3><p>Piezas simples y útiles para explicar mejor tu propuesta.</p></article>
+            <article class="service-row blur-in"><span>04</span><h3>Paid Media</h3><p>Meta Ads y Google Ads con lectura, criterio y optimización.</p></article>
+            <article class="service-row blur-in"><span>05</span><h3>Web y landings</h3><p>Páginas claras para transmitir confianza y activar consultas.</p></article>
           </div>
         </div>
-        <figure class="method-image reveal">
-          <img src="Img/generated/fruto-funnel-proceso.png" alt="Imagen editorial monocroma de funnel y proceso de crecimiento" width="1536" height="1024" loading="lazy" decoding="async">
+        <figure class="object-frame tall motion-photo blur-in">
+          <img src="Img/generated/fruto-servicios-sistema.png" alt="Mesa editorial en blanco y negro con papeles, pruebas y objetos de planificación" width="1792" height="1024" loading="lazy" decoding="async">
         </figure>
       </div>
     </section>
 
-    <section class="section shell">
-      <div class="section-head">
-        <div class="reveal">
-          <p class="eyebrow">Funnel</p>
-          <h2 class="section-title">No todos compran en el primer contacto.</h2>
+    <section class="white-panel" id="metodo">
+      <div class="split">
+        <figure class="object-frame motion-photo blur-in">
+          <img src="Img/generated/fruto-objeto-ba.png" alt="Llave, café y papeles en blanco y negro con una referencia sutil a Buenos Aires" width="1024" height="1024" loading="lazy" decoding="async">
+        </figure>
+        <div>
+          <p class="eyebrow blur-in">Método</p>
+          <h2 class="section-title blur-in">Nos acoplamos a tu proyecto.</h2>
+          <p class="lead blur-in">Funcionamos como equipo externo: entendemos el negocio, ordenamos la propuesta, diseñamos la comunicación, activamos campañas y mejoramos con datos.</p>
+          <div class="process-list">
+            <article class="process-item blur-in"><strong>01</strong><div><h3>Entender</h3><p>Proyecto, oferta y objetivo.</p></div></article>
+            <article class="process-item blur-in"><strong>02</strong><div><h3>Ordenar</h3><p>Mensaje, canales y prioridades.</p></div></article>
+            <article class="process-item blur-in"><strong>03</strong><div><h3>Activar</h3><p>Contenido, pauta y web.</p></div></article>
+            <article class="process-item blur-in"><strong>04</strong><div><h3>Medir</h3><p>Datos para decidir mejor.</p></div></article>
+            <article class="process-item blur-in"><strong>05</strong><div><h3>Optimizar</h3><p>Ajustes constantes.</p></div></article>
+          </div>
         </div>
-        <p class="section-copy reveal">Por eso pensamos recorridos. La comunicación tiene que ayudar a descubrir, confiar, elegir, convertir y mejorar con el tiempo.</p>
-      </div>
-      <div class="funnel">
-        <article class="funnel-step reveal"><strong>01</strong><div><h3>Descubrir</h3><p>Hacer visible la propuesta para las personas correctas.</p></div></article>
-        <article class="funnel-step reveal"><strong>02</strong><div><h3>Confiar</h3><p>Construir una marca clara, seria y consistente.</p></div></article>
-        <article class="funnel-step reveal"><strong>03</strong><div><h3>Elegir</h3><p>Mostrar por qué tu proyecto es una buena opción.</p></div></article>
-        <article class="funnel-step reveal"><strong>04</strong><div><h3>Convertir</h3><p>Facilitar consultas con campañas, landings y CTAs claros.</p></div></article>
-        <article class="funnel-step reveal"><strong>05</strong><div><h3>Optimizar</h3><p>Medir, aprender y ajustar para crecer con intención.</p></div></article>
       </div>
     </section>
 
-    <section class="section" id="clientes">
-      <div class="shell section-head">
-        <div class="reveal">
-          <p class="eyebrow">Confianza</p>
-          <h2 class="section-title">Marcas y proyectos que acompañamos.</h2>
+    <section class="trust" id="confianza">
+      <figure class="trust-bg motion-photo">
+        <img src="Img/generated/fruto-confianza-logos.png" alt="Tarjetas en blanco sobre una mesa oscura para presentar marcas que confiaron en Fruto Noble" width="1792" height="1024" loading="lazy" decoding="async">
+      </figure>
+      <div class="trust-head">
+        <div>
+          <p class="eyebrow blur-in">Quienes confiaron en nosotros</p>
+          <h2 class="trust-title blur-in">Marcas reales. Trabajo real.</h2>
         </div>
-        <p class="section-copy reveal">Mantenemos los logos reales del proyecto y los integramos en una lectura más limpia, sobria y editorial.</p>
+        <p class="lead blur-in">El carrusel deja de ser decoración: es una señal de confianza. Estos son proyectos y marcas presentes en el recorrido de Fruto Noble.</p>
       </div>
-      <div class="logos-wrap" aria-label="Marcas que confían en Fruto Noble">
+      <div class="logos-stage" aria-label="Marcas que confiaron en Fruto Noble">
         <div class="logos-track">
           <div class="logo-item"><img src="Img/logo-marca1.png" alt="LEF"></div>
           <div class="logo-item"><img src="Img/logo-marca2.png" alt="Dellorean"></div>
@@ -870,47 +670,25 @@
       </div>
     </section>
 
-    <section class="section shell">
-      <div class="difference">
-        <div class="difference-copy reveal">
-          <p class="eyebrow">Diferencial</p>
-          <h2>No vendemos humo. Diseñamos dirección.</h2>
-          <p>Trabajamos con marcas, negocios, artistas y proyectos que necesitan ordenar su comunicación, verse mejor y tener más oportunidades de crecer sin promesas mágicas.</p>
-          <div class="difference-points">
-            <span>Comunicación clara para personas reales.</span>
-            <span>Creatividad con criterio comercial.</span>
-            <span>Medición para decidir mejor.</span>
-          </div>
+    <section class="final-cta" id="contacto">
+      <div class="final-copy">
+        <p class="eyebrow blur-in">Contacto</p>
+        <h2 class="blur-in">Hablemos claro.</h2>
+        <p class="lead blur-in">Si querés ordenar tu comunicación, activar campañas o mejorar tu presencia digital, escribinos. Sin vueltas, sin humo.</p>
+        <div class="hero-actions blur-in">
+          <a href="https://wa.me/541133149081" target="_blank" rel="noreferrer" class="button">Escribinos</a>
+          <a href="mailto:martin@frutonoble.com.ar" class="button">Enviar mail</a>
         </div>
-        <figure class="difference-image reveal">
-          <img src="Img/generated/fruto-hero-editorial.png" alt="Pieza editorial monocroma para representar dirección de arte y estrategia" width="1717" height="916" loading="lazy" decoding="async">
-        </figure>
-      </div>
-    </section>
-
-    <section class="contact shell" id="contacto">
-      <div class="contact-card reveal">
-        <div class="contact-copy">
-          <div>
-            <p class="eyebrow" style="color: rgba(255,255,255,.58);">Contacto</p>
-            <h2>Hablemos de tu proyecto.</h2>
-            <p>Si necesitás ordenar tu marca, comunicar mejor o activar un sistema de crecimiento más claro, escribinos.</p>
-            <div class="contact-actions">
-              <a href="https://wa.me/541133149081" target="_blank" rel="noreferrer" class="button light">Escribinos</a>
-              <a href="mailto:martin@frutonoble.com.ar" class="button light">Enviar mail</a>
-            </div>
-          </div>
-          <div class="contact-list">
-            <div class="contact-row"><span>Email</span><a href="mailto:martin@frutonoble.com.ar">martin@frutonoble.com.ar</a></div>
-            <div class="contact-row"><span>WhatsApp</span><a href="https://wa.me/541133149081" target="_blank" rel="noreferrer">+54 11 3314-9081</a></div>
-            <div class="contact-row"><span>Instagram</span><a href="https://instagram.com/fruto_noble" target="_blank" rel="noreferrer">@fruto_noble</a></div>
-            <div class="contact-row"><span>Ubicación</span><span>Buenos Aires, Argentina</span></div>
-          </div>
+        <div class="contact-list blur-in">
+          <div class="contact-row"><span>Email</span><a href="mailto:martin@frutonoble.com.ar">martin@frutonoble.com.ar</a></div>
+          <div class="contact-row"><span>WhatsApp</span><a href="https://wa.me/541133149081" target="_blank" rel="noreferrer">+54 11 3314-9081</a></div>
+          <div class="contact-row"><span>Instagram</span><a href="https://instagram.com/fruto_noble" target="_blank" rel="noreferrer">@fruto_noble</a></div>
+          <div class="contact-row"><span>Base</span><span>Buenos Aires, Argentina</span></div>
         </div>
-        <figure class="contact-image">
-          <img src="Img/generated/fruto-contacto-cierre.png" alt="Imagen editorial monocroma de cierre para contacto de Fruto Noble" width="1536" height="1024" loading="lazy" decoding="async">
-        </figure>
       </div>
+      <figure class="final-image motion-photo">
+        <img src="Img/generated/fruto-contacto-cierre.png" alt="Llave y tarjeta en blanco y negro para iniciar un proyecto con Fruto Noble" width="1536" height="1024" loading="lazy" decoding="async">
+      </figure>
     </section>
   </main>
 
@@ -932,75 +710,45 @@
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script>
-    const reveals = document.querySelectorAll(".reveal");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const showReveals = () => reveals.forEach((item) => item.classList.add("is-visible"));
+    const bootMotion = () => {
+      if (reduced || !window.gsap) return;
+      gsap.config({ nullTargetWarn: false });
+      if (window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 
-    const runAnimations = () => {
-      if (reduced) {
-        showReveals();
-        return;
-      }
+      gsap.from(".site-nav", { y: -20, duration: .8, ease: "power3.out" });
+      gsap.from(".hero .blur-in", { y: 36, duration: .9, stagger: .1, ease: "power3.out", delay: .08 });
+      gsap.fromTo(".hero-bg img", { scale: 1.14 }, { scale: 1.06, duration: 1.35, ease: "power3.out" });
 
-      if (window.gsap) {
-        gsap.config({ nullTargetWarn: false });
-        if (window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
+      if (!window.ScrollTrigger) return;
 
-        gsap.set(".reveal:not(.hero .reveal)", { opacity: 0, y: 34 });
-        gsap.fromTo(".hero-copyblock", { y: 18 }, { y: 0, duration: 1, ease: "power3.out" });
-        gsap.fromTo(".hero-media", { y: 18 }, { y: 0, duration: 1.05, ease: "power3.out", delay: .12 });
-        gsap.fromTo(".hero-title", { y: 58 }, { y: 0, duration: 1.05, ease: "power4.out", delay: .16 });
-
-        if (window.ScrollTrigger) {
-          gsap.utils.toArray(".reveal").forEach((item) => {
-            if (item.closest(".hero")) return;
-            gsap.to(item, {
-              opacity: 1,
-              y: 0,
-              duration: .85,
-              ease: "power3.out",
-              scrollTrigger: { trigger: item, start: "top 86%", toggleActions: "play none none reverse" }
-            });
-          });
-
-          gsap.utils.toArray(".feature-image img, .services-media img, .method-image img, .difference-image img, .contact-image img").forEach((image) => {
-            gsap.fromTo(image, { scale: 1.08 }, {
-              scale: 1,
-              ease: "none",
-              scrollTrigger: { trigger: image, start: "top bottom", end: "bottom top", scrub: true }
-            });
-          });
-
-          ScrollTrigger.matchMedia({
-            "(min-width: 900px)": () => {
-              ScrollTrigger.create({
-                trigger: "#servicios",
-                start: "top 12%",
-                end: "bottom 76%",
-                pin: ".services-media",
-                pinSpacing: false
-              });
-            }
-          });
-        } else {
-          showReveals();
-        }
-        return;
-      }
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
+      gsap.utils.toArray(".blur-in:not(.hero .blur-in)").forEach((el, index) => {
+        gsap.from(el, {
+          y: 38,
+          duration: .9,
+          ease: "power3.out",
+          delay: (index % 4) * .035,
+          scrollTrigger: { trigger: el, start: "top 86%", toggleActions: "play none none reverse" }
         });
-      }, { threshold: .14, rootMargin: "0px 0px -8% 0px" });
-      reveals.forEach((item) => observer.observe(item));
+      });
+
+      gsap.utils.toArray(".motion-photo img").forEach((img) => {
+        gsap.to(img, {
+          yPercent: -8,
+          scale: 1.12,
+          ease: "none",
+          scrollTrigger: { trigger: img.closest(".motion-photo"), start: "top bottom", end: "bottom top", scrub: .8 }
+        });
+      });
+
+      gsap.utils.toArray(".service-row, .process-item, .logo-item").forEach((el) => {
+        el.addEventListener("mouseenter", () => gsap.to(el, { x: 8, duration: .22, ease: "power2.out" }));
+        el.addEventListener("mouseleave", () => gsap.to(el, { x: 0, duration: .28, ease: "power2.out" }));
+      });
     };
 
-    window.addEventListener("load", runAnimations, { once: true });
+    window.addEventListener("load", bootMotion, { once: true });
   </script>
 </body>
 </html>
