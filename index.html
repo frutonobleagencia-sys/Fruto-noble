@@ -421,6 +421,63 @@
         rgba(0,0,0,.025);
       background-size: 34px 34px;
     }
+    .strategy-canvas {
+      position: relative;
+      min-height: 210px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(0,0,0,.08), transparent 34%),
+        linear-gradient(135deg, rgba(255,255,255,.78), rgba(0,0,0,.04));
+    }
+    .strategy-canvas::before,
+    .strategy-canvas::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(0,0,0,.16);
+      border-radius: 50%;
+      animation: orbit 22s linear infinite;
+    }
+    .strategy-canvas::after {
+      inset: 44px;
+      border-style: dashed;
+      animation-duration: 32s;
+      animation-direction: reverse;
+      opacity: .58;
+    }
+    .signal-stack {
+      position: relative;
+      z-index: 1;
+      width: min(250px, 86%);
+      display: grid;
+      gap: 9px;
+      transform: rotate(-4deg);
+    }
+    .signal-stack span {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 0 16px;
+      border: 1px solid rgba(0,0,0,.18);
+      border-radius: 14px;
+      background: rgba(255,255,255,.82);
+      color: rgba(0,0,0,.72);
+      font-size: .58rem;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      box-shadow: 0 18px 50px rgba(0,0,0,.08);
+    }
+    .signal-stack span:nth-child(2) { transform: translateX(18px); background: var(--black); color: var(--paper); }
+    .signal-stack span:nth-child(3) { transform: translateX(-10px); }
+    .signal-stack b,
+    .signal-stack em { font-style: normal; font-weight: 900; }
     .visual-topline,
     .visual-funnel {
       display: flex;
@@ -844,6 +901,64 @@
       color: currentColor;
       opacity: .72;
     }
+    .service-graphic {
+      position: relative;
+      z-index: 1;
+      min-height: 128px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: end;
+      gap: 8px;
+      padding: 16px;
+      border: 1px solid currentColor;
+      border-radius: 20px;
+      opacity: .72;
+      overflow: hidden;
+    }
+    .service-graphic::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(currentColor 1px, transparent 1px),
+        linear-gradient(90deg, currentColor 1px, transparent 1px);
+      background-size: 24px 24px;
+      opacity: .08;
+    }
+    .service-graphic i,
+    .service-graphic span {
+      position: relative;
+      z-index: 1;
+      display: block;
+      border: 1px solid currentColor;
+      background: currentColor;
+    }
+    .service-graphic i { height: var(--h); min-height: 24px; border-radius: 999px 999px 8px 8px; opacity: .9; }
+    .service-graphic span { height: 42px; border-radius: 999px; background: transparent; opacity: .8; }
+    .service-graphic[data-visual="identity"] {
+      grid-template-columns: repeat(3, 1fr);
+      place-items: center;
+    }
+    .service-graphic[data-visual="identity"] span {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+    }
+    .service-graphic[data-visual="identity"] span:nth-child(2) { border-radius: 16px; background: currentColor; }
+    .service-graphic[data-visual="content"] {
+      grid-template-columns: 1.2fr .8fr;
+      align-items: stretch;
+    }
+    .service-graphic[data-visual="content"] span { height: auto; border-radius: 16px; }
+    .service-graphic[data-visual="content"] span:nth-child(1) { background: currentColor; }
+    .service-graphic[data-visual="ads"] { grid-template-columns: 1fr 1fr 1fr; }
+    .service-graphic[data-visual="ads"] span { height: auto; border-radius: 50%; aspect-ratio: 1; align-self: center; }
+    .service-graphic[data-visual="web"] {
+      grid-template-columns: 1fr;
+      align-items: stretch;
+    }
+    .service-graphic[data-visual="web"] span { height: auto; border-radius: 18px; }
+    .service-graphic[data-visual="report"] { grid-template-columns: repeat(5, 1fr); }
 
     .growth-system {
       padding: 0 0 clamp(90px, 9vw, 150px);
@@ -909,6 +1024,44 @@
         var(--paper);
       background-size: 42px 42px;
     }
+    .funnel-map {
+      position: relative;
+      min-height: 210px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      align-items: center;
+      padding: 18px;
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 24px;
+      overflow: hidden;
+      background: rgba(255,255,255,.76);
+    }
+    .funnel-map::before {
+      content: "";
+      position: absolute;
+      left: 32px;
+      right: 32px;
+      top: 50%;
+      border-top: 1px dashed rgba(0,0,0,.22);
+    }
+    .funnel-node {
+      position: relative;
+      z-index: 1;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(0,0,0,.16);
+      border-radius: 50%;
+      background: var(--paper);
+      font-size: .58rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,.62);
+    }
+    .funnel-node:nth-child(even) { transform: translateY(-28px); background: var(--black); color: var(--paper); }
+    .funnel-node:nth-child(odd) { transform: translateY(28px); }
     .funnel-step {
       display: grid;
       grid-template-columns: 92px minmax(0, 1fr);
@@ -1121,6 +1274,32 @@
     .case-card:hover .case-extra { background: #101010; color: var(--paper); }
     .case-extra strong { font-family: "Space Grotesk", sans-serif; font-size: 1.15rem; letter-spacing: -.04em; }
     .case-extra span { font-size: .78rem; line-height: 1.45; opacity: .7; }
+    .case-visual {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 12px;
+      min-height: 116px;
+      padding: 14px;
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 18px;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(0,0,0,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,.045) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+    .case-card:hover .case-visual { border-color: rgba(255,255,255,.18); }
+    .case-visual::before,
+    .case-visual::after {
+      content: "";
+      display: block;
+      border: 1px solid currentColor;
+      border-radius: 14px;
+      opacity: .64;
+    }
+    .case-visual::before { background: currentColor; opacity: .82; }
+    .case-visual::after { border-radius: 50%; }
 
     .process-wrap {
       display: grid;
@@ -1137,6 +1316,35 @@
       padding-top: 40px;
     }
     .process-note { max-width: 46ch; line-height: 1.75; color: var(--muted); }
+    .process-visual {
+      min-height: 260px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      align-items: end;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(5,5,5,.04), transparent),
+        var(--paper);
+    }
+    .process-visual span {
+      min-height: calc(var(--h) * 1%);
+      display: grid;
+      place-items: end center;
+      padding-bottom: 14px;
+      border: 1px solid rgba(0,0,0,.14);
+      border-radius: 999px 999px 12px 12px;
+      background: var(--black);
+      color: var(--paper);
+      font-size: .58rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      writing-mode: vertical-rl;
+      text-transform: uppercase;
+    }
     .process-list {
       counter-reset: process;
       display: grid;
@@ -1235,6 +1443,29 @@
       transition: opacity .2s ease, transform .2s var(--ease);
     }
     .contact-row a:hover { opacity: .62; transform: translateX(4px); }
+    .contact-visual {
+      width: min(440px, 100%);
+      min-height: 180px;
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-visual span {
+      min-height: 80px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 20px;
+      background:
+        linear-gradient(rgba(255,255,255,.09) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.09) 1px, transparent 1px),
+        rgba(255,255,255,.05);
+      background-size: 18px 18px;
+    }
+    .contact-visual span:nth-child(1) { grid-row: span 2; border-radius: 999px 999px 22px 22px; }
+    .contact-visual span:nth-child(2) { background: var(--paper); }
+    .contact-visual span:nth-child(3) { border-radius: 50%; }
 
     .site-footer {
       width: var(--container);
@@ -1325,6 +1556,8 @@
       .hero-side { gap: 14px; margin-top: 8px; }
       .hero-studio-card { min-height: 260px; border-radius: 22px; }
       .strategy-visual { gap: 14px; padding: 18px; }
+      .strategy-canvas { min-height: 150px; }
+      .signal-stack { width: 92%; }
       .visual-funnel { grid-template-columns: 1fr 1fr; }
       .visual-bars { height: 96px; }
       .studio-label { font-size: .62rem; letter-spacing: .14em; }
@@ -1359,8 +1592,14 @@
       .case-card:nth-child(3),
       .case-card:nth-child(4) { grid-column: auto; }
       .service-card { min-height: 320px; border-left: 1px solid var(--line); border-radius: 22px; }
+      .service-graphic { min-height: 104px; }
       .growth-copy { min-height: auto; border-radius: 26px; }
       .funnel-board { padding: 18px; border-radius: 26px; }
+      .funnel-map { min-height: 340px; grid-template-columns: 1fr; }
+      .funnel-map::before { left: 50%; right: auto; top: 24px; bottom: 24px; border-top: 0; border-left: 1px dashed rgba(0,0,0,.22); }
+      .funnel-node,
+      .funnel-node:nth-child(even),
+      .funnel-node:nth-child(odd) { width: 112px; transform: none; justify-self: center; }
       .funnel-step { grid-template-columns: 1fr; min-height: auto; }
       .cases-headline { grid-template-columns: 1fr; padding: 42px 24px; border-radius: 24px; }
       .case-card { min-height: auto; border-radius: 24px; }
@@ -1371,11 +1610,14 @@
       .case-stat:last-child { padding: 20px 0; border-right: 0; border-bottom: 1px solid rgba(0,0,0,.14); }
       .case-stat:last-child { border-bottom: 0; }
       .process-item { grid-template-columns: 1fr; gap: 14px; }
+      .process-visual { min-height: 190px; }
+      .process-visual span { font-size: .52rem; padding-bottom: 10px; }
       .contact-card { min-height: auto; border-radius: 26px; }
       .contact-grid { padding: 42px 24px; }
       .contact-grid::before { display: none; }
       .contact-title { font-size: clamp(3rem, 14vw, 4.7rem); }
       .contact-row { grid-template-columns: 1fr; gap: 8px; }
+      .contact-visual { min-height: 150px; }
       .site-footer { grid-template-columns: 1fr; justify-items: center; text-align: center; }
       .footer-copy { justify-self: center; }
     }
@@ -1440,6 +1682,13 @@
                 <div class="visual-topline">
                   <span>Embudo</span>
                   <span>Medición</span>
+                </div>
+                <div class="strategy-canvas">
+                  <div class="signal-stack">
+                    <span><b>Insight</b><em>01</em></span>
+                    <span><b>Mensaje</b><em>02</em></span>
+                    <span><b>Accion</b><em>03</em></span>
+                  </div>
                 </div>
                 <div class="visual-funnel">
                   <span>Descubrir</span>
@@ -1575,6 +1824,12 @@
             <h3 class="service-title">Estrategia digital</h3>
             <p class="service-copy">Definimos objetivos, público, mensaje, canales y prioridades para que cada acción tenga una razón.</p>
           </div>
+          <div class="service-graphic" data-visual="strategy" aria-hidden="true">
+            <i style="--h: 38%"></i>
+            <i style="--h: 62%"></i>
+            <i style="--h: 48%"></i>
+            <i style="--h: 78%"></i>
+          </div>
         </article>
 
         <article class="service-card reveal" data-short="SOC">
@@ -1585,6 +1840,9 @@
           <div>
             <h3 class="service-title">Branding e identidad</h3>
             <p class="service-copy">Ordenamos cómo se ve, habla y se reconoce tu marca en cada punto de contacto digital.</p>
+          </div>
+          <div class="service-graphic" data-visual="identity" aria-hidden="true">
+            <span></span><span></span><span></span>
           </div>
         </article>
 
@@ -1597,6 +1855,9 @@
             <h3 class="service-title">Contenido para redes</h3>
             <p class="service-copy">Creamos piezas que expliquen, generen confianza y mantengan la marca activa sin publicar por publicar.</p>
           </div>
+          <div class="service-graphic" data-visual="content" aria-hidden="true">
+            <span></span><span></span>
+          </div>
         </article>
 
         <article class="service-card reveal" data-short="GOO">
@@ -1607,6 +1868,9 @@
           <div>
             <h3 class="service-title">Paid Media</h3>
             <p class="service-copy">Activamos Meta Ads y Google Ads para aprender, medir y optimizar con criterio comercial.</p>
+          </div>
+          <div class="service-graphic" data-visual="ads" aria-hidden="true">
+            <span></span><span></span><span></span>
           </div>
         </article>
 
@@ -1619,6 +1883,9 @@
             <h3 class="service-title">Web y landing pages</h3>
             <p class="service-copy">Diseñamos páginas que ordenan la propuesta, transmiten confianza y facilitan la consulta.</p>
           </div>
+          <div class="service-graphic" data-visual="web" aria-hidden="true">
+            <span></span>
+          </div>
         </article>
 
         <article class="service-card reveal" data-short="360">
@@ -1629,6 +1896,13 @@
           <div>
             <h3 class="service-title">Reportes y optimización</h3>
             <p class="service-copy">Leemos datos, detectamos oportunidades y ajustamos contenido, campañas y embudos de forma continua.</p>
+          </div>
+          <div class="service-graphic" data-visual="report" aria-hidden="true">
+            <i style="--h: 32%"></i>
+            <i style="--h: 54%"></i>
+            <i style="--h: 44%"></i>
+            <i style="--h: 70%"></i>
+            <i style="--h: 86%"></i>
           </div>
         </article>
       </div>
@@ -1648,6 +1922,13 @@
           <a href="#contacto" class="button light">Hablemos de tu proyecto</a>
         </div>
         <div class="funnel-board reveal">
+          <div class="funnel-map" aria-hidden="true">
+            <span class="funnel-node">Ver</span>
+            <span class="funnel-node">Creer</span>
+            <span class="funnel-node">Elegir</span>
+            <span class="funnel-node">Pedir</span>
+            <span class="funnel-node">Mejorar</span>
+          </div>
           <article class="funnel-step">
             <strong>01</strong>
             <div>
@@ -1709,6 +1990,7 @@
               <p class="case-stat-label">Personas alcanzadas / mes</p>
             </div>
           </div>
+          <div class="case-visual" aria-hidden="true"></div>
           <div class="case-extras">
             <div class="case-extra"><strong>51</strong><span>ventas en Dic 2025</span></div>
             <div class="case-extra"><strong>3</strong><span>tipos de campaña activa</span></div>
@@ -1735,6 +2017,7 @@
               <p class="case-stat-label">Consultas generadas</p>
             </div>
           </div>
+          <div class="case-visual" aria-hidden="true"></div>
           <div class="case-extras">
             <div class="case-extra"><strong>3</strong><span>tipos de campaña</span></div>
             <div class="case-extra"><strong>B2B</strong><span>gimnasios y equipos</span></div>
@@ -1761,6 +2044,7 @@
               <p class="case-stat-label">Años de relación</p>
             </div>
           </div>
+          <div class="case-visual" aria-hidden="true"></div>
           <div class="case-extras">
             <div class="case-extra"><strong>↻</strong><span>rotación constante de alumnos</span></div>
             <div class="case-extra"><strong>360°</strong><span>gestión de redes</span></div>
@@ -1787,6 +2071,7 @@
               <p class="case-stat-label">Presencia digital en crecimiento</p>
             </div>
           </div>
+          <div class="case-visual" aria-hidden="true"></div>
           <div class="case-extras">
             <div class="case-extra"><strong>RRSS</strong><span>gestión integral</span></div>
             <div class="case-extra"><strong>DG</strong><span>diseño gráfico</span></div>
@@ -1802,6 +2087,13 @@
           <p class="eyebrow">Cómo trabajamos</p>
           <h2 class="section-title">Método, claridad y mejora continua</h2>
           <p class="process-note">Trabajamos con una forma simple y exigente: entender, ordenar, crear, medir y optimizar.</p>
+          <div class="process-visual" aria-hidden="true">
+            <span style="--h: 54">Entender</span>
+            <span style="--h: 68">Ordenar</span>
+            <span style="--h: 82">Crear</span>
+            <span style="--h: 72">Activar</span>
+            <span style="--h: 92">Medir</span>
+          </div>
         </div>
         <div class="process-list">
           <article class="process-item reveal">
@@ -1843,6 +2135,9 @@
             <p class="eyebrow" style="color: rgba(255,255,255,.56);">Contacto</p>
             <h2 class="contact-title">Hablemos de tu proyecto.</h2>
             <a href="https://wa.me/541133149081" target="_blank" rel="noreferrer" class="button light">Escribinos</a>
+            <div class="contact-visual" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
           </div>
           <div class="contact-list reveal">
             <div class="contact-row"><span>Email</span><a href="mailto:martin@frutonoble.com.ar">martin@frutonoble.com.ar</a></div>
@@ -1876,7 +2171,7 @@
   <script>
     const nav = document.getElementById("site-nav");
     const cursor = document.getElementById("cursor");
-    const hoverTargets = document.querySelectorAll("a, button, .service-card, .case-card, .process-item, .logo-item, .metric, .principle");
+    const hoverTargets = document.querySelectorAll("a, button, .service-card, .case-card, .process-item, .logo-item, .metric, .principle, .funnel-node");
     const reveals = document.querySelectorAll(".reveal");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let hasGsap = !reduced && window.gsap;
@@ -1916,6 +2211,7 @@
       gsap.fromTo(".hero-frame", { scale: .985, opacity: 1 }, { scale: 1, opacity: 1, duration: 1.1, ease: "power4.out", delay: .08 });
       gsap.fromTo(".hero-main > *", { y: 46, opacity: 1 }, { y: 0, opacity: 1, duration: .95, stagger: .1, ease: "power3.out", delay: .28 });
       gsap.fromTo(".hero-side", { x: 42, opacity: 1 }, { x: 0, opacity: 1, duration: 1, ease: "power3.out", delay: .45 });
+      gsap.fromTo(".signal-stack span", { x: -18, opacity: 1 }, { x: 0, opacity: 1, duration: .8, stagger: .08, ease: "power3.out", delay: .72 });
       gsap.fromTo(".logos-strip", { y: 24, opacity: 1 }, { y: 0, opacity: 1, duration: .8, ease: "power3.out", delay: .62 });
 
       if (window.ScrollTrigger) {
@@ -1931,7 +2227,7 @@
           }
         });
 
-        gsap.utils.toArray(".service-card, .case-card, .funnel-step, .process-item").forEach((item, index) => {
+        gsap.utils.toArray(".service-card, .case-card, .funnel-step, .process-item, .funnel-node").forEach((item, index) => {
           gsap.fromTo(item,
             { y: 34, opacity: 1 },
             {
@@ -1958,6 +2254,23 @@
             end: "bottom top",
             scrub: true
           }
+        });
+
+        gsap.utils.toArray(".service-graphic, .case-visual, .process-visual, .contact-visual").forEach((item) => {
+          gsap.fromTo(item,
+            { scale: .96, opacity: 1 },
+            {
+              scale: 1,
+              opacity: 1,
+              duration: .9,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: item,
+                start: "top 88%",
+                toggleActions: "play none none reverse"
+              }
+            }
+          );
         });
 
         ScrollTrigger.matchMedia({
