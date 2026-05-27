@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fruto Noble — Agencia de Marketing Digital</title>
-  <meta name="description" content="Fruto Noble. Agencia creativa y de marketing digital en Buenos Aires. Planes mensuales, Meta Ads, Google Ads, creatividades, social media, e-commerce y performance.">
+  <title>Fruto Noble - Agencia de Marketing Digital</title>
+  <meta name="description" content="Fruto Noble. Agencia creativa y de marketing digital en Buenos Aires. Estrategia, identidad, contenido, campañas, sitios web, medición y sistemas de crecimiento.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 906.06742 1080' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23050505' d='M475.91785,106.20277c6.55089-23.14181,21.65524-88.48892,41.39983-100.14998,32.20314-19.01901,69.89896,9.61554,57.41484,46.50507L251.94487,1013.08183c-16.85469,41.52943-77.15148,34.25968-75.90974-13.54662.41623-16.02447,30.8372-91.27805,28.65705-95.77757C22.39666,776.77902-39.1182,523.7445,70.46866,328.1502c52.34683-93.43038,151.29064-171.38621,254.32742-201.61997,49.53171-14.53394,99.71277-18.82986,151.12178-20.32745Z'/%3E%3Cpath fill='%23050505' d='M648.07822,42.22206c14.5883-3.2998,29.31124-.24048,40.06037,10.09303,27.3507,26.29313-13.16574,84.73174-16.52703,116.00048,190.86638,109.80395,264.5999,352.81267,174.02136,553.31068-75.85906,167.91606-260.1539,275.66416-445.3126,253.40562-4.23046,2.98004-21.49636,67.02293-26.84677,78.46724-19.57572,41.87162-72.39625,31.65012-75.44577-13.29239L622.45934,67.84334c3.80028-10.2549,14.64494-23.13903,25.61889-25.62128ZM427.42659,898.4788c150.87443,11.18409,299.16678-89.21398,353.83423-227.60559,59.9366-151.73053,4.02364-336.45508-133.76043-424.38145l-220.07381,651.98704Z'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -258,7 +258,7 @@
       pointer-events: none;
     }
     .hero-frame::after {
-      content: "META ADS / GOOGLE ADS / CREATIVIDADES / PLANNING MENSUAL / REPORTES";
+      content: "ESTRATEGIA / IDENTIDAD / CONTENIDO / CAMPAÑAS / MEDICION / WEB";
       position: absolute;
       left: -4vw;
       bottom: clamp(48px, 6vw, 86px);
@@ -286,7 +286,7 @@
     }
     .hero-main { min-width: 0; }
     .hero-main::before {
-      content: "AGENCIA DE MARKETING EN BUENOS AIRES / META ADS / GOOGLE ADS / CREATIVIDAD";
+      content: "AGENCIA DE MARKETING EN BUENOS AIRES / ESTRATEGIA / CREATIVIDAD / PERFORMANCE";
       display: block;
       width: max-content;
       max-width: 100%;
@@ -324,19 +324,28 @@
       transform: skewX(-8deg);
     }
     .hero-title {
-      max-width: 9.2ch;
+      max-width: 11ch;
       font-family: "Space Grotesk", "Inter", sans-serif;
-      font-size: clamp(4.6rem, 11.2vw, 13rem);
-      line-height: .78;
+      font-size: clamp(4rem, 7.8vw, 9.4rem);
+      line-height: .84;
       letter-spacing: -.085em;
       text-transform: none;
     }
+    .hero-slogan {
+      margin-bottom: 12px;
+      font-size: clamp(.82rem, 1.05vw, 1rem);
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.6);
+    }
     .hero-title span {
-      display: inline-block;
+      display: block;
+      width: fit-content;
       color: var(--black);
       background: var(--paper);
       padding: .01em .065em .06em;
-      margin-left: -.045em;
+      margin-top: .025em;
       border-radius: .045em;
       transform: rotate(-1deg) translateX(-.02em);
     }
@@ -399,6 +408,61 @@
       color: transparent;
       -webkit-text-stroke: 1px rgba(0,0,0,.72);
       text-stroke: 1px rgba(0,0,0,.72);
+    }
+    .strategy-visual {
+      display: grid;
+      gap: 20px;
+      padding: clamp(18px, 2vw, 26px);
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 22px;
+      background:
+        linear-gradient(rgba(0,0,0,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,.055) 1px, transparent 1px),
+        rgba(0,0,0,.025);
+      background-size: 34px 34px;
+    }
+    .visual-topline,
+    .visual-funnel {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: .62rem;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,.55);
+    }
+    .visual-funnel {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .visual-funnel span {
+      min-height: 44px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(0,0,0,.16);
+      border-radius: 999px;
+      background: rgba(255,255,255,.55);
+      font-size: .55rem;
+      text-align: center;
+    }
+    .visual-bars {
+      height: 132px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: end;
+      gap: 10px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(0,0,0,.12);
+    }
+    .visual-bars i {
+      display: block;
+      height: var(--h);
+      min-height: 28px;
+      border-radius: 999px 999px 8px 8px;
+      background: var(--black);
+      opacity: .84;
     }
     .hero-metrics {
       display: grid;
@@ -555,7 +619,7 @@
       overflow: hidden;
     }
     .campaign-copy::after {
-      content: "NO POSTALES / NO PLANTILLAS / NO RUIDO";
+      content: "CLARIDAD / PROCESO / DIRECCION";
       position: absolute;
       left: -8%;
       top: 50%;
@@ -777,6 +841,106 @@
       line-height: 1.8;
       color: currentColor;
       opacity: .72;
+    }
+
+    .growth-system {
+      padding: 0 0 clamp(90px, 9vw, 150px);
+    }
+    .growth-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, .8fr) minmax(0, 1.2fr);
+      gap: clamp(34px, 6vw, 96px);
+      align-items: stretch;
+    }
+    .growth-copy {
+      display: grid;
+      align-content: space-between;
+      gap: 34px;
+      padding: clamp(34px, 4.5vw, 68px);
+      border-radius: 32px;
+      border: 1px solid var(--line);
+      background: var(--black);
+      color: var(--paper);
+      min-height: 560px;
+      overflow: hidden;
+      position: relative;
+    }
+    .growth-copy::after {
+      content: "FUNNEL";
+      position: absolute;
+      right: -.08em;
+      bottom: -.12em;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(7rem, 15vw, 18rem);
+      line-height: .8;
+      letter-spacing: -.08em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,.13);
+      text-stroke: 1px rgba(255,255,255,.13);
+      pointer-events: none;
+    }
+    .growth-title {
+      max-width: 9ch;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(3rem, 6vw, 7.6rem);
+      line-height: .86;
+      letter-spacing: -.065em;
+      position: relative;
+      z-index: 1;
+    }
+    .growth-copy p {
+      max-width: 48ch;
+      color: rgba(255,255,255,.72);
+      line-height: 1.75;
+      position: relative;
+      z-index: 1;
+    }
+    .funnel-board {
+      display: grid;
+      gap: 14px;
+      padding: clamp(22px, 3vw, 42px);
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      background:
+        linear-gradient(rgba(5,5,5,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(5,5,5,.04) 1px, transparent 1px),
+        var(--paper);
+      background-size: 42px 42px;
+    }
+    .funnel-step {
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr);
+      gap: clamp(18px, 3vw, 34px);
+      align-items: center;
+      min-height: 108px;
+      padding: 18px;
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 22px;
+      background: rgba(255,255,255,.74);
+      transition: transform .28s var(--ease), background .28s ease, color .28s ease;
+    }
+    .funnel-step:hover {
+      transform: translateX(8px);
+      background: var(--black);
+      color: var(--paper);
+    }
+    .funnel-step strong {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2rem, 3.3vw, 4rem);
+      letter-spacing: -.06em;
+    }
+    .funnel-step h3 {
+      margin-bottom: 8px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(1.25rem, 2vw, 2rem);
+      line-height: 1;
+      letter-spacing: -.045em;
+    }
+    .funnel-step p {
+      max-width: 58ch;
+      color: currentColor;
+      opacity: .68;
+      line-height: 1.6;
     }
 
     .cases-headline {
@@ -1114,6 +1278,7 @@
       .section-head,
       .campaign-break,
       .intro-grid,
+      .growth-grid,
       .process-wrap,
       .contact-grid { grid-template-columns: 1fr; }
       .hero-side { grid-template-rows: auto auto; }
@@ -1138,8 +1303,8 @@
       :root { --container: min(calc(100vw - 22px), 440px); }
       body::before { background-size: 56px 56px; }
       .cursor { display: none; }
-      .nav-inner { min-height: 70px; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; }
-      .brand-logo { width: 34px; height: 40px; }
+      .nav-inner { min-height: 86px; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; padding: 12px 0 6px; }
+      .brand-logo { width: 32px; height: 38px; }
       .brand-sub { display: none; }
       .nav-inner > .button { display: none; }
       .nav-links { gap: 4px; }
@@ -1151,12 +1316,15 @@
       .hero-grid { padding: 52px 22px 28px; gap: 36px; }
       .hero-main::before { white-space: normal; line-height: 1.45; }
       .hero-kicker span { min-height: 30px; padding: 0 10px; font-size: .6rem; letter-spacing: .14em; }
-      .hero-title { max-width: 100%; font-size: clamp(3.1rem, 14.4vw, 4.45rem); line-height: .86; }
+      .hero-title { max-width: 100%; font-size: clamp(2.85rem, 12.4vw, 4.05rem); line-height: .9; }
       .hero-copy { max-width: 34ch; margin-top: 24px; font-size: 1rem; line-height: 1.72; }
       .hero-actions { flex-direction: column; }
       .hero-actions .button { width: 100%; }
       .hero-side { gap: 14px; margin-top: 8px; }
       .hero-studio-card { min-height: 260px; border-radius: 22px; }
+      .strategy-visual { gap: 14px; padding: 18px; }
+      .visual-funnel { grid-template-columns: 1fr 1fr; }
+      .visual-bars { height: 96px; }
       .studio-label { font-size: .62rem; letter-spacing: .14em; }
       .hero-metrics { grid-template-columns: 1fr; }
       .metric { min-height: 88px; grid-template-columns: 78px 1fr; align-items: center; align-content: center; border-right: 0; border-bottom: 1px solid var(--line); }
@@ -1189,6 +1357,9 @@
       .case-card:nth-child(3),
       .case-card:nth-child(4) { grid-column: auto; }
       .service-card { min-height: 320px; border-left: 1px solid var(--line); border-radius: 22px; }
+      .growth-copy { min-height: auto; border-radius: 26px; }
+      .funnel-board { padding: 18px; border-radius: 26px; }
+      .funnel-step { grid-template-columns: 1fr; min-height: auto; }
       .cases-headline { grid-template-columns: 1fr; padding: 42px 24px; border-radius: 24px; }
       .case-card { min-height: auto; border-radius: 24px; }
       .case-top { flex-direction: column; }
@@ -1241,17 +1412,18 @@
         <div class="hero-grid">
           <div class="hero-main reveal reveal-split">
             <div class="hero-kicker">
-              <span>Meta Ads</span>
-              <span>Google Ads</span>
-              <span>Planning mensual</span>
+              <span>Estrategia</span>
+              <span>Contenido</span>
+              <span>Performance</span>
             </div>
-            <h1 class="hero-title">Marketing que da <span>frutos</span></h1>
+            <p class="hero-slogan">Marketing que da frutos</p>
+            <h1 class="hero-title">El color se lo ponemos <span>a tu proyecto</span></h1>
             <p class="hero-copy">
-              Nos sumamos a tu proyecto como equipo de marketing: planificamos el mes, creamos piezas, activamos
-              Meta y Google Ads, medimos resultados y optimizamos para vender más.
+              Creamos estrategia, identidad, contenido, campañas y experiencias digitales para que tu marca se
+              entienda mejor, conecte con las personas correctas y tenga más oportunidades de crecer.
             </p>
             <div class="hero-actions">
-              <a href="https://wa.me/541133149081" target="_blank" rel="noreferrer" class="button">Quiero un plan mensual</a>
+              <a href="#contacto" class="button">Trabajemos juntos</a>
               <a href="#servicios" class="button ghost">Ver servicios</a>
             </div>
           </div>
@@ -1259,19 +1431,36 @@
           <aside class="hero-side reveal" aria-label="Especialidades y métricas de Fruto Noble">
             <div class="hero-studio-card">
               <div class="studio-label">
-                <span>Marketing Growth Team</span>
+                <span>Sistema de crecimiento</span>
                 <span>2026</span>
               </div>
-              <p class="studio-word">Meta <span>Google</span> Creatividades</p>
+              <div class="strategy-visual" aria-hidden="true">
+                <div class="visual-topline">
+                  <span>Embudo</span>
+                  <span>Medición</span>
+                </div>
+                <div class="visual-funnel">
+                  <span>Descubrir</span>
+                  <span>Confiar</span>
+                  <span>Elegir</span>
+                  <span>Convertir</span>
+                </div>
+                <div class="visual-bars">
+                  <i style="--h: 42%"></i>
+                  <i style="--h: 68%"></i>
+                  <i style="--h: 54%"></i>
+                  <i style="--h: 82%"></i>
+                </div>
+              </div>
               <div class="studio-label">
-                <span>Ads / Planning / Reportes</span>
+                <span>Estrategia / Creatividad / Performance</span>
                 <span>BA</span>
               </div>
             </div>
             <div class="hero-metrics">
-              <div class="metric"><strong>9×</strong><span>ROAS alcanzado en campañas Meta</span></div>
-              <div class="metric"><strong>30d</strong><span>Planning, piezas y optimización mensual</span></div>
-              <div class="metric"><strong>1</strong><span>Equipo acoplado a tu proyecto</span></div>
+              <div class="metric"><strong>01</strong><span>Estrategia antes de diseñar o pautar</span></div>
+              <div class="metric"><strong>02</strong><span>Contenido, campañas y sitios conectados</span></div>
+              <div class="metric"><strong>03</strong><span>Medición y optimización constante</span></div>
             </div>
           </aside>
         </div>
@@ -1301,38 +1490,38 @@
 
     <section class="ticker" aria-label="Especialidades">
       <div class="ticker-track">
-        <span class="ticker-item">Meta Ads</span>
-        <span class="ticker-item">Google Ads</span>
-        <span class="ticker-item">E-Commerce</span>
-        <span class="ticker-item">Planning mensual</span>
-        <span class="ticker-item">Retargeting</span>
-        <span class="ticker-item">Creatividades</span>
-        <span class="ticker-item">Reportes</span>
+        <span class="ticker-item">Estrategia digital</span>
+        <span class="ticker-item">Identidad</span>
+        <span class="ticker-item">Contenido</span>
+        <span class="ticker-item">Campañas</span>
+        <span class="ticker-item">Funnel</span>
+        <span class="ticker-item">Landing pages</span>
+        <span class="ticker-item">Medición</span>
         <span class="ticker-item">Optimización</span>
-        <span class="ticker-item">Meta Ads</span>
-        <span class="ticker-item">Google Ads</span>
-        <span class="ticker-item">E-Commerce</span>
-        <span class="ticker-item">Planning mensual</span>
-        <span class="ticker-item">Retargeting</span>
-        <span class="ticker-item">Creatividades</span>
-        <span class="ticker-item">Reportes</span>
+        <span class="ticker-item">Estrategia digital</span>
+        <span class="ticker-item">Identidad</span>
+        <span class="ticker-item">Contenido</span>
+        <span class="ticker-item">Campañas</span>
+        <span class="ticker-item">Funnel</span>
+        <span class="ticker-item">Landing pages</span>
+        <span class="ticker-item">Medición</span>
         <span class="ticker-item">Optimización</span>
       </div>
     </section>
 
-    <section class="campaign-break reveal" aria-label="Sistema de marketing mensual">
+    <section class="campaign-break reveal" aria-label="Sistema de comunicación y crecimiento">
       <div class="campaign-type">
-        <h2 class="campaign-title">Publicidad, creatividad, <span>planning.</span></h2>
+        <h2 class="campaign-title">Menos humo, más <span>proceso.</span></h2>
       </div>
       <div class="campaign-copy">
         <p>
-          Armamos un sistema mensual para que tu marca tenga pauta activa, piezas listas, mensajes claros y
-          decisiones tomadas con datos. Menos improvisación, más equipo.
+          No hacemos piezas sueltas. Diseñamos sistemas de comunicación para que cada proyecto tenga una identidad
+          clara, una estrategia concreta y un camino medible hacia mejores resultados.
         </p>
         <div class="campaign-points">
-          <div class="campaign-point"><span>Plan mensual de acciones</span><strong>01</strong></div>
-          <div class="campaign-point"><span>Creatividades para ads y redes</span><strong>02</strong></div>
-          <div class="campaign-point"><span>Meta, Google y seguimiento</span><strong>03</strong></div>
+          <div class="campaign-point"><span>Menos ruido, más dirección</span><strong>01</strong></div>
+          <div class="campaign-point"><span>Comunicación clara y medible</span><strong>02</strong></div>
+          <div class="campaign-point"><span>Creatividad con intención</span><strong>03</strong></div>
         </div>
       </div>
     </section>
@@ -1341,23 +1530,23 @@
       <div class="intro-grid">
         <div class="reveal">
           <p class="eyebrow">Diferencial</p>
-          <h2 class="intro-statement">Nos acoplamos a tu proyecto como si fuéramos equipo.</h2>
+          <h2 class="intro-statement">Tu marca no necesita hacer más por hacer. Necesita comunicar mejor.</h2>
         </div>
         <div class="principles reveal">
           <article class="principle">
-            <span>01 / Planning</span>
-            <h3>Ordenamos el mes antes de producir.</h3>
-            <p>Definimos objetivos, campañas, piezas, fechas y prioridades para que cada acción tenga sentido.</p>
+            <span>01 / Estrategia</span>
+            <h3>Primero entendemos el proyecto.</h3>
+            <p>Oferta, público, canales, objetivos y contexto. Antes de diseñar o pautar, definimos hacia dónde vamos.</p>
           </article>
           <article class="principle">
-            <span>02 / Pauta</span>
-            <h3>Activamos Meta Ads y Google Ads con lectura comercial.</h3>
-            <p>Presupuesto, audiencias, búsqueda, remarketing y optimización continua para vender mejor.</p>
+            <span>02 / Identidad</span>
+            <h3>Le damos una forma clara a la marca.</h3>
+            <p>Una manera propia de verse, hablar y conectar, sin perder simpleza ni profesionalismo.</p>
           </article>
           <article class="principle">
-            <span>03 / Creatividad</span>
-            <h3>Diseñamos piezas para que la pauta tenga con qué competir.</h3>
-            <p>Creatividades, copies, formatos y variantes pensadas para testear, aprender y escalar.</p>
+            <span>03 / Performance</span>
+            <h3>Medimos para mejorar, no para decorar reportes.</h3>
+            <p>Campañas, contenido y web se optimizan con lectura, criterio y datos reales.</p>
           </article>
         </div>
       </div>
@@ -1370,8 +1559,7 @@
           <h2 class="section-title">Lo que hacemos</h2>
         </div>
         <p class="section-copy reveal">
-          Trabajamos planes mensuales de marketing para marcas que necesitan equipo, creatividad y pauta funcionando
-          todos los meses, no acciones sueltas.
+          Marketing digital integral para ordenar la propuesta, construir confianza y generar más oportunidades de consulta.
         </p>
       </div>
 
@@ -1382,8 +1570,8 @@
             <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 17.5 10 11l3.5 3.5L20 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.5 7H20v4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           </div>
           <div>
-            <h3 class="service-title">Meta Ads</h3>
-            <p class="service-copy">Campañas de Facebook e Instagram orientadas a consultas, ventas y crecimiento. Estructura, audiencias, retargeting, catálogo y optimización semanal.</p>
+            <h3 class="service-title">Estrategia digital</h3>
+            <p class="service-copy">Definimos objetivos, público, mensaje, canales y prioridades para que cada acción tenga una razón.</p>
           </div>
         </article>
 
@@ -1393,8 +1581,8 @@
             <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="14" rx="4" stroke="currentColor" stroke-width="1.6"/><path d="M8 12h8M8 15h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
           </div>
           <div>
-            <h3 class="service-title">Social Media</h3>
-            <p class="service-copy">Planificación mensual de contenidos para que la marca se mantenga activa, clara y alineada con las campañas comerciales.</p>
+            <h3 class="service-title">Branding e identidad</h3>
+            <p class="service-copy">Ordenamos cómo se ve, habla y se reconoce tu marca en cada punto de contacto digital.</p>
           </div>
         </article>
 
@@ -1404,8 +1592,8 @@
             <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 8h10l-1.2 7H8.2L7 8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8a3 3 0 1 1 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
           </div>
           <div>
-            <h3 class="service-title">E-Commerce</h3>
-            <p class="service-copy">Estrategia digital completa para tiendas online. Más tráfico, mejor conversión, mayor ticket promedio.</p>
+            <h3 class="service-title">Contenido para redes</h3>
+            <p class="service-copy">Creamos piezas que expliquen, generen confianza y mantengan la marca activa sin publicar por publicar.</p>
           </div>
         </article>
 
@@ -1415,8 +1603,8 @@
             <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="7.25" stroke="currentColor" stroke-width="1.6"/><path d="M12 4.75v14.5M4.75 12h14.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
           </div>
           <div>
-            <h3 class="service-title">Google Ads</h3>
-            <p class="service-copy">Campañas de búsqueda para captar demanda real. Keywords, anuncios, medición, landing y seguimiento para convertir intención en oportunidades.</p>
+            <h3 class="service-title">Paid Media</h3>
+            <p class="service-copy">Activamos Meta Ads y Google Ads para aprender, medir y optimizar con criterio comercial.</p>
           </div>
         </article>
 
@@ -1426,8 +1614,8 @@
             <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M7 7h10v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           </div>
           <div>
-            <h3 class="service-title">Creatividades para Ads</h3>
-            <p class="service-copy">Piezas, copies y variantes para Meta, Google, stories, reels, banners y remarketing. Creatividad pensada para testear y vender.</p>
+            <h3 class="service-title">Web y landing pages</h3>
+            <p class="service-copy">Diseñamos páginas que ordenan la propuesta, transmiten confianza y facilitan la consulta.</p>
           </div>
         </article>
 
@@ -1437,10 +1625,56 @@
             <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4.5 19 8.25v7.5L12 19.5 5 15.75v-7.5L12 4.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 11.25 19 8.25M12 11.25 5 8.25M12 11.25v8.25" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           </div>
           <div>
-            <h3 class="service-title">Planning mensual</h3>
-            <p class="service-copy">Nos organizamos como parte de tu equipo: calendario, prioridades, campañas, entregables, reportes y próximos pasos.</p>
+            <h3 class="service-title">Reportes y optimización</h3>
+            <p class="service-copy">Leemos datos, detectamos oportunidades y ajustamos contenido, campañas y embudos de forma continua.</p>
           </div>
         </article>
+      </div>
+    </section>
+
+    <section class="growth-system page-shell" id="funnel" aria-label="Funnel y sistema de crecimiento">
+      <div class="growth-grid">
+        <div class="growth-copy reveal">
+          <div>
+            <p class="eyebrow" style="color: rgba(255,255,255,.58);">Funnel</p>
+            <h2 class="growth-title">De conocer a elegir.</h2>
+          </div>
+          <p>
+            No todas las personas compran o consultan en el primer contacto. Por eso pensamos recorridos:
+            descubrir, confiar, elegir, convertir y optimizar.
+          </p>
+          <a href="#contacto" class="button light">Hablemos de tu proyecto</a>
+        </div>
+        <div class="funnel-board reveal">
+          <article class="funnel-step">
+            <strong>01</strong>
+            <div>
+              <h3>Descubrir</h3>
+              <p>Contenido y campañas para que las personas correctas entiendan que existís y qué resolvés.</p>
+            </div>
+          </article>
+          <article class="funnel-step">
+            <strong>02</strong>
+            <div>
+              <h3>Confiar</h3>
+              <p>Identidad, mensajes y piezas que hacen que tu propuesta se vea seria, clara y consistente.</p>
+            </div>
+          </article>
+          <article class="funnel-step">
+            <strong>03</strong>
+            <div>
+              <h3>Convertir</h3>
+              <p>Landing pages, llamados a la acción y campañas pensadas para facilitar consultas y ventas.</p>
+            </div>
+          </article>
+          <article class="funnel-step">
+            <strong>04</strong>
+            <div>
+              <h3>Optimizar</h3>
+              <p>Medición simple, lectura de datos y mejoras continuas para que el sistema aprenda con el tiempo.</p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -1564,36 +1798,36 @@
       <div class="process-wrap">
         <div class="process-panel reveal">
           <p class="eyebrow">Cómo trabajamos</p>
-          <h2 class="section-title">Equipo, método y ritmo mensual</h2>
-          <p class="process-note">Entramos al proyecto con una forma de trabajo clara: plan, producción, pauta, medición y mejora continua.</p>
+          <h2 class="section-title">Método, claridad y mejora continua</h2>
+          <p class="process-note">Trabajamos con una forma simple y exigente: entender, ordenar, crear, medir y optimizar.</p>
         </div>
         <div class="process-list">
           <article class="process-item reveal">
             <span class="process-step">01</span>
             <div>
-              <h3 class="process-name">Diagnóstico</h3>
-              <p class="process-desc">Entendemos tu negocio, tus números, tus canales y qué necesita pasar este mes para crecer.</p>
+              <h3 class="process-name">Entender</h3>
+              <p class="process-desc">Revisamos el proyecto, la oferta, el público y el objetivo antes de proponer acciones.</p>
             </div>
           </article>
           <article class="process-item reveal">
             <span class="process-step">02</span>
             <div>
-              <h3 class="process-name">Planning mensual</h3>
-              <p class="process-desc">Definimos campañas, presupuesto, piezas, mensajes, calendario y responsables antes de ejecutar.</p>
+              <h3 class="process-name">Ordenar</h3>
+              <p class="process-desc">Definimos mensaje, canales, prioridades, embudo y próximos pasos con foco en consultas.</p>
             </div>
           </article>
           <article class="process-item reveal">
             <span class="process-step">03</span>
             <div>
-              <h3 class="process-name">Producción + pauta</h3>
-              <p class="process-desc">Diseñamos creatividades, redactamos copies, publicamos, activamos Meta/Google Ads y medimos.</p>
+              <h3 class="process-name">Crear y activar</h3>
+              <p class="process-desc">Diseñamos contenido, campañas, landing pages y piezas que sostienen la estrategia.</p>
             </div>
           </article>
           <article class="process-item reveal">
             <span class="process-step">04</span>
             <div>
-              <h3 class="process-name">Optimización</h3>
-              <p class="process-desc">Revisamos resultados, ajustamos presupuesto, iteramos piezas y dejamos próximos pasos claros.</p>
+              <h3 class="process-name">Medir y optimizar</h3>
+              <p class="process-desc">Leemos resultados, detectamos mejoras y ajustamos el sistema para crecer con intención.</p>
             </div>
           </article>
         </div>
@@ -1605,11 +1839,11 @@
         <div class="contact-grid">
           <div class="reveal">
             <p class="eyebrow" style="color: rgba(255,255,255,.56);">Contacto</p>
-            <h2 class="contact-title">Sumemos marketing a tu equipo.</h2>
-            <a href="https://wa.me/541133149081" target="_blank" rel="noreferrer" class="button light">Armar plan mensual</a>
+            <h2 class="contact-title">Hablemos de tu proyecto.</h2>
+            <a href="https://wa.me/541133149081" target="_blank" rel="noreferrer" class="button light">Escribinos</a>
           </div>
           <div class="contact-list reveal">
-            <div class="contact-row"><span>Email</span><a href="mailto:hola@frutonoble.com.ar">hola@frutonoble.com.ar</a></div>
+            <div class="contact-row"><span>Email</span><a href="mailto:martin@frutonoble.com.ar">martin@frutonoble.com.ar</a></div>
             <div class="contact-row"><span>WhatsApp</span><a href="https://wa.me/541133149081" target="_blank" rel="noreferrer">+54 11 3314-9081</a></div>
             <div class="contact-row"><span>Instagram</span><a href="https://instagram.com/fruto_noble" target="_blank" rel="noreferrer">@fruto_noble</a></div>
             <div class="contact-row"><span>Web</span><a href="https://fruto-noble.vercel.app" target="_blank" rel="noreferrer">fruto-noble.vercel.app</a></div>
@@ -1636,6 +1870,7 @@
   </footer>
 
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script>
     const nav = document.getElementById("site-nav");
     const cursor = document.getElementById("cursor");
@@ -1670,6 +1905,9 @@
       gsapStarted = true;
       hasGsap = true;
       gsap.config({ nullTargetWarn: false });
+      if (window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+      }
       document.querySelectorAll(".hero .reveal").forEach((element) => element.classList.add("is-visible"));
 
       gsap.fromTo(".site-nav", { y: -18, opacity: 1 }, { y: 0, opacity: 1, duration: .75, ease: "power3.out" });
@@ -1677,6 +1915,61 @@
       gsap.fromTo(".hero-main > *", { y: 46, opacity: 1 }, { y: 0, opacity: 1, duration: .95, stagger: .1, ease: "power3.out", delay: .28 });
       gsap.fromTo(".hero-side", { x: 42, opacity: 1 }, { x: 0, opacity: 1, duration: 1, ease: "power3.out", delay: .45 });
       gsap.fromTo(".logos-strip", { y: 24, opacity: 1 }, { y: 0, opacity: 1, duration: .8, ease: "power3.out", delay: .62 });
+
+      if (window.ScrollTrigger) {
+        gsap.to(".hero-frame", {
+          scale: .985,
+          opacity: .94,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".hero",
+            start: "top top",
+            end: "bottom top",
+            scrub: true
+          }
+        });
+
+        gsap.utils.toArray(".service-card, .case-card, .funnel-step, .process-item").forEach((item, index) => {
+          gsap.fromTo(item,
+            { y: 34, opacity: 1 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: .85,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: item,
+                start: "top 88%",
+                toggleActions: "play none none reverse"
+              },
+              delay: (index % 4) * .03
+            }
+          );
+        });
+
+        gsap.to(".strategy-visual", {
+          y: -18,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".hero",
+            start: "top top",
+            end: "bottom top",
+            scrub: true
+          }
+        });
+
+        ScrollTrigger.matchMedia({
+          "(min-width: 900px)": () => {
+            ScrollTrigger.create({
+              trigger: ".growth-system",
+              start: "top 14%",
+              end: "bottom 78%",
+              pin: ".growth-copy",
+              pinSpacing: false
+            });
+          }
+        });
+      }
 
       hoverTargets.forEach((item) => {
         item.addEventListener("mouseenter", () => gsap.to(item, { y: -4, duration: .28, ease: "power2.out" }));
